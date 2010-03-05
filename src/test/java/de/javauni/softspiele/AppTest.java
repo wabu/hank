@@ -1,4 +1,4 @@
-package de.java-uni.softspiele;
+package de.javauni.softspiele;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
