@@ -27,9 +27,9 @@ public class GameAnimatedObject extends GameObject implements IAnimationable{
 	
 	@Override
 	/**
-	 * setzt das aktuelle Bild auf das nächste
+	 * setzt das aktuelle Bild auf das nÃ¤chste
 	 * Funktionsweise
-	 * Modulo size, führt dazu das das Zählinterval
+	 * Modulo size, fÃ¼hrt dazu das das ZÃ¤hlinterval
 	 * auf die Anzahl der size begrenz ist, d.h.
 	 * z.B. 3 Bilder(0,1,2): 0,1,2,0,1,2,0,1,2
 	 */

@@ -9,14 +9,14 @@ public interface IGuiable {
 	 */
 	void repaint();
 	/**
-	 * erlaubt den Zugriff von außen
-	 * @return gibt das Bild der Ausgabe zurück, 
-	 * um darauf Veränderungen zu ermöglichen
+	 * erlaubt den Zugriff von auÃŸen
+	 * @return gibt das Bild der Ausgabe zurÃ¼ck, 
+	 * um darauf VerÃ¤nderungen zu ermÃ¶glichen
 	 */
 	Graphics getGhostGraphics();
 	/**
-	 * Fügt der GUI einen KeyListener hinzu,
-	 * @param kl - KEyListener, das hinzuzufügende KeyListenerObject
+	 * FÃ¼gt der GUI einen KeyListener hinzu,
+	 * @param kl - KEyListener, das hinzuzufÃ¼gende KeyListenerObject
 	 */
 	void addKeyListener(KeyListener kl);
 }

@@ -17,8 +17,8 @@ public class LoadHandler {
 				
 				File Bilddatei=new File(directory.getAbsoluteFile()+"/"+dateiname);
 				URLConnection url = Bilddatei.getAbsoluteFile().toURI().toURL().openConnection();
-				//falls die Datei, laut header kein Bild enth‰lt skippe, 
-				//und probiers mit der n‰chsten Datei im Ordner 
+				//falls die Datei, laut header kein Bild enth√§lt skippe, 
+				//und probiers mit der n√§chsten Datei im Ordner 
 				if(!url.getContentType().contains("image"))continue;
 				System.out.println(url.getContentType()+" "+Bilddatei.getAbsolutePath());	
 					Image tmp = ImageIO.read(new File(pfad+dateiname));
