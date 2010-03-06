@@ -6,7 +6,7 @@ import world.GlobalWorld;
 public class PlayerControleThread implements IControleable, Runnable {
 	/**
 	 * um den Sprung in der Luft zu vermeiden, muss mann auf die Position
-	 * zugreifen können
+	 * zugreifen kÃ¶nnen
 	 */
 	private final IMoveable player;
 
@@ -67,7 +67,7 @@ public class PlayerControleThread implements IControleable, Runnable {
 				player.moveRight();
 			}
 			/**
-			 * nur zu Testzwecken, überarbeiten!
+			 * nur zu Testzwecken, Ã¼berarbeiten!
 			 */
 			if (jumping) {
 				player.jump();

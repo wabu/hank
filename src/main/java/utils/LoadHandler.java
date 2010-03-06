@@ -19,8 +19,8 @@ public class LoadHandler {
 						+ "\\" + dateiname);
 				final URLConnection url = Bilddatei.getAbsoluteFile().toURI()
 						.toURL().openConnection();
-				// falls die Datei, laut header kein Bild enth‰lt skippe,
-				// und probiers mit der n‰chsten Datei im Ordner
+				// falls die Datei, laut header kein Bild enth√§lt skippe,
+				// und probiers mit der n√§chsten Datei im Ordner
 				if (!url.getContentType().contains("image")) {
 					continue;
 				}

@@ -23,7 +23,7 @@ public class GlobalWorld {
 	}
 
 	/**
-	 * @deprecated muss überarbeitet werden,
+	 * @deprecated muss Ã¼berarbeitet werden,
 	 * aber noch gibt es keine Kollsisionen 
 	 * @param x
 	 *            X-Koord vom abgefragten Objekt
@@ -36,8 +36,8 @@ public class GlobalWorld {
 	}
 	/**
 	 * 
-	 * @return gibt true zurück, wenn das Spiel weiter läuft,
-	 * alle Threads die persistent laufen, hören auf diesen Counter
+	 * @return gibt true zurÃ¼ck, wenn das Spiel weiter lÃ¤uft,
+	 * alle Threads die persistent laufen, hÃ¶ren auf diesen Counter
 	 * z.B. PlayerControleThread
 	 */
 	public static boolean isGameGoingOn() {

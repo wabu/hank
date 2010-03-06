@@ -2,15 +2,15 @@ package world.time;
 
 public interface ITimer {
 	/**
-	 * @return gibt aktuelle Zeit zurück, 1 Zeiteinheit = 5ms
+	 * @return gibt aktuelle Zeit zurÃ¼ck, 1 Zeiteinheit = 5ms
 	 */
 	public int getAkttime();
 	/**
-	 * zählt der Zähler weiter?
+	 * zÃ¤hlt der ZÃ¤hler weiter?
 	 */
 	public boolean isCountTime();
 	/**
-	 * stopt den Zähler
+	 * stopt den ZÃ¤hler
 	 */
 	public void stopCountTime();
 

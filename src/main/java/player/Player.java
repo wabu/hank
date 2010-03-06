@@ -36,14 +36,14 @@ public class Player extends GameAnimatedObject implements IMoveable,
 
 	@Override
 	/**
-	 * @return - gibt das nächste Bild der Animation zurück
+	 * @return - gibt das nÃ¤chste Bild der Animation zurÃ¼ck
 	 */
 	public Image getPic() {
 		return animation.getNextPicture();
 	}
 
 	/**
-	 * @return gibt ein Controleable Interface zurück, welches Methoden zum
+	 * @return gibt ein Controleable Interface zurÃ¼ck, welches Methoden zum
 	 *         Starten von Bewegungen dient, aber kein direkten Zugriff erlaubt
 	 */
 	public IControleable getControle() {

@@ -40,7 +40,7 @@ public class GameObject implements IDrawable {
 
 	@Override
 	/**
-	 * gibt die X-Koordiante zur�ck
+	 * gibt die X-Koordiante zurÃ¼ck
 	 */
 	public int getX() {
 		// TODO Auto-generated method stub
@@ -49,7 +49,7 @@ public class GameObject implements IDrawable {
 
 	@Override
 	/**
-	 * gibt die Y-Koordiante zur�ck
+	 * gibt die Y-Koordiante zurÃ¼ck
 	 */
 	public int getY() {
 		// TODO Auto-generated method stub
@@ -58,7 +58,7 @@ public class GameObject implements IDrawable {
 
 	@Override
 	/**
-	 * gibt das Bild zur�ck
+	 * gibt das Bild zurÃ¼ck
 	 */
 	public Image getPic() {
 		// TODO Auto-generated method stub

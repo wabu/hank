@@ -5,7 +5,7 @@ import java.awt.Image;
 public interface IAnimation {
 	/**
 	 * 
-	 * @return gibt das nächst folgende Bild mit Verzögerung durch speed zurück
+	 * @return gibt das nÃ¤chst folgende Bild mit VerzÃ¶gerung durch speed zurÃ¼ck
 	 */
 	Image getNextPicture();
 	/**

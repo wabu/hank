@@ -13,8 +13,8 @@ public interface IControleable {
 	void startMovingRight();
 	/**
 	 * animiert die implementierende Objektsteuerung, 
-	 * das Objekt bis zur Springhöhe nachoben springen zu lassen,
-	 * anschließend wird es wieder herunter fallen
+	 * das Objekt bis zur SpringhÃ¶he nachoben springen zu lassen,
+	 * anschlieÃŸend wird es wieder herunter fallen
 	 */
 	void startJumping();
 	/**

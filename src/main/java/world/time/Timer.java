@@ -10,7 +10,7 @@ public class Timer implements Runnable, ITimer {
 
 	@Override
 	/**
-	 * @return gibt aktuelle Zeit zurück, 1 Zeiteinheit = 5ms
+	 * @return gibt aktuelle Zeit zurÃ¼ck, 1 Zeiteinheit = 5ms
 	 */
 	public int getAkttime() {
 		return aktTime;

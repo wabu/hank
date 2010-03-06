@@ -16,7 +16,7 @@ public class Keyboard extends KeyAdapter {
 
 	/**
 	 * @since 20.02.2010 Dieses Interface ist direkt mit dem Spieler1 gekoppelt,
-	 *        soll heiﬂen die Klasse Playercontrole vom Player1 implementiert
+	 *        soll hei√üen die Klasse Playercontrole vom Player1 implementiert
 	 *        dieses Interface
 	 */
 	private final IControleable controls = GlobalWorld.getPlayer()

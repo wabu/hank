@@ -12,7 +12,7 @@ import utils.MyFrame;
  * @category Gui Diese GUI ist durch ein im Endeffekt JFrame realisiert, welches
  *           jediglich durch den Constructor von MYFrame spezialisert wird.
  *           Unsere GUI dient jediglich als Ausgabe und besitzt keine Logik,
- *           damit benötigen wir eine Schnittstelle, die wir hier als IGuiable
+ *           damit benÃ¶tigen wir eine Schnittstelle, die wir hier als IGuiable
  *           benannt haben
  */
 public class Gui extends MyFrame implements IGuiable {
@@ -34,7 +34,7 @@ public class Gui extends MyFrame implements IGuiable {
 	 * @param width
 	 *            - Die Breite mit der das Fenster starten soll
 	 * @param height
-	 *            - Die Höhe mit der das Fenster starten soll
+	 *            - Die HÃ¶he mit der das Fenster starten soll
 	 */
 	public Gui(final String fenstername, final int x, final int y,
 			final int width, final int height) {
@@ -47,8 +47,8 @@ public class Gui extends MyFrame implements IGuiable {
 
 	@Override
 	/**
-	 * @return gibt das Grafikobjekt zurück auf dem, 
-	 * von außen gemalt werden kann
+	 * @return gibt das Grafikobjekt zurÃ¼ck auf dem, 
+	 * von auÃŸen gemalt werden kann
 	 */
 	public Graphics getGhostGraphics() {
 		return g_ghost;
@@ -56,7 +56,7 @@ public class Gui extends MyFrame implements IGuiable {
 
 	@Override
 	/**
-	 * überschreibt die Paint-Methode, nötig für Double-buffering
+	 * Ã¼berschreibt die Paint-Methode, nÃ¶tig fÃ¼r Double-buffering
 	 */
 	public void paint(final Graphics g) {
 		update(g);
@@ -64,7 +64,7 @@ public class Gui extends MyFrame implements IGuiable {
 
 	@Override
 	/**
-	 * überschreibt die Update-Methode, nötig für Double-buffering
+	 * Ã¼berschreibt die Update-Methode, nÃ¶tig fÃ¼r Double-buffering
 	 */
 	public void update(final Graphics g) {
 		g.drawImage(img_ghost, 0, 0, Color.white, this);
