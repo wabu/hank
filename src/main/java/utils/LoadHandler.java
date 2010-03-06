@@ -16,7 +16,7 @@ public class LoadHandler {
 			for (final String dateiname : directory.list()) {
 
 				final File Bilddatei = new File(directory.getAbsoluteFile()
-						+ "\\" + dateiname);
+						+ "/" + dateiname);
 				final URLConnection url = Bilddatei.getAbsoluteFile().toURI()
 						.toURL().openConnection();
 				// falls die Datei, laut header kein Bild enthält skippe,

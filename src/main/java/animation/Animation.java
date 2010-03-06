@@ -25,7 +25,7 @@ public class Animation implements IAnimation {
 	}
 
 	public static void main(final String[] args) {
-		final IAnimation ani = new Animation(5, "Pics\\Player\\");
+		final IAnimation ani = new Animation(5, "Pics/Player/");
 		for (int i = 0; i < 25; i++) {
 			System.out.println(ani.getNextPicture());
 		}
