@@ -1,8 +1,9 @@
 package objects;
 
 import java.awt.Image;
+import java.io.IOException;
 
-import utils.LoadHandler;
+import utils.ResourceHelper;
 
 public class GameObject implements IDrawable {
 	/**
@@ -27,13 +28,13 @@ public class GameObject implements IDrawable {
 	 * @param pfad
 	 *            - gibt an, aus welchem Ordner das Bild geladen wird
 	 */
-	public GameObject(final int x, final int y, final String pfad) {
+	public GameObject(final int x, final int y, final String pfad) throws IOException {
 		this.x = x;
 		this.y = y;
-		pic = LoadHandler.loadPic(pfad);
+		pic = ResourceHelper.loadImage(pfad);
 	}
 
-	public GameObject(final int x, final int y) {
+	protected GameObject(final int x, final int y) {
 		this.x = x;
 		this.y = y;
 	}

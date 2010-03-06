@@ -12,7 +12,7 @@ import controls.Keyboard;
 
 public class GlobalWorld {
 	private static ITimer timer = new Timer();
-	private static Player player = new Player(20, 540, "Pics/Player/");
+	private static Player player = new Player(20, 540, "Pics/Player/mario%02d.jpg");
 	private static IGuiable gui = new Gui("Hank", 0, 0, 1000, 700);
 	private static Graphics gfx = gui.getGhostGraphics();
 

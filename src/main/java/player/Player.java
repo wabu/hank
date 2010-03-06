@@ -1,6 +1,7 @@
 package player;
 
 import java.awt.Image;
+import java.io.IOException;
 
 import objects.GameAnimatedObject;
 import objects.ICollisionable;
@@ -14,7 +15,7 @@ public class Player extends GameAnimatedObject implements IMoveable,
 	private final IControleable controle = new PlayerControleThread(this);
 	private int speed = 5;
 
-	public Player(final int x, final int y, final String pfad) {
+	public Player(final int x, final int y, final String pfad) throws IOException {
 		super(x, y);
 		animation = new Animation(20, pfad);
 	}
