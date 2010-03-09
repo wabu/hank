@@ -27,6 +27,7 @@ public final class ResourceHelper {
      * get the url for a ressource
      * @param name
      * @return
+     * @throws IOException
      */
     public static URL loadRessouce(String name) throws IOException {
         log.debug("loading {}", name);
@@ -52,13 +53,14 @@ public final class ResourceHelper {
      * load an image list by trying to extend pattern by String.format(pattern, i) with i=0...
      * @param pattern
      * @return
+     * @throws IOException
      * @see String.format
      */
-    public static List<Image> loadImageList(String baseName) throws IOException {
+    public static List<Image> loadImageList(String pattern) throws IOException {
         ArrayList<Image> l = new ArrayList<Image>(2);
-        log.debug("trying to load imagelist based on {}", baseName);
+        log.debug("trying to load imagelist based on {}", pattern);
         for(int i=0;;i++) {
-            String name = String.format(baseName, i);
+            String name = String.format(pattern, i);
             try {
                 l.add(loadImage(name));
             } catch (IOException e) {
