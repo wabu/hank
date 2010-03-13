@@ -1,4 +1,4 @@
-package de.javauni.yarrish.engine.impl.states;
+package de.javauni.jarcade.impl.states;
 
 /**
  *

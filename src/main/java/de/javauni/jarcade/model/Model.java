@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package de.javauni.yarrish.engine.view;
+package de.javauni.jarcade.model;
 
 /**
- * View for a model
- * @param <M> model type
+ * @param <A> action type
  * @author wabu
  */
-public interface View<M> {
+public interface Model<A> {
 
+    void send(A action);
 }

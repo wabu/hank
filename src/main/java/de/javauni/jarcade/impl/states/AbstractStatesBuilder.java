@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.javauni.yarrish.engine.impl.states;
+package de.javauni.jarcade.impl.states;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
-import de.javauni.yarrish.engine.model.States;
+import de.javauni.jarcade.model.States;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.CheckForNull;

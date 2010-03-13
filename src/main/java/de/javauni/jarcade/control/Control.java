@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.javauni.yarrish.engine.control;
+package de.javauni.jarcade.control;
 
-import de.javauni.yarrish.engine.model.Model;
+import de.javauni.jarcade.model.Model;
 
 /**
  * control for a model

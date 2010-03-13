@@ -1,4 +1,4 @@
-package de.javauni.yarrish.engine.model;
+package de.javauni.jarcade.model;
 
 /**
  * object with a managed life circle

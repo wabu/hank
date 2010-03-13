@@ -4,10 +4,10 @@
  */
 package de.javauni.engine.impl.states;
 
-import de.javauni.yarrish.engine.impl.states.AbstractStates;
-import de.javauni.yarrish.engine.impl.states.AbstractStatesBuilder;
-import de.javauni.yarrish.engine.impl.states.StatesBuilder;
-import de.javauni.yarrish.engine.model.States;
+import de.javauni.jarcade.impl.states.AbstractStates;
+import de.javauni.jarcade.impl.states.AbstractStatesBuilder;
+import de.javauni.jarcade.impl.states.StatesBuilder;
+import de.javauni.jarcade.model.States;
 import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
