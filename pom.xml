@@ -9,7 +9,7 @@
   <url>https://dev.spline.de/trac/softspiele/</url>
 
   <properties>
-    <mainClass>world.GlobalWorld</mainClass>
+    <mainClass>de.javauni.yarrish.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
  

@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.javauni.jarcade.event;
+
+package de.javauni.yarrish.model;
 
 /**
  *
- * @param <E> event type
  * @author wabu
  */
-public interface Listener<E> {
-    void on(E event);
+public class MenuModel {
+
 }
