@@ -5,11 +5,9 @@
 package de.javauni.engine.impl.states;
 
 import de.javauni.jarcade.impl.states.AbstractStates;
-import de.javauni.jarcade.impl.states.AbstractStatesBuilder;
 import de.javauni.jarcade.impl.states.StatesBuilder;
+import de.javauni.jarcade.impl.states.StatesMap;
 import de.javauni.jarcade.model.States;
-import java.util.Map;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static de.javauni.engine.impl.states.StatesImplTest.S.*;
@@ -31,32 +29,13 @@ public class StatesImplTest {
         x, y
     }
 
-    static class TestStates extends AbstractStates<S, T> {
-
-        static class Builder extends AbstractStatesBuilder<S, T> {
-
-            @Override
-            public States<S, T> start(S start) {
-                return new TestStates(start, getMap());
-            }
-        }
-
-        public TestStates(S state, Map<S, Map<T, S>> map) {
-            super(state, map);
-        }
-
+    static abstract class TestStates extends AbstractStates<S, T> {
         @Override
         protected void onTranstion(T trans, S src, S tgt) {
+            // TODO wirte test to check calls on transition
         }
     }
-    private StatesBuilder<S, T> builder;
     private States<S, T> states;
-
-    @Before
-    @SuppressWarnings("unchecked")
-    public void setUp() {
-        builder = new TestStates.Builder();
-    }
 
     private void assertState(String msg, S s) {
         assertEquals(msg, states.getCurrentState(), s);
@@ -82,27 +61,62 @@ public class StatesImplTest {
 
     @Test
     public void simpleStatesTest() {
-        states = builder.from(a).on(x).to(a).from(a).on(y).to(b).from(b).on(x).
-                to(c).from(b).on(y).to(c).from(c).on(x).to(c).from(c).on(y).to(a).
+        states = new TestStates() {
+            @Override
+            protected StatesMap<S, T> define(StatesBuilder<S, T> builder) {
+                return builder
+                        .from(a).on(x).to(a)
+                        .from(a).on(y).to(b)
+                        .from(b).on(x).to(c)
+                        .from(b).on(y).to(c)
+                        .from(c).on(x).to(c)
+                        .from(c).on(y).to(a).
                 start(a);
+            }
+        };
         assertDefaultStates();
     }
 
     @Test
     public void simplifyedSyntaxTest() {
-        states = builder.from(a).on(x).to(a).on(y).to(b).from(b, c).on(x).to(c).
-                from(b).on(y).to(c).from(c).on(y).to(a).start(a);
+        states = new TestStates() {
+            @Override
+            protected StatesMap<S, T> define(StatesBuilder<S, T> builder) {
+                return builder
+                        .from(a).on(x).to(a)
+                                .on(y).to(b)
+                        .from(b, c).on(x).to(c)
+                        .from(b).on(y).to(c)
+                        .from(c).on(y).to(a)
+                        .start(a);
+            }
+        };
         assertDefaultStates();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNotADFA() {
-        builder.from(a).on(x).to(a).on(x).to(b).start(a);
+        new TestStates() {
+            @Override
+            protected StatesMap<S, T> define(StatesBuilder<S, T> builder) {
+                return builder
+                        .from(a).on(x).to(a)
+                                .on(x).to(b).start(a);
+            }
+        };
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUnknownTransition() {
-        states = builder.from(a).on(x).to(a).on(y).to(b).start(a);
+        states = new TestStates() {
+            @Override
+            protected StatesMap<S, T> define(StatesBuilder<S, T> builder) {
+                return builder
+                        .from(a).on(x).to(a)
+                                .on(y).to(b)
+                                .start(a);
+            }
+        };
 
         assertState("-> a", a);
         states.send(x);

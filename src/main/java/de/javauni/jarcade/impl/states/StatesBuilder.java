@@ -11,8 +11,6 @@ import de.javauni.jarcade.model.States;
  * @author wabu
  */
 public interface StatesBuilder<S extends Enum<S>, T extends Enum<T>>  {
-
     TransitionBuilder<S, T> from(S... src);
-
-    States<S, T> start(S start);
+    StatesMap<S, T> start(S start);
 }

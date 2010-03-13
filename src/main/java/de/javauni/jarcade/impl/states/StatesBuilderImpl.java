@@ -6,23 +6,22 @@ package de.javauni.jarcade.impl.states;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
-import de.javauni.jarcade.model.States;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.CheckForNull;
 
 /**
  *
  * @author wabu
  */
-public abstract class AbstractStatesBuilder<S extends Enum<S>, T extends Enum<T>>
-        implements StatesTransitionBuilder<S, T>, TargetBuilder<S, T> {
+class StatesBuilderImpl<S extends Enum<S>, T extends Enum<T>>
+         implements StatesTransitionBuilder<S, T>, TargetBuilder<S, T> {
 
     private final Map<S, Map<T, S>> maps = new HashMap<S, Map<T, S>>();
     @CheckForNull
     private S[] froms;
     private T[] ons;
-    private final ImmutableMap.Builder<T, S> current = null;
 
     public TransitionBuilder<S, T> from(S... src) {
         Preconditions.checkArgument(src.length > 0,
@@ -60,9 +59,23 @@ public abstract class AbstractStatesBuilder<S extends Enum<S>, T extends Enum<T>
         return this;
     }
 
-    protected Map<S, Map<T, S>> getMap() {
-        return maps;
-    }
+    public StatesMap<S, T> start(final S start) {
+        ImmutableMap.Builder<S, Map<T, S>> b =
+                ImmutableMap.<S, Map<T, S>>builder();
+        for (Entry<S, Map<T, S>> e : maps.entrySet()) {
+            b.put(e.getKey(), ImmutableMap.copyOf(e.getValue()));
+        }
 
-    public abstract States<S, T> start(S start);
+        final Map<S, Map<T, S>> map = b.build();
+        return new StatesMap<S, T>() {
+
+            public Map<S, Map<T, S>> getMap() {
+                return map;
+            }
+
+            public S getStart() {
+                return start;
+            }
+        };
+    }
 }
