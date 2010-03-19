@@ -15,13 +15,15 @@ import de.javauni.yarrish.view.DummyView;
  * @author wabu
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Injector inj = Guice.createInjector(new YarrishModule());
         YarrishModel ym = inj.getInstance(YarrishModel.class);
         inj.getInstance(DummyView.class);
 
         ym.setState(ModelState.Menu);
+        Thread.sleep(500);
         ym.setState(ModelState.Map);
+        Thread.sleep(500);
         ym.setState(ModelState.Menu);
     }
 }

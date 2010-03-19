@@ -5,12 +5,17 @@
 
 package de.javauni.jarcade.event;
 
+import com.google.inject.ImplementedBy;
+
 /**
  *
- * @param <L> type of listeners
+ * @param <L> the listener interface
  * @author wabu
  */
-public interface Observable<L extends Listener> {
+@ImplementedBy(ChannelImpl.class)
+public interface Channel<L extends Listener> {
     void addListener(L listener);
     void removeListener(L listener);
+
+    void broadcast(Broadcastor<L> bc);
 }

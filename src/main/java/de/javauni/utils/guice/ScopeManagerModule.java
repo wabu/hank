@@ -14,9 +14,10 @@ import com.google.inject.AbstractModule;
 public class ScopeManagerModule extends AbstractModule {
     @Override
     protected void configure() {
-        InstanceScopeManager mgr = new InstanceScopeManager();
-        bind(InstanceScopeManager.class).toInstance(mgr);
+        ManagedScopeImpl mgr = new ManagedScopeImpl();
+        bind(ManagedScopeImpl.class).toInstance(mgr);
         bindScope(ManagedScope.class, mgr);
+        bind(ScopeManager.class);
     }
 
 }

@@ -3,15 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
-
-import de.javauni.utils.guice.ManagedScope;
+package de.javauni.jarcade.event;
 
 /**
  *
  * @author wabu
  */
-@ManagedScope
-public class YarrishMap {
-
+public interface Broadcastor<L extends Listener> {
+    void apply(L listener);
 }

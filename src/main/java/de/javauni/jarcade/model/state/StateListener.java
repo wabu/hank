@@ -13,5 +13,5 @@ import de.javauni.jarcade.event.Listener;
  * @author wabu
  */
 public interface StateListener<S extends Enum<S>> extends Listener {
-    void onStateChange(StateEvent<S> ev);
+    void onStateChange(S state);
 }

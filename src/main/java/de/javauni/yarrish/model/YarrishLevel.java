@@ -5,10 +5,13 @@
 
 package de.javauni.yarrish.model;
 
+import de.javauni.utils.guice.ManagedScope;
+
 /**
  *
  * @author wabu
  */
+@ManagedScope
 public interface YarrishLevel {
 
 }

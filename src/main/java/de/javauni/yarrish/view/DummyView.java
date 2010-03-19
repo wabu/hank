@@ -8,7 +8,6 @@ package de.javauni.yarrish.view;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.javauni.jarcade.model.MenuModel;
-import de.javauni.jarcade.model.state.StateEvent;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.jarcade.model.state.StateModelExport;
 import de.javauni.yarrish.model.states.ModelState;
@@ -30,12 +29,11 @@ public class DummyView implements StateListener<ModelState> {
         this.model = model;
         this.mmp = mmp;
 
-        model.addListener(this);
+        model.getStateChannel().addListener(this);
     }
 
-
-    public void onStateChange(StateEvent<ModelState> ev) {
-        switch(ev.getState()) {
+    public void onStateChange(ModelState state) {
+        switch(state) {
             case Menu:
                 log.info("showing menu");
 
@@ -44,10 +42,8 @@ public class DummyView implements StateListener<ModelState> {
 
                 break;
             default:
-                log.error("unimplemented view {}", ev.getState());
+                log.error("unimplemented view {}", state);
                 break;
         }
     }
-
-
 }
