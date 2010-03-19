@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model;
+package de.javauni.jarcade.model.state;
+
+import de.javauni.jarcade.event.Observable;
 
 /**
  *
@@ -12,6 +14,6 @@ package de.javauni.jarcade.model;
  * @author wabu
  */
 public interface StateModel<S extends Enum<S>, T extends Enum<T>>
-        extends StateModelAccess<T>, StateModelExport<S> {
-
+        extends Observable<StateModelListener<S>> {
+    void doTransition(T trans);
 }

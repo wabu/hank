@@ -37,19 +37,19 @@ public class StatesImplTest {
 
     private void assertDefaultStates() {
         assertState("-> a", a);
-        states.send(x);
+        states.doTransition(x);
         assertState("a >x> a", a);
-        states.send(x);
+        states.doTransition(x);
         assertState("a >x> a", a);
-        states.send(y);
+        states.doTransition(y);
         assertState("a >y> b", b);
-        states.send(x);
+        states.doTransition(x);
         assertState("b >x> c", c);
-        states.send(x);
+        states.doTransition(x);
         assertState("c >x> c", c);
-        states.send(y);
+        states.doTransition(y);
         assertState("c >y> a", a);
-        states.send(x);
+        states.doTransition(x);
         assertState("a >x> a", a);
     }
 
@@ -113,13 +113,13 @@ public class StatesImplTest {
         };
 
         assertState("-> a", a);
-        states.send(x);
+        states.doTransition(x);
         assertState("a >x> a", a);
-        states.send(x);
+        states.doTransition(x);
         assertState("a >x> a", a);
-        states.send(y);
+        states.doTransition(y);
         assertState("a >y> b", b);
 
-        states.send(x); // no transition form b
+        states.doTransition(x); // no transition form b
     }
 }

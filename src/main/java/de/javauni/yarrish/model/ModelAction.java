@@ -10,5 +10,5 @@ package de.javauni.yarrish.model;
  * @author wabu
  */
 public enum ModelAction {
-    Start, Finish, Escape, Exit
+    Start, Finish, Escape
 }

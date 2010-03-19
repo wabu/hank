@@ -10,5 +10,4 @@ package de.javauni.jarcade.model;
  * @author wabu
  */
 public interface ModelAccess {
-
 }

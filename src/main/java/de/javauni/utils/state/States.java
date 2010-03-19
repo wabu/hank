@@ -13,5 +13,5 @@ package de.javauni.utils.state;
  */
 public interface States<S extends Enum<S>, T extends Enum<T>>  {
     S getCurrentState();
-    void send(T trans);
+    void doTransition(T trans);
 }

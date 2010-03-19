@@ -62,7 +62,7 @@ public abstract class AbstractStates<S extends Enum<S>, T extends Enum<T>>
         return state;
     }
 
-    public void send(T action) {
+    public void doTransition(T action) {
         if (smap == null || !smap.containsKey(action)) {
             throw new IllegalArgumentException(
                     "current state " + state + " has not transition with "

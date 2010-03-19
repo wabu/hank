@@ -9,7 +9,6 @@ package de.javauni.jarcade.model;
  *
  * @author wabu
  */
-public interface StateModelListener<S extends Enum<S>> {
-    <M extends ModelAccess & ModelExport>
-            void onModelStateChange(StateModelEvent<S, M> ev);
+public interface MenuModelAccess {
+
 }

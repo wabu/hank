@@ -9,6 +9,6 @@ package de.javauni.yarrish.model;
  *
  * @author wabu
  */
-public enum ModelState {
-    Menu, Map,  Level, Exit;
+public enum LevelState {
+    Loading, Intro, Warmup, Play, Paused, Outro
 }

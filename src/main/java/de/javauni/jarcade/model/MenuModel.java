@@ -9,6 +9,6 @@ package de.javauni.jarcade.model;
  *
  * @author wabu
  */
-public interface StateModelAccess<T extends Enum<T>> {
-    void doTransition(T trans);
+public interface MenuModel {
+
 }
