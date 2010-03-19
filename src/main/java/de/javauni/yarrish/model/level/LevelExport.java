@@ -3,12 +3,11 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model;
+package de.javauni.yarrish.model.level;
 
 /**
  *
  * @author wabu
  */
-public interface ModelExport {
-
+public interface LevelExport {
 }

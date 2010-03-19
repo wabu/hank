@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 /**
  * scope annotiation for instances which lifetime is manually managed
  * @author wabu
- * @see InstanceScopeManager
+ * @see ScopeManager
  */
 @Target({ TYPE, METHOD })
 @Retention(RUNTIME)

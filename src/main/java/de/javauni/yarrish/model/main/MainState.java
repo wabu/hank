@@ -6,9 +6,9 @@
 package de.javauni.yarrish.model.main;
 
 /**
- *
+ * main state states
  * @author wabu
  */
 public enum MainState {
-    Menu, Map, Level;
+    Menu, Game, Level;
 }

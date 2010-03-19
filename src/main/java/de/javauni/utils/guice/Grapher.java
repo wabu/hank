@@ -16,6 +16,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * creates a dot(graphviz) file form the main module definition
+ * @author wabu
+ */
 public class Grapher {
   private void graph(String filename, Injector demoInjector) throws IOException {
     PrintWriter out = new PrintWriter(new File(filename), "UTF-8");

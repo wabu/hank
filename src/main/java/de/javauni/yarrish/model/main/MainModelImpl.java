@@ -16,11 +16,11 @@ import de.javauni.utils.guice.ScopeManager;
 import de.javauni.yarrish.model.menu.MainMenuExport;
 
 /**
- *
+ * implements the main game state
  * @author wabu
  */
 @Singleton
-class MainModelImpl extends AbstractStateModel<MainState>
+public class MainModelImpl extends AbstractStateModel<MainState>
         implements MainModelAccess, MainModelExport{
     private final ScopeManager<MainState> scopes;
     private final Provider<MainMenuExport> mmp;
@@ -41,7 +41,7 @@ class MainModelImpl extends AbstractStateModel<MainState>
                 scopes.clearOtherScopes(tgt);
                 mmp.get();
                 break;
-            case Map:
+            case Game:
                 scopes.clearScope(MainState.Level);
                 scopes.activateScope(tgt);
                 break;

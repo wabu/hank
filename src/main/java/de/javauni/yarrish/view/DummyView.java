@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * dummy view that shows how everything can be combined
  * @author wabu
  */
 public class DummyView implements StateListener<MainState> {
@@ -24,6 +24,8 @@ public class DummyView implements StateListener<MainState> {
 
     private final Provider<MainMenuExport> mmp;
 
+    // use constructor to get access to the model export
+    // and providers, if you want to get submodles/subview when the main state changes
     @Inject
     public DummyView(MainModelExport model, Provider<MainMenuExport> mmp) {
         this.model = model;
@@ -38,6 +40,8 @@ public class DummyView implements StateListener<MainState> {
             case Menu:
                 log.info("showing menu");
 
+                // juhey, we now can get the menu model
+                // it it is even the same instance when called multiple times
                 MainMenuExport mm = mmp.get();
                 log.debug("got a menu model: "+mm);
 

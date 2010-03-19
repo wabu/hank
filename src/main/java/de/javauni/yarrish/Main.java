@@ -12,7 +12,7 @@ import de.javauni.yarrish.model.main.MainState;
 import de.javauni.yarrish.view.DummyView;
 
 /**
- *
+ * t3h main class
  * @author wabu
  */
 public class Main {
@@ -23,7 +23,7 @@ public class Main {
 
         yma.setState(MainState.Menu);
         Thread.sleep(500);
-        yma.setState(MainState.Map);
+        yma.setState(MainState.Game);
         Thread.sleep(500);
         yma.setState(MainState.Menu);
     }

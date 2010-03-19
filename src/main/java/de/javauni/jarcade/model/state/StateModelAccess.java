@@ -8,6 +8,7 @@ package de.javauni.jarcade.model.state;
 import de.javauni.jarcade.exceptions.IllegalAction;
 
 /**
+ * access to a model with a concreate main state
  * @author wabu
  */
 public interface StateModelAccess<S extends Enum<S>> {

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish;
+package de.javauni.yarrish.model.level;
 
 import de.javauni.utils.guice.ManagedScope;
 
@@ -12,6 +12,6 @@ import de.javauni.utils.guice.ManagedScope;
  * @author wabu
  */
 @ManagedScope
-public interface LevelModel {
+public class SimpleLevel {
 
 }

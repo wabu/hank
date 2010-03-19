@@ -5,14 +5,13 @@
 package de.javauni.jarcade.model.state;
 
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.model.ModelExport;
 
 /**
- *
+ * exports the state of a model with a concreate main state
  * @param <S> state type
  * @author wabu
  */
-public interface StateModelExport<S extends Enum<S>> extends ModelExport {
+public interface StateModelExport<S extends Enum<S>> {
     Channel<StateListener<S>> getStateChannel();
 
     S getState();

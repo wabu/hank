@@ -8,7 +8,7 @@ package de.javauni.jarcade.model.state;
 import de.javauni.jarcade.event.Listener;
 
 /**
- *
+ * listener interface for a state change
  * @param <S> state type
  * @author wabu
  */

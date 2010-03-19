@@ -8,7 +8,8 @@ package de.javauni.jarcade.event;
 import com.google.inject.ImplementedBy;
 
 /**
- *
+ * Listeners will be notified about changes inside the channel.
+ * data send to the channel will all be run inside a single thread
  * @param <L> the listener interface
  * @author wabu
  */

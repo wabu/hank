@@ -6,7 +6,7 @@
 package de.javauni.jarcade.event;
 
 /**
- *
+ * interface used to broadcast messages on a channel
  * @author wabu
  */
 public interface Broadcastor<L extends Listener> {

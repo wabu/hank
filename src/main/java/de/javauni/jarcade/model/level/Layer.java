@@ -8,7 +8,9 @@ package de.javauni.jarcade.model.level;
 import java.util.List;
 
 /**
- *
+ * the virtual world consists of different layers where all the entities live.
+ * each layer has an index to specifiy the order in which the layers a shown
+ * and a distance inside the game world.
  * @author wabu
  */
 public interface Layer {

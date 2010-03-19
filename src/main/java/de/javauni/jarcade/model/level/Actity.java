@@ -6,7 +6,7 @@
 package de.javauni.jarcade.model.level;
 
 /**
- *
+ * an entity that has a current activity
  * @author wabu
  */
 public interface Actity<A extends Enum<A>> {

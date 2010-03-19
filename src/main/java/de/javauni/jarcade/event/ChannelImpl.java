@@ -5,19 +5,24 @@
 
 package de.javauni.jarcade.event;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 /**
- *
  * @param <L> listener type
  * @author wabu
  */
-public class ChannelImpl<L extends Listener> implements Channel<L> {
+class ChannelImpl<L extends Listener> implements Channel<L> {
     private final List<L> ls = new CopyOnWriteArrayList<L>();
-    private final Executor exec = Executors.newSingleThreadExecutor();
+    private final Executor exec;
+
+    @Inject
+    ChannelImpl(@Named("channel-broadcast-executor") Executor exec) {
+        this.exec = exec;
+    }
 
     public void addListener(L l) {
         ls.add(l);

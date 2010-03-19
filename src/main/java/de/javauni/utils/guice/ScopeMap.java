@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author wabu
  */
-public class ScopeMap {
+class ScopeMap {
     private final Map<Key<?>, Object> scoped = new HashMap<Key<?>, Object>();
 
     @SuppressWarnings("unchecked")

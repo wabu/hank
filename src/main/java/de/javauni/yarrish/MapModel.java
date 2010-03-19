@@ -8,7 +8,6 @@ package de.javauni.yarrish;
 import de.javauni.utils.guice.ManagedScope;
 
 /**
- *
  * @author wabu
  */
 @ManagedScope

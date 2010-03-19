@@ -35,7 +35,7 @@ class MainMenuImpl extends AbstractMenuModel<MainMenuState>
                 .put(MainMenuState.Main,
                     Lists.newArrayList(new MenuItem() {
                         public void submit() {
-                            main.setState(MainState.Map);
+                            main.setState(MainState.Game);
                         }
                     })
                 ).build());

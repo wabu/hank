@@ -8,7 +8,7 @@ package de.javauni.utils.guice;
 import com.google.inject.AbstractModule;
 
 /**
- *
+ * guice modle to bind scope manager
  * @author wabu
  */
 public class ScopeManagerModule extends AbstractModule {

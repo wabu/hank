@@ -8,7 +8,7 @@ package de.javauni.yarrish.model.main;
 import de.javauni.jarcade.model.state.StateModelAccess;
 
 /**
- *
+ * access interface to the main game state
  * @author wabu
  */
 public interface MainModelAccess extends StateModelAccess<MainState>{

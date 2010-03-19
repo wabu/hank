@@ -9,7 +9,7 @@ import com.google.inject.AbstractModule;
 import de.javauni.utils.guice.ScopeManagerModule;
 
 /**
- *
+ * guice submodule for the main state
  * @author wabu
  */
 public class MainModelModule extends AbstractModule {
