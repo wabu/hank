@@ -3,15 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
-
-import de.javauni.utils.guice.ManagedScope;
+package de.javauni.yarrish.model.menu;
 
 /**
  *
  * @author wabu
  */
-@ManagedScope
-public class YarrishMap {
-
+public enum LevelMenuState {
+    Main, Settings
 }

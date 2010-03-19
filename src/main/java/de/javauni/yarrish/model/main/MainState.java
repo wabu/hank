@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model.states;
+package de.javauni.yarrish.model.main;
 
 /**
  *
  * @author wabu
  */
-public enum ModelAction {
-    Start, Finish, Escape
+public enum MainState {
+    Menu, Map, Level;
 }

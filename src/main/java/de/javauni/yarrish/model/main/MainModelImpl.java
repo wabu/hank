@@ -3,47 +3,46 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
+package de.javauni.yarrish.model.main;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
-import de.javauni.jarcade.model.MenuModel;
-import de.javauni.jarcade.model.state.AbstractStateModelImpl;
+import de.javauni.jarcade.model.state.AbstractStateModel;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.utils.guice.ScopeManager;
-import de.javauni.yarrish.model.states.ModelState;
+import de.javauni.yarrish.model.menu.MainMenuExport;
 
 /**
  *
  * @author wabu
  */
 @Singleton
-public class YarrishModel extends AbstractStateModelImpl<ModelState> {
-    private final ScopeManager<ModelState> scopes;
-    private final Provider<MenuModel> mmp;
+class MainModelImpl extends AbstractStateModel<MainState>
+        implements MainModelAccess, MainModelExport{
+    private final ScopeManager<MainState> scopes;
+    private final Provider<MainMenuExport> mmp;
 
-    @Inject
-    public YarrishModel(
-            Channel<StateListener<ModelState>> channel,
-            ScopeManager<ModelState> scopes,
-            Provider<MenuModel> mmp) {
+    @Inject MainModelImpl(
+            Channel<StateListener<MainState>> channel,
+            ScopeManager<MainState> scopes,
+            Provider<MainMenuExport> mmp) {
         super(channel);
         this.scopes = scopes;
         this.mmp = mmp;
     }
 
     @Override
-    protected void doStateTransition(ModelState src, final ModelState tgt) throws IllegalAction {
+    protected void doStateTransition(MainState src, final MainState tgt) throws IllegalAction {
         switch(tgt) {
             case Menu:
                 scopes.clearOtherScopes(tgt);
                 mmp.get();
                 break;
             case Map:
+                scopes.clearScope(MainState.Level);
                 scopes.activateScope(tgt);
                 break;
             case Level:
@@ -52,10 +51,5 @@ public class YarrishModel extends AbstractStateModelImpl<ModelState> {
             default:
                 throw new IllegalAction("State "+tgt+" not supported yet");
         }
-        getStateChannel().broadcast(new Broadcastor<StateListener<ModelState>>() {
-            public void apply(StateListener<ModelState> listener) {
-                listener.onStateChange(tgt);
-            }
-        });
     }
 }

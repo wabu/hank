@@ -10,5 +10,5 @@ package de.javauni.jarcade.event;
  * @author wabu
  */
 public interface Broadcastor<L extends Listener> {
-    void apply(L listener);
+    void apply(L l);
 }

@@ -6,6 +6,7 @@
 package de.javauni.jarcade.model.state;
 
 import com.google.inject.Inject;
+import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
 
@@ -14,13 +15,13 @@ import de.javauni.jarcade.exceptions.IllegalAction;
  * @param <S> state type
  * @author wabu
  */
-public abstract class AbstractStateModelImpl<S extends Enum<S>>
+public abstract class AbstractStateModel<S extends Enum<S>>
         implements StateModelExport<S>, StateModelAccess<S> {
     private S state;
     private final Channel<StateListener<S>> channel;
 
     @Inject
-    public AbstractStateModelImpl(Channel<StateListener<S>> channel) {
+    public AbstractStateModel(Channel<StateListener<S>> channel) {
         this.channel = channel;
     }
 
@@ -30,8 +31,10 @@ public abstract class AbstractStateModelImpl<S extends Enum<S>>
 
 
     public void setState(S state) {
-        doStateTransition(this.state, state);
+        S old = this.state;
+        doStateTransition(old, state);
         this.state = state;
+        doStateBroadcast(old, state);
     }
 
     public Channel<StateListener<S>> getStateChannel() {
@@ -39,6 +42,13 @@ public abstract class AbstractStateModelImpl<S extends Enum<S>>
     }
 
 
-
     protected abstract void doStateTransition(S src, S tgt) throws IllegalAction;
+
+    protected void doStateBroadcast(S src, S tgt) {
+        channel.broadcast(new Broadcastor<StateListener<S>>() {
+            public void apply(StateListener<S> l) {
+                l.onStateChange(state);
+            }
+        });
+    }
 }

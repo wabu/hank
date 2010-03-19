@@ -3,12 +3,15 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model.states;
+package de.javauni.yarrish.model;
+
+import de.javauni.utils.guice.ManagedScope;
 
 /**
  *
  * @author wabu
  */
-public enum MapMenuState {
-    Main, Save, Load, Settings;
+@ManagedScope
+public class MapModel {
+
 }

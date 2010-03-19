@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model.states;
+package de.javauni.jarcade.model.menu;
 
 /**
  *
  * @author wabu
  */
-public enum LevelMenuState {
-    Main, Settings
+public interface MenuItem {
+    void submit();
 }

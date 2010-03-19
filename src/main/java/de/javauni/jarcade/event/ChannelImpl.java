@@ -19,7 +19,6 @@ public class ChannelImpl<L extends Listener> implements Channel<L> {
     private final List<L> ls = new CopyOnWriteArrayList<L>();
     private final Executor exec = Executors.newSingleThreadExecutor();
 
-
     public void addListener(L l) {
         ls.add(l);
     }
