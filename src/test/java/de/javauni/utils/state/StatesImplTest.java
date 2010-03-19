@@ -2,16 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.javauni.engine.impl.states;
+package de.javauni.utils.state;
 
-import de.javauni.yarrish.engine.impl.states.StatesMap;
-import de.javauni.yarrish.engine.impl.states.AbstractStates;
-import de.javauni.yarrish.engine.impl.states.StatesBuilder;
-import de.javauni.yarrish.engine.model.States;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import static de.javauni.engine.impl.states.StatesImplTest.S.*;
-import static de.javauni.engine.impl.states.StatesImplTest.T.*;
+import static de.javauni.utils.state.StatesImplTest.S.*;
+import static de.javauni.utils.state.StatesImplTest.T.*;
 
 /**
  *
@@ -20,12 +16,10 @@ import static de.javauni.engine.impl.states.StatesImplTest.T.*;
 public class StatesImplTest {
 
     enum S {
-
         a, b, c
     }
 
     enum T {
-
         x, y
     }
 

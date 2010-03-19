@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.javauni.yarrish.engine.model;
+package de.javauni.utils.state;
 
 /**
  * interface for a state machine.
