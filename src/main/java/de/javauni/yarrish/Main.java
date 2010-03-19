@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
+package de.javauni.yarrish;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

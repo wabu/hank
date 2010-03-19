@@ -7,7 +7,6 @@ package de.javauni.yarrish.view;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import de.javauni.jarcade.model.menu.MenuModelExport;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.yarrish.model.main.MainModelExport;
 import de.javauni.yarrish.model.main.MainState;
