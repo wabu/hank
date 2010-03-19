@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.impl;
+package de.javauni.yarrish.model.states;
 
 /**
  *
  * @author wabu
  */
-class DummyMenuModelImpl {
-
+public enum ModelState {
+    Menu, Map, Level;
 }

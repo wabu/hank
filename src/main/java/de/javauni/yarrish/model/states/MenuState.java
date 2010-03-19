@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
+package de.javauni.yarrish.model.states;
 
 /**
  *
  * @author wabu
  */
-public enum LevelMenuState {
-    Main, Settings
+public enum MenuState {
+    Main, New, Load, Settings, Credits, Exit
 }

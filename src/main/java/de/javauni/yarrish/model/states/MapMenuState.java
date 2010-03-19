@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package de.javauni.yarrish.model;
+package de.javauni.yarrish.model.states;
 
 /**
  *
  * @author wabu
  */
-public enum LevelState {
-    Loading, Intro, Warmup, Play, Paused, Outro
+public enum MapMenuState {
+    Main, Save, Load, Settings;
 }

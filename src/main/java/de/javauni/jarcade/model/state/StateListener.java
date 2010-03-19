@@ -9,10 +9,9 @@ import de.javauni.jarcade.event.Listener;
 
 /**
  *
- * @param <S>
+ * @param <S> state type
  * @author wabu
  */
-public interface StateModelListener<S extends Enum<S>> extends Listener {
-
-    void onModelStateChange(StateModelEvent<S> ev);
+public interface StateListener<S extends Enum<S>> extends Listener {
+    void onStateChange(StateEvent<S> ev);
 }

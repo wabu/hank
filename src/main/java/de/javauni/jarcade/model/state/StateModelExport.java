@@ -13,7 +13,6 @@ import de.javauni.jarcade.model.ModelExport;
  * @author wabu
  */
 public interface StateModelExport<S extends Enum<S>>
-        extends ModelExport, Observable<StateModelListener<S>> {
-
-    S getCurrentState();
+        extends ModelExport, Observable<StateListener<S>> {
+    S getState();
 }

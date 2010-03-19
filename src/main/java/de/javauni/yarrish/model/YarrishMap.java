@@ -9,6 +9,6 @@ package de.javauni.yarrish.model;
  *
  * @author wabu
  */
-public enum MapMenuState {
-    Main, Save, Load, Settings;
+public interface YarrishMap {
+
 }

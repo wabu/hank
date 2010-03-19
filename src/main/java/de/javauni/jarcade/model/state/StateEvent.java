@@ -10,10 +10,10 @@ package de.javauni.jarcade.model.state;
  * @param <S>
  * @author wabu
  */
-public class StateModelEvent<S extends Enum<S>> {
+public class StateEvent<S extends Enum<S>> {
     private final S state;
 
-    public StateModelEvent(S state) {
+    public StateEvent(S state) {
         this.state = state;
     }
 
