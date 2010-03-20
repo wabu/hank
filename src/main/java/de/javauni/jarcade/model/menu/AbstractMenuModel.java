@@ -23,15 +23,18 @@ public class AbstractMenuModel<S extends Enum<S>>
     private List<? extends MenuItem> page;
     private int sel = 0;
 
-    public AbstractMenuModel(Channel<StateListener<S>> channel, Map<S, ? extends List<? extends MenuItem>> pages) {
+    public AbstractMenuModel(Channel<StateListener<S>> channel,
+            Map<S, ? extends List<? extends MenuItem>> pages,
+            S startPage) {
         super(channel);
         this.pages = pages;
+        this.page = pages.get(startPage);
     }
 
     @Override
     protected void doStateTransition(S src, S tgt) throws IllegalAction {
         if(!pages.containsKey(tgt)) {
-            new IllegalAction(new UnsupportedOperationException
+            throw new IllegalAction(new UnsupportedOperationException
                     ("menu "+tgt+" has not been implemented"));
         }
         page = pages.get(tgt);

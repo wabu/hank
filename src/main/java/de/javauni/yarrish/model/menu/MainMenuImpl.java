@@ -38,7 +38,7 @@ class MainMenuImpl extends AbstractMenuModel<MainMenuState>
                             main.setState(MainState.Game);
                         }
                     })
-                ).build());
+                ).build(), MainMenuState.Main);
     }
 
 
