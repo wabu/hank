@@ -15,16 +15,6 @@
 
   <repositories>
     <repository>
-      <releases>
-        <enabled>false</enabled>
-        <updatePolicy>always</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </snapshots>
       <id>inf.fu.berlin.de</id>
       <name>wabus inf repo</name>
       <url>http://page.mi.fu-berlin.de/wabu/maven/</url>
