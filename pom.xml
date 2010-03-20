@@ -11,8 +11,27 @@
   <properties>
     <mainClass>de.javauni.yarrish.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
- </properties>
- 
+  </properties>
+
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+      <id>inf.fu.berlin.de</id>
+      <name>wabus inf repo</name>
+      <url>http://page.mi.fu-berlin.de/wabu/maven/</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
+
   <distributionManagement>
     <site>
       <id>inf.fu-berlin.de</id>
@@ -41,70 +60,6 @@
     <connection>scm:svn:https://dev.spline.de/svn/softspiele/</connection>
     <url>https://dev.spline.de/trac/softspiele/browser/</url>
   </scm>
-  <reporting>
-    <plugins>
-      <plugin>
-        <artifactId>maven-changes-plugin</artifactId>
-        <groupId>org.apache.maven.plugins</groupId>
-        <configuration>
-          <tracUser>marvin</tracUser>
-          <tracPassword>koofHcvv</tracPassword>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jxr-maven-plugin</artifactId>
-        <configuration>
-          <includes>
-            <include>**/*.java</include>
-          </includes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <configuration>
-          <instrumentation>
-            <excludes>
-              <exclude>src/test/**</exclude>
-            </excludes>
-          </instrumentation>
-          <formats>
-            <format>xml</format>
-            <format>html</format>
-          </formats>
-        </configuration>
-      </plugin>
-      <plugin>
-         <groupId>org.codehaus.mojo</groupId>
-         <artifactId>findbugs-maven-plugin</artifactId>
-         <configuration>
-            <findbugsXmlOutput>true</findbugsXmlOutput>
-            <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-            <xmlOutput>true</xmlOutput>
-            <!--effort>Max</effort-->
-            <treshold>Low</treshold>
-         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jdepend-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </reporting>
 
   <dependencies>
     <dependency>
@@ -226,6 +181,72 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <configuration>
+          <tracUser>marvin</tracUser>
+          <tracPassword>koofHcvv</tracPassword>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jxr-maven-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <configuration>
+          <instrumentation>
+            <excludes>
+              <exclude>src/test/**</exclude>
+            </excludes>
+          </instrumentation>
+          <formats>
+            <format>xml</format>
+            <format>html</format>
+          </formats>
+        </configuration>
+      </plugin>
+      <plugin>
+         <groupId>org.codehaus.mojo</groupId>
+         <artifactId>findbugs-maven-plugin</artifactId>
+         <configuration>
+            <findbugsXmlOutput>true</findbugsXmlOutput>
+            <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+            <xmlOutput>true</xmlOutput>
+            <!--effort>Max</effort-->
+            <treshold>Low</treshold>
+         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
 
 
