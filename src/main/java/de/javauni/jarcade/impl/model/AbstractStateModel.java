@@ -3,12 +3,15 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.state;
+package de.javauni.jarcade.impl.model;
 
 import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
+import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.jarcade.model.state.StateModelAccess;
+import de.javauni.jarcade.model.state.StateModelExport;
 import javax.annotation.concurrent.GuardedBy;
 
 /**

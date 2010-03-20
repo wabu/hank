@@ -10,7 +10,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
-import de.javauni.jarcade.model.state.AbstractStateModel;
+import de.javauni.jarcade.impl.model.AbstractStateModel;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.utils.guice.ScopeManager;
 import de.javauni.yarrish.model.menu.MainMenuExport;

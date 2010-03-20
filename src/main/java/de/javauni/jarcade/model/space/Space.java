@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.world;
+package de.javauni.jarcade.model.space;
 
 import de.javauni.utils.geom.Box;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
 import java.util.List;
 
 /**
@@ -33,4 +34,12 @@ public interface Space {
      * @see Layer
      */
     List<Entity> getAllEntities();
+
+    /**
+     * get an entity by id
+     * @param id
+     * @return entity or null
+     */
+    @CheckForNull
+    Entity getEntity(int id);
 }

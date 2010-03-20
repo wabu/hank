@@ -3,11 +3,13 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.menu;
+package de.javauni.jarcade.impl.model;
 
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
-import de.javauni.jarcade.model.state.AbstractStateModel;
+import de.javauni.jarcade.model.menu.MenuItem;
+import de.javauni.jarcade.model.menu.MenuModelAccess;
+import de.javauni.jarcade.model.menu.MenuModelExport;
 import de.javauni.jarcade.model.state.StateListener;
 import java.util.List;
 import java.util.Map;

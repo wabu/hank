@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.world;
+package de.javauni.jarcade.model.space;
 
 import de.javauni.jarcade.event.Listener;
 
