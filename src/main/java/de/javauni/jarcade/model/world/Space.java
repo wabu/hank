@@ -3,16 +3,17 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.level;
+package de.javauni.jarcade.model.world;
 
 import de.javauni.utils.geom.Box;
 import java.util.List;
 
 /**
- * a simple layered 2d world
+ * a layered 2d space where things (entities) can live
  * @author wabu
+ * @see Layer
  */
-public interface World {
+public interface Space {
     Box getWorldBox();
 
     /**
@@ -26,4 +27,10 @@ public interface World {
      * @return
      */
     Layer getZeroLayer();
+
+    /**
+     * @return all entities in the space starting with the backmost entities
+     * @see Layer
+     */
+    List<Entity> getAllEntities();
 }

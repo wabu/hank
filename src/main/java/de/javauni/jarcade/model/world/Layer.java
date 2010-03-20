@@ -3,20 +3,20 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.level;
+package de.javauni.jarcade.model.world;
 
 import java.util.List;
 
 /**
- * the virtual world consists of different layers where all the entities live.
+ * the virtual space consists of different layers where all the entities live.
  * each layer has an index to specifiy the order in which the layers a shown
- * and a distance inside the game world.
+ * and a distance inside the game world. the layer with index 0 normally
+ * is the main layer, where most of the game events happen
  * @author wabu
  */
 public interface Layer {
     /**
      * smaller index means layer is ontop of other layer
-     * collissions will only be callculated on layer 0
      * @return index of the layer
      */
     int getIndex();

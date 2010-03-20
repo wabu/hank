@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package de.javauni.jarcade.model.level;
+package de.javauni.jarcade.model.world;
 
 import de.javauni.utils.geom.Box;
 
