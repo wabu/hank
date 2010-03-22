@@ -20,6 +20,11 @@
       <url>http://page.mi.fu-berlin.de/wabu/maven/</url>
       <layout>default</layout>
     </repository>
+    <repository>
+      <id>google-maven-repository</id>
+      <name>Google Maven Repository</name>
+      <url>http://google-maven-repository.googlecode.com/svn/repository/</url>
+    </repository>
   </repositories>
 
   <distributionManagement>
