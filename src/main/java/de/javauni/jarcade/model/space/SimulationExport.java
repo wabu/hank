@@ -6,14 +6,13 @@
 package de.javauni.jarcade.model.space;
 
 import de.javauni.jarcade.event.Channel;
+import de.javauni.jarcade.model.state.StateModelExport;
 
 /**
  *
  * @author wabu
  */
-public interface SpaceExport {
+public interface SimulationExport extends StateModelExport<SpacePhase>{
     Channel<SpaceChangeListener> getSpaceChannel();
-    Channel<SpacePhaseListener> getPhaseChannel();
-
     Space getSpace();
 }

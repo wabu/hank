@@ -21,7 +21,7 @@ public class UpdateLoop implements Runnable {
     private final long intervall;
 
     private final Object mutex = new Object();
-    private boolean paused = false;
+    private boolean paused = true;
 
     /**
      * calls a task periodically. it will give the time since the last call
@@ -66,12 +66,22 @@ public class UpdateLoop implements Runnable {
         this(task, 0, Executors.defaultThreadFactory());
     }
 
-    public void start() throws IllegalStateException {
+    public void init() throws IllegalStateException {
         try {
-            lastTime = System.currentTimeMillis();
             thread.start();
         } catch(IllegalThreadStateException e) {
             throw new IllegalStateException(e);
+        }
+    }
+
+    public void start() throws IllegalStateException {
+        if(!thread.isAlive()) {
+            throw new IllegalStateException("can't resume, not running");
+        }
+        synchronized(mutex) {
+            lastTime = System.currentTimeMillis();
+            paused = false;
+            mutex.notifyAll();
         }
     }
 
@@ -80,16 +90,6 @@ public class UpdateLoop implements Runnable {
             throw new IllegalStateException("can't pause, not running");
         }
         paused = true;
-    }
-
-    public void resume() throws IllegalStateException {
-        if(!thread.isAlive()) {
-            throw new IllegalStateException("can't resume, not running");
-        }
-        synchronized(mutex) {
-            paused = false;
-            mutex.notifyAll();
-        }
     }
 
     public void close() {
@@ -128,4 +128,5 @@ public class UpdateLoop implements Runnable {
         task.apply(delta);
         calcTime = System.currentTimeMillis() - lastTime;
     }
+
 }

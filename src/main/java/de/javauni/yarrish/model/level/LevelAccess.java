@@ -5,13 +5,12 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.utils.guice.ManagedScope;
+import de.javauni.jarcade.model.space.SimulationAccess;
 
 /**
  *
  * @author wabu
  */
-@ManagedScope
-public class SimpleLevel {
+public interface LevelAccess extends SimulationAccess {
 
 }

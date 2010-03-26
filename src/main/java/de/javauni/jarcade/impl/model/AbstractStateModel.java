@@ -38,10 +38,14 @@ public abstract class AbstractStateModel<S extends Enum<S>>
         return state;
     }
 
-    public void setState(S state) {
+    public void setState(S state) throws IllegalAction {
         synchronized(mutex) {
             S old = this.state;
-            doStateTransition(old, state);
+            try {
+                doStateTransition(old, state);
+            } catch (RuntimeException e) {
+                throw new IllegalAction("error while changing state to "+state, e);
+            }
             this.state = state;
             doStateBroadcast(old, state);
         }

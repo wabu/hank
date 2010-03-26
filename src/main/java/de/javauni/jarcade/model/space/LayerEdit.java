@@ -5,12 +5,13 @@
 
 package de.javauni.jarcade.model.space;
 
-import de.javauni.jarcade.event.Listener;
+import java.util.NoSuchElementException;
 
 /**
  *
  * @author wabu
  */
-public interface SpacePhaseListener extends Listener {
-    void onPhaseChange(SpacePhase phase, SpacePhase before);
+public interface LayerEdit extends Layer {
+    void add(Entity e);
+    void remove(Entity e) throws NoSuchElementException;
 }

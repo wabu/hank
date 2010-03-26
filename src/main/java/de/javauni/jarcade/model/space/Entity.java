@@ -5,6 +5,7 @@
 
 package de.javauni.jarcade.model.space;
 
+import de.javauni.utils.HavingId;
 import de.javauni.utils.geom.Box;
 
 /**
@@ -14,7 +15,7 @@ import de.javauni.utils.geom.Box;
  * @author wabu
  * @see Space
  */
-public interface Entity {
+public interface Entity extends HavingId {
     Box getPositionBox();
 
     /**

@@ -39,22 +39,28 @@ public class IdList<E> extends AbstractList<E>{
         elems = (E[])new Object[initSize];
     }
 
-    public void add(Function<Integer, E> construct) {
+    public <S extends E> S add(Function<Integer, S> construct) {
         AddHelper<E> h = add();
-        h.set(construct.apply(h.getId()));
+        S e = construct.apply(h.getId());
+        h.set(e);
+        return e;
     }
 
-    public AddHelper<E> add(){
+    public <S extends E> AddHelper<S> add(){
         final int id = ids.getAndIncrement();
         assureSize(id);
-        return new AddHelper<E>() {
-            public void set(E e) {
+        return new AddHelper<S>() {
+            public void set(S e) {
                 IdList.this.set(id, e);
             }
             public int getId() {
                 return id;
             }
         };
+    }
+
+    public int getNextId() {
+        return ids.getAndIncrement();
     }
 
     @Override

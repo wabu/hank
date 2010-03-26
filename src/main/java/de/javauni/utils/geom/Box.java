@@ -10,16 +10,21 @@ package de.javauni.utils.geom;
  * @author wabu
  */
 public class Box extends Coord {
-    private int w;
-    private int h;
+    private float w;
+    private float h;
 
-    public Box(float x, float y, int w, int h) {
+    public Box(float x, float y, float w, float h) {
         super(x, y);
         this.w = w;
         this.h = h;
     }
+    public Box(Coord coord, float w, float h) {
+        super(coord.getX(), coord.getY());
+        this.w = w;
+        this.h = h;
+    }
 
-    public int getH() {
+    public float getH() {
         return h;
     }
 
@@ -27,7 +32,7 @@ public class Box extends Coord {
         this.h = h;
     }
 
-    public int getW() {
+    public float getW() {
         return w;
     }
 

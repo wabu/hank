@@ -5,9 +5,11 @@
 
 package de.javauni.yarrish.model.level;
 
+import de.javauni.jarcade.model.space.SimulationExport;
+
 /**
  *
  * @author wabu
  */
-public interface LevelExport {
+public interface LevelExport extends SimulationExport {
 }

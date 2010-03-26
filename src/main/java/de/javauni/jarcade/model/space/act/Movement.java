@@ -10,5 +10,5 @@ package de.javauni.jarcade.model.space.act;
  * @author wabu
  */
 public enum Movement {
-    none, left, right, up, down
+    none, left, right, up, down;
 }

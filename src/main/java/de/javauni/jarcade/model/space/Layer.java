@@ -5,8 +5,6 @@
 
 package de.javauni.jarcade.model.space;
 
-import java.util.List;
-
 /**
  * the virtual space consists of different layers where all the entities live.
  * each layer has an index to specifiy the order in which the layers a shown
@@ -14,7 +12,7 @@ import java.util.List;
  * is the main layer, where most of the game events happen
  * @author wabu
  */
-public interface Layer {
+public interface Layer extends Iterable<Entity>{
     /**
      * smaller index means layer is ontop of other layer
      * @return index of the layer
@@ -26,6 +24,4 @@ public interface Layer {
      * @return distance of the layer
      */
     int getDistance();
-
-    List<? extends Entity> getEntities();
 }

@@ -16,7 +16,7 @@ import de.javauni.utils.geom.Box;
 public class SimpleActity<A extends Enum<A>>
         extends SimpleCollity implements Actity<A>, ActityAccess<A> {
 
-    private final A activity;
+    private A activity;
 
     public SimpleActity(int id, Box pos, Box collision, A activity) {
         super(id, pos, collision);
@@ -30,6 +30,10 @@ public class SimpleActity<A extends Enum<A>>
 
     public A getCurrentActivity() {
         return activity;
+    }
+
+    public void setActity(A activity) {
+        this.activity = activity;
     }
 
 }

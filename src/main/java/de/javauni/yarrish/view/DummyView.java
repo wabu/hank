@@ -8,6 +8,7 @@ package de.javauni.yarrish.view;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.yarrish.model.level.LevelExport;
 import de.javauni.yarrish.model.main.MainModelExport;
 import de.javauni.yarrish.model.main.MainState;
 import de.javauni.yarrish.model.menu.MainMenuExport;
@@ -22,28 +23,26 @@ public class DummyView implements StateListener<MainState> {
     private final Logger log = LoggerFactory.getLogger(DummyView.class);
     private final MainModelExport model;
 
-    private final Provider<MainMenuExport> mmp;
+    private final Provider<LevelDummyView> lvlProvider;
 
     // use constructor to get access to the model export
     // and providers, if you want to get submodles/subview when the main state changes
     @Inject
-    public DummyView(MainModelExport model, Provider<MainMenuExport> mmp) {
+    public DummyView(MainModelExport model, Provider<LevelDummyView> lvlProvider) {
         this.model = model;
-        this.mmp = mmp;
+        this.lvlProvider = lvlProvider;
 
         model.getStateChannel().addListener(this);
     }
 
     public void onStateChange(MainState state) {
         assert state == model.getState();
-        switch(state) {
-            case Menu:
-                log.info("showing menu");
 
-                // juhey, we now can get the menu model
-                // it it is even the same instance when called multiple times
-                MainMenuExport mm = mmp.get();
-                log.debug("got a menu model: "+mm);
+        switch(state) {
+            case Level:
+                log.info("huhu level");
+                LevelDummyView lvl = lvlProvider.get();
+                log.debug("lvl view crated: "+lvl);
 
                 break;
             default:

@@ -12,4 +12,5 @@ package de.javauni.jarcade.model.space;
  * @see Actity
  */
 public interface ActityAccess<A extends Enum<A>> {
+    void setActity(A activity);
 }

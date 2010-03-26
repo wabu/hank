@@ -7,9 +7,10 @@ package de.javauni.yarrish;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
+import de.javauni.yarrish.model.level.LevelModule;
 import de.javauni.yarrish.model.main.MainModelModule;
 import de.javauni.yarrish.model.menu.MenuModule;
-import de.javauni.yarrish.view.DummyView;
+import de.javauni.yarrish.view.ViewModule;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -27,8 +28,9 @@ public class YarrishModule extends AbstractModule {
 
         install(new MainModelModule());
         install(new MenuModule());
+        install(new LevelModule());
 
-        bind(DummyView.class);
+        install(new ViewModule());
     }
 
 }

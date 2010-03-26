@@ -10,5 +10,5 @@ package de.javauni.jarcade.model.space;
  * @author wabu
  */
 public enum SpacePhase {
-    loading, initialized, running, paused, closed;
+    loading, initialized, intro, warmup, running, paused, outro, closed;
 }

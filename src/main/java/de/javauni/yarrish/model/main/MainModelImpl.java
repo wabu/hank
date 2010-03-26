@@ -49,7 +49,7 @@ public class MainModelImpl extends AbstractStateModel<MainState>
                 scopes.activateScope(tgt);
                 break;
             default:
-                throw new IllegalAction("State "+tgt+" not supported yet");
+                throw new UnsupportedOperationException("menu "+tgt+" not implemented yet");
         }
     }
 }

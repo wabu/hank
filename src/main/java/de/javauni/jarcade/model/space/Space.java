@@ -7,7 +7,6 @@ package de.javauni.jarcade.model.space;
 
 import de.javauni.utils.geom.Box;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
-import java.util.List;
 
 /**
  * a layered 2d space where things (entities) can live
@@ -22,7 +21,14 @@ public interface Space {
      * the biggist index
      * @return list of all layers
      */
-    List<Layer> getLayers();
+    Iterable<? extends Layer> getLayers();
+    /**
+     * returns a layer with an given index
+     * @param index
+     * @return layer with index
+     * @throws IndexOutOfBoundsException when there is no layer with the given index
+     */
+    Layer getLayer(int index) throws IndexOutOfBoundsException;
     /**
      * get the layer with the zero index
      * @return
@@ -33,7 +39,7 @@ public interface Space {
      * @return all entities in the space starting with the backmost entities
      * @see Layer
      */
-    List<Entity> getAllEntities();
+    Iterable<Entity> getAllEntities();
 
     /**
      * get an entity by id
