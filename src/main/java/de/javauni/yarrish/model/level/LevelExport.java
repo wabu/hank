@@ -12,4 +12,5 @@ import de.javauni.jarcade.model.space.ManagedModelExport;
  * @author wabu
  */
 public interface LevelExport extends ManagedModelExport {
+    LevelSpace getSpace();
 }

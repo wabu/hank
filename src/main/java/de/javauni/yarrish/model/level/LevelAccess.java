@@ -12,5 +12,4 @@ import de.javauni.jarcade.model.space.ManagedModelAccess;
  * @author wabu
  */
 public interface LevelAccess extends ManagedModelAccess {
-
 }

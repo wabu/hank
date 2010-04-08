@@ -50,4 +50,8 @@ public class LevelModelImpl extends AbstractManagedModel implements LevelAccess,
         }, 0);
         // TODO behavior, perhaps in super classes
     }
+
+    public LevelSpace getSpace() {
+        return space;
+    }
 }
