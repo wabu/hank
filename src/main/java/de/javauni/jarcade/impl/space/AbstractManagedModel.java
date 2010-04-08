@@ -1,6 +1,18 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ *  Copyright (C) 2010 Daniel Waeber <wabu@inf.fu-berlin.de>
+ * 
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ * 
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ * 
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
 package de.javauni.jarcade.impl.space;
@@ -12,14 +24,12 @@ import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
 import de.javauni.jarcade.impl.model.AbstractStateModel;
-import de.javauni.jarcade.model.space.Entity;
 import de.javauni.jarcade.model.space.ManagedModelAccess;
 import de.javauni.jarcade.model.space.Space;
 import de.javauni.jarcade.model.space.SpaceChangeListener;
 import de.javauni.jarcade.model.space.ManagedModelExport;
 import de.javauni.jarcade.model.space.SpaceEdit;
 import de.javauni.jarcade.model.space.SpacePhase;
-import de.javauni.jarcade.model.space.logic.EntityLogic;
 import de.javauni.jarcade.model.space.logic.EntityHandler;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.utils.UpdateLoop;
@@ -31,7 +41,7 @@ import java.io.IOException;
  * What a ManagedModel does is the following:
  * initiates
  *
- * @author wabu
+ * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public abstract class AbstractManagedModel extends AbstractStateModel<SpacePhase> implements ManagedModelAccess, ManagedModelExport {
     private final EntityHandler logic;

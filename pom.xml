@@ -7,10 +7,31 @@
   <version>1.0-SNAPSHOT</version>
   <name>yarrish game engine</name>
   <url>https://dev.spline.de/trac/softspiele/</url>
+  <licenses>
+    <license>
+      <name>GPL 3.0 with Classpath Exception</name>
+      <url>LICENSE.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>wabu</id>
+      <name>Daniel Waeber</name>
+      <email>wabu(aet)inf(dot)fu(minus)berlin(dot)de</email>
+      <roles>
+        <role>Developer</role>
+        <role>Software Architect</role>
+      </roles>
+      <organization>inf.fu-berlin.de</organization>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
 
   <properties>
     <mainClass>de.javauni.yarrish.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <netbeans.hint.license>gpl30</netbeans.hint.license>
   </properties>
 
   <repositories>
@@ -244,9 +265,17 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>config/sun_checks.xml</configLocation>
+        </configuration>
+      </plugin>
     </plugins>
   </reporting>
 
 </project>
+
 
 
