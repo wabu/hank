@@ -1,1 +1,6 @@
 target/
+.*.swp
+.classpath
+.project
+.settings/
+nb*.xml
