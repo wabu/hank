@@ -50,7 +50,7 @@ public class Main {
 
         LevelAccess la = inj.getInstance(LevelAccess.class);
         log.debug("controlling level "+la);
-        la.initialize(null);
+        la.initialize("");
 
         la.setState(SpacePhase.running);
 

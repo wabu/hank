@@ -34,6 +34,7 @@ public class HankEntity extends SimpleActiveEntity<Movement> implements Moving {
         this(id, new Box(coord,
                 DEFAULT_HANK_W, DEFAULT_HANK_H));
     }
+
     public HankEntity(int id, Box pos) {
         super(id, pos, Movement.none);
     }

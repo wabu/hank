@@ -32,8 +32,8 @@ public class SimpleJumpingActity extends SimpleMovingActity implements Jumping {
             int id,
             @ImpliedProperty(name="position") Box pos,
             @ImpliedProperty(name="collision") Box collision,
-            @Property(name="movement speed") float speed,
-            @Property(name="jumping height") float jump
+            @Property(name="movement speed", value="1.0f") float speed,
+            @Property(name="jumping height", value="1.0f") float jump
             ) {
         super(id, pos, collision, speed);
         this.jump = jump;

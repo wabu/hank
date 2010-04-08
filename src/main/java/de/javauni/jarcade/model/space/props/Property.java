@@ -18,10 +18,15 @@
 package de.javauni.jarcade.model.space.props;
 
 /**
- *
+ * The property annotation is used in entitys for constructor parameters
+ * that can be set inside the level editor.
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public @interface Property {
+    /** @return name of the propertie */
     String name();
+    /** @return descripton of the property */
     String description() default "";
+    /** @return default value */
+    String value();
 }

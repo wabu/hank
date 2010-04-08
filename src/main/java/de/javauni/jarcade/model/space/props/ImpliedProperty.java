@@ -18,7 +18,7 @@
 package de.javauni.jarcade.model.space.props;
 
 /**
- *
+ * A property that is implied by the geomitry in the editor
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public @interface ImpliedProperty {

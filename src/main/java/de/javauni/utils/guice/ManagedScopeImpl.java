@@ -20,6 +20,7 @@ package de.javauni.utils.guice;
 import com.google.inject.Key;
 import com.google.inject.Provider;
 import com.google.inject.Scope;
+import com.google.inject.internal.Nullable;
 import javax.annotation.CheckForNull;
 
 public class ManagedScopeImpl implements Scope {
@@ -39,7 +40,7 @@ public class ManagedScopeImpl implements Scope {
         };
     }
 
-    void setScope(ScopeMap scope) {
+    public void setScope(@Nullable ScopeMap scope) {
         this.scope = scope;
     }
 }

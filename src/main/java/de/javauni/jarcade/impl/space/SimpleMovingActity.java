@@ -34,7 +34,7 @@ public class SimpleMovingActity extends SimpleActiveEntity<Movement> implements 
             int id,
             @ImpliedProperty(name="position") Box pos,
             @ImpliedProperty(name="collision") Box collision,
-            @Property(name="movement speed") float speed) {
+            @Property(name="movement speed", value="1f") float speed) {
         super(id, pos, collision, Movement.none);
         this.speed = speed;
     }

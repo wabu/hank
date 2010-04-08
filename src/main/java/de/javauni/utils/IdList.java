@@ -47,7 +47,9 @@ public class IdList<E> extends AbstractList<E>{
         this(64);
     }
 
+    @SuppressWarnings("unchecked")
     public IdList(int initSize) {
+        super();
         elems = (E[])new Object[initSize];
     }
 
