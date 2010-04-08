@@ -15,12 +15,12 @@ import java.util.concurrent.Executor;
  * @param <L> listener type
  * @author wabu
  */
-class ChannelImpl<L extends Listener> implements Channel<L> {
+public class ChannelImpl<L extends Listener> implements Channel<L> {
     private final List<L> ls = new CopyOnWriteArrayList<L>();
     private final Executor exec;
 
     @Inject
-    ChannelImpl(@Named("channel-broadcast-executor") Executor exec) {
+    public ChannelImpl(@Named("channel-broadcast-executor") Executor exec) {
         this.exec = exec;
     }
 

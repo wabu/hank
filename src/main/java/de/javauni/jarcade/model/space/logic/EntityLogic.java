@@ -12,5 +12,5 @@ import de.javauni.jarcade.model.space.Entity;
  * @author wabu
  */
 public interface EntityLogic<E extends Entity> {
-    void update(E entity);
+    void update(E entity, long timeDelta);
 }

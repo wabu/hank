@@ -10,9 +10,10 @@ import de.javauni.jarcade.model.state.StateModelExport;
 
 /**
  *
+ *
  * @author wabu
  */
-public interface SimulationExport extends StateModelExport<SpacePhase>{
+public interface ManagedModelExport extends StateModelExport<SpacePhase>{
     Channel<SpaceChangeListener> getSpaceChannel();
     Space getSpace();
 }

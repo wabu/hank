@@ -12,7 +12,7 @@ import java.io.IOException;
  *
  * @author wabu
  */
-public interface SimulationAccess extends StateModelAccess<SpacePhase>{
+public interface ManagedModelAccess extends StateModelAccess<SpacePhase>{
     /**
      * initializes the world by loading it from a given ressources
      * @param ressources ressources location

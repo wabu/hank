@@ -5,12 +5,12 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.space.SimulationAccess;
+import de.javauni.jarcade.model.space.ManagedModelAccess;
 
 /**
  *
  * @author wabu
  */
-public interface LevelAccess extends SimulationAccess {
+public interface LevelAccess extends ManagedModelAccess {
 
 }

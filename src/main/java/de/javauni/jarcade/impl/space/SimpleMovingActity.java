@@ -15,7 +15,7 @@ import de.javauni.utils.geom.Box;
  *
  * @author wabu
  */
-public class SimpleMovingActity extends SimpleActity<Movement> implements Moving {
+public class SimpleMovingActity extends SimpleActiveEntity<Movement> implements Moving {
     private final float speed;
 
     public SimpleMovingActity(

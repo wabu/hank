@@ -13,17 +13,17 @@ import de.javauni.utils.geom.Box;
  * @param <A> activity enum type
  * @author wabu
  */
-public class SimpleActity<A extends Enum<A>>
-        extends SimpleCollity implements Actity<A>, ActityAccess<A> {
+public class SimpleActiveEntity<A extends Enum<A>>
+        extends SimpleCollidableEntity implements Actity<A>, ActityAccess<A> {
 
     private A activity;
 
-    public SimpleActity(int id, Box pos, Box collision, A activity) {
+    public SimpleActiveEntity(int id, Box pos, Box collision, A activity) {
         super(id, pos, collision);
         this.activity = activity;
     }
 
-    public SimpleActity(int id, Box pos, A activity) {
+    public SimpleActiveEntity(int id, Box pos, A activity) {
         super(id, pos);
         this.activity = activity;
     }

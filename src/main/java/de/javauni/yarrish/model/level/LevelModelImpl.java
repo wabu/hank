@@ -9,11 +9,11 @@ import com.google.common.base.Function;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.impl.space.AbstractSimulationModel;
-import de.javauni.jarcade.impl.space.SimpleCollity;
+import de.javauni.jarcade.impl.space.AbstractManagedModel;
+import de.javauni.jarcade.impl.space.EntityHandlerFactory;
+import de.javauni.jarcade.impl.space.SimpleCollidableEntity;
 import de.javauni.jarcade.model.space.Entity;
 import de.javauni.jarcade.model.space.SpacePhase;
-import de.javauni.jarcade.model.space.logic.LogicManager;
 import de.javauni.jarcade.model.state.StateListener;
 import de.javauni.utils.geom.Box;
 import de.javauni.utils.guice.ManagedScope;
@@ -24,15 +24,15 @@ import java.io.IOException;
  * @author wabu
  */
 @ManagedScope
-public class LevelModelImpl extends AbstractSimulationModel implements LevelAccess, LevelExport {
+public class LevelModelImpl extends AbstractManagedModel implements LevelAccess, LevelExport {
     private final LevelSpace space;
 
     @Inject
     public LevelModelImpl(Channel<StateListener<SpacePhase>> chan,
-            LogicManager logic,
+            EntityHandlerFactory ehFactory,
             LevelSpace space,
             @Named("level-update-intervall") int intervall) {
-        super(chan, logic, space, intervall);
+        super(chan, ehFactory, space, intervall);
         this.space = space;
     }
 
@@ -40,7 +40,7 @@ public class LevelModelImpl extends AbstractSimulationModel implements LevelAcce
     public void loadLevel(String ressources) throws IOException {
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
-                return new SimpleCollity(f, new Box(0, 200, 200, 100));
+                return new SimpleCollidableEntity(f, new Box(0, 200, 200, 100));
             }
         }, 0);
         space.addEntity(new Function<Integer, Entity>() {

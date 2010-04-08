@@ -5,6 +5,8 @@
 
 package de.javauni.jarcade.model.space;
 
+import de.javauni.jarcade.event.Channel;
+
 /**
  * the virtual space consists of different layers where all the entities live.
  * each layer has an index to specifiy the order in which the layers a shown
@@ -13,6 +15,7 @@ package de.javauni.jarcade.model.space;
  * @author wabu
  */
 public interface Layer extends Iterable<Entity>{
+    Channel<LayerChangeListener> getLayerChannel();
     /**
      * smaller index means layer is ontop of other layer
      * @return index of the layer
