@@ -9,7 +9,7 @@ import ViewPort.ViewPortAccess;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-public class RendererThreadImpl extends Thread implements RendererThread{
+class RendererThreadImpl extends Thread implements RendererThread{
 	public static final int defaultFPS = 60;
 	
 	private boolean running = true;
@@ -17,7 +17,7 @@ public class RendererThreadImpl extends Thread implements RendererThread{
 	private RendererMap rendererMap;
 	private Output output;
 	private ViewPortAccess viewPortAccess;
-	@Inject public RendererThreadImpl(	@Named("fps") long fps,
+	@Inject RendererThreadImpl(	@Named("fps") long fps,
 										@Named("rendererMap") RendererMap rendererMap,
 										@Named("output") Output output,
 										@Named("viewPortAccess") ViewPortAccess viewPortAccess

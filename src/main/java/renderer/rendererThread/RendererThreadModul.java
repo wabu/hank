@@ -14,6 +14,7 @@ public class RendererThreadModul implements Module{
 	private RendererMap rendererMap;
 	private Output output;
 	private ViewPortAccess viewPortAccess;
+
 	public RendererThreadModul(long FPS, RendererMap rendererMap, Output output, ViewPortAccess viewPortAccess) {
 		this.FPS=FPS;
 		this.viewPortAccess=viewPortAccess;
@@ -24,6 +25,7 @@ public class RendererThreadModul implements Module{
 	public RendererThreadModul() {
 		this.FPS=60;
 	}
+
 	@Override
 	public void configure(Binder binder) {
 		binder.bind(RendererThread.class).annotatedWith(Names.named("RendererThread")).to(RendererThreadImpl.class);
