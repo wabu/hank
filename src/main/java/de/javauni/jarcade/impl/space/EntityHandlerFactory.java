@@ -27,3 +27,4 @@ import de.javauni.jarcade.model.space.logic.EntityHandler;
 public interface EntityHandlerFactory {
     EntityHandler create(Layer layer);
 }
+

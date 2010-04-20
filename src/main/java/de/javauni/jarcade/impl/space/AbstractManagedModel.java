@@ -43,7 +43,9 @@ import java.io.IOException;
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public abstract class AbstractManagedModel extends AbstractStateModel<SpacePhase> implements ManagedModelAccess, ManagedModelExport {
+public abstract class AbstractManagedModel extends
+                AbstractStateModel<SpacePhase> implements ManagedModelAccess,
+                ManagedModelExport {
     private final EntityHandler logic;
     private final UpdateLoop loop;
 
@@ -95,10 +97,10 @@ public abstract class AbstractManagedModel extends AbstractStateModel<SpacePhase
     public abstract void loadLevel(String ressources) throws IOException;
 
     public void initialize(String ressources) throws IllegalStateException, IOException {
-        setState(SpacePhase.loading);
+        Preconditions.checkState(getState().ordinal() < SpacePhase.loading.ordinal(),
+                "level allready initialized");
 
-        Preconditions.checkState(
-                getState() == SpacePhase.loading, "level allready initialized");
+        setState(SpacePhase.loading);
         loadLevel(ressources);
 
         setState(SpacePhase.initialized);

@@ -28,7 +28,6 @@ public class ManagedScopeImpl implements Scope {
 
     public <T> Provider<T> scope(final Key<T> key, final Provider<T> prvdr) {
         return new Provider<T>() {
-            @SuppressWarnings("unchecked")
             public T get() {
                 ScopeMap sm = scope;
                 if(sm == null) {
@@ -44,3 +43,4 @@ public class ManagedScopeImpl implements Scope {
         this.scope = scope;
     }
 }
+

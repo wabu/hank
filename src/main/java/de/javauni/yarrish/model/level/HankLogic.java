@@ -5,8 +5,6 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.act.Movement;
 import de.javauni.jarcade.model.space.logic.EntityLogic;
 
 /**

@@ -33,8 +33,8 @@ import java.util.Set;
  * @author wabu
  */
 public class EntityHandlerImpl implements EntityHandler, LayerChangeListener {
-
-    private final Map<EntityLogic<Entity>, Set<Entity>> lmap = new HashMap<EntityLogic<Entity>, Set<Entity>>();
+    private final Map<EntityLogic<Entity>, Set<Entity>> lmap 
+        = new HashMap<EntityLogic<Entity>, Set<Entity>>();
     private final Set<Entity> flaged = new HashSet<Entity>();
     private final Layer layer;
     private final EntityLogicFactory elFactory;

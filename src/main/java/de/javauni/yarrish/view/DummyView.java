@@ -20,10 +20,8 @@ package de.javauni.yarrish.view;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.javauni.jarcade.model.state.StateListener;
-import de.javauni.yarrish.model.level.LevelExport;
 import de.javauni.yarrish.model.main.MainModelExport;
 import de.javauni.yarrish.model.main.MainState;
-import de.javauni.yarrish.model.menu.MainMenuExport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -21,3 +21,4 @@ package de.javauni.jarcade.control;
  */
 public interface MenuController {
 }
+
