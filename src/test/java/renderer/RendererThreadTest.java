@@ -1,12 +1,12 @@
-package renderer;
+package de.javauni.yarrish.view.renderer;
 
 import static org.junit.Assert.*;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import renderer.rendererThread.RendererThread;
-import renderer.rendererThread.RendererThreadImpl;
-import renderer.rendererThread.RendererThreadModul;
+import de.javauni.jarcade.renderer.Thread.RendererThread;
+import de.javauni.jarcade.renderer.Thread.RendererThreadImpl;
+import de.javauni.jarcade.renderer.Thread.RendererThreadModul;
 
 
 public class RendererThreadTest {

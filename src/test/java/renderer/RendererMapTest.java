@@ -1,15 +1,17 @@
-package renderer;
+package de.javauni.yarrish.view.renderer;
 
 import static org.junit.Assert.*;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import de.javauni.jarcade.impl.space.SimpleEntity;
 
-import renderer.Renderer;
-import renderer.Entity.*;
-import renderer.rendererMap.RendererMap;
-import renderer.rendererMap.RendererMapImpl;
-import renderer.rendererMap.RendererMapModule;
+import de.javauni.jarcade.renderer.Renderer;
+import de.javauni.jarcade.renderer.map.RendererMap;
+import de.javauni.jarcade.renderer.map.RendererMapImpl;
+import de.javauni.jarcade.renderer.map.RendererMapModule;
+import de.javauni.jarcade.view.SimpleEntityRenderer;
+import de.javauni.utils.geom.Box;
 
 public class RendererMapTest {
 	@org.junit.Test public void newMapIsEmpty(){
