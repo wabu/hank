@@ -1,19 +1,22 @@
 package renderer.rendererFactory;
 
-import renderer.Entity.Entity;
-import renderer.Entity.SimpleEntity;
-import renderer.Entity.SimpleEntityRenderer;
+import javax.swing.JComboBox.KeySelectionManager;
+
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.name.Names;
 import renderer.Renderer;
+import renderer.Entity.Entity;
+import renderer.Entity.EntityModule;
 
 public class RendererFactoryImpl implements RendererFactory
 {
 	@Override
-    @SuppressWarnings("unchecked")
 	public <E extends Entity> Renderer<? super E> getRenderer(E entity) {
-		if(entity instanceof SimpleEntity) {
-            // TODO use guice
-			return (Renderer<? super E>)(Renderer<?>)(new SimpleEntityRenderer());
-		}
-		return null;
+		Injector inj3 = Guice.createInjector(new EntityModule(entity));
+		return inj3.getInstance(Renderer.class);
+		
 	}
 }

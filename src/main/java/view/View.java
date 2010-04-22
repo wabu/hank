@@ -1,37 +1,23 @@
 package view;
 
-import java.awt.Graphics;
+import view.StateListener;
 
-import renderer.Renderer;
-
-public class View implements StateListener<MainState>, RenderingEngine2D{
-	MainState state;
-	Graphics gfx;
+public class View implements StateListener<MainState>{
 	@Override
 	public void onStateChange(MainState state) {
-		this.state=state;
-	}
-	@Override
-	public <E> void addRenderer(Renderer<E> renderer) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public <E> boolean removeRenderer(Renderer<E> renderer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		switch (state) {
+		case main:
+			
+		case level:
+			//1. Rufe Entitys vom Level ab
+			//2. Baue dementsprechend Renderer, mit der RendererFactory
+			//3. speicher diese in einer RendererMap
+			//4. Setze ViewPort
+			//5. Starte RendererThread
+			break;
 
-	@Override
-	public void setViewPort(Viewport vp) {
-		// TODO Auto-generated method stub
-		
+		default:
+			break;
+		}	
 	}
-	@Override
-	public void setDrawPanel(Graphics gfx) {
-		this.gfx=gfx;
-		
-	}
-	
-
 }

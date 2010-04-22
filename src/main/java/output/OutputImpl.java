@@ -9,6 +9,7 @@ public class OutputImpl extends MyFrame implements Output{
 
 	private final Image img_ghost;
 	private final Graphics g_ghost;
+	private final MyPanel panel;
 	@Inject OutputImpl(	@Named("name") String fenstername,
 						@Named("x") Integer x,
 						@Named("y") Integer y,
@@ -16,9 +17,10 @@ public class OutputImpl extends MyFrame implements Output{
 						@Named("height") Integer height) 
 	{
 		super(fenstername, x, y, width, height);
-		img_ghost = createImage(width, height);
+		panel=new MyPanel(x, y, width, height);
+		this.add(panel);
+		img_ghost = panel.createImage(width, height);
 		g_ghost = img_ghost.getGraphics();
-		g_ghost.setXORMode(Color.white);
 	}
 
 	@Override
@@ -33,8 +35,9 @@ public class OutputImpl extends MyFrame implements Output{
 	@Override
 	public void repaint() {
 		// TODO Auto-generated method stub
-//		super.repaint();
+		
 		paint(getGraphics());
+		super.repaint();
 	}
 	@Override
 	/**

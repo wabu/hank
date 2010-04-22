@@ -9,7 +9,7 @@ import ViewPort.ViewPortAccess;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-class RendererThreadImpl extends Thread implements RendererThread{
+public class RendererThreadImpl extends Thread implements RendererThread{
 	public static final int defaultFPS = 60;
 	
 	private boolean running = true;
@@ -17,7 +17,7 @@ class RendererThreadImpl extends Thread implements RendererThread{
 	private RendererMap rendererMap;
 	private Output output;
 	private ViewPortAccess viewPortAccess;
-	@Inject RendererThreadImpl(	@Named("fps") long fps,
+	@Inject public RendererThreadImpl(	@Named("fps") long fps,
 										@Named("rendererMap") RendererMap rendererMap,
 										@Named("output") Output output,
 										@Named("viewPortAccess") ViewPortAccess viewPortAccess
@@ -36,10 +36,9 @@ class RendererThreadImpl extends Thread implements RendererThread{
 		while(running){
 			try {
 				Thread.sleep((long) (1E3/fps));
+				output.clear();
 				for(Entity e : viewPortAccess.getList()){
-					rendererMap.get(e).render(e, (Graphics2D) output.getGhostGraphics(), 5);
-					System.out.println(System.currentTimeMillis());
-//					
+					rendererMap.get(e).render(e, (Graphics2D) output.getGhostGraphics(), 5);					
 				}
 				output.repaint();
 			} catch (Exception e) {
