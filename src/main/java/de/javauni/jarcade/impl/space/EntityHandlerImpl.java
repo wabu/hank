@@ -18,9 +18,9 @@ package de.javauni.jarcade.impl.space;
 
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.Layer;
-import de.javauni.jarcade.model.space.LayerChangeListener;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.Layer;
+import de.javauni.jarcade.model.scene.LayerChangeListener;
 import de.javauni.jarcade.model.space.logic.EntityLogic;
 import de.javauni.jarcade.model.space.logic.EntityHandler;
 import java.util.HashMap;

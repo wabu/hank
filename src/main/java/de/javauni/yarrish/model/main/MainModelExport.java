@@ -17,7 +17,7 @@
 
 package de.javauni.yarrish.model.main;
 
-import de.javauni.jarcade.model.state.StateModelExport;
+import de.javauni.jarcade.model.StateModelExport;
 
 /**
  * exported interface to the main game state

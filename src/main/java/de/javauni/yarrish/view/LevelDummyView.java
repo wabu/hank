@@ -18,11 +18,11 @@
 package de.javauni.yarrish.view;
 
 import com.google.inject.Inject;
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.Layer;
-import de.javauni.jarcade.model.space.SpaceChangeListener;
-import de.javauni.jarcade.model.space.SpacePhase;
-import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.Layer;
+import de.javauni.jarcade.model.scene.SceneChangeListener;
+import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.StateListener;
 import de.javauni.yarrish.model.level.LevelExport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class LevelDummyView implements StateListener<SpacePhase>, SpaceChangeListener {
+public class LevelDummyView implements StateListener<ScenePhase>, SceneChangeListener {
     private final Logger log = LoggerFactory.getLogger(LevelDummyView.class);
 
     @Inject
@@ -40,7 +40,7 @@ public class LevelDummyView implements StateListener<SpacePhase>, SpaceChangeLis
         e.getStateChannel().addListener(this);
     }
 
-    public void onStateChange(SpacePhase state) {
+    public void onStateChange(ScenePhase state) {
         log.debug("level state is now {}",state);
     }
 

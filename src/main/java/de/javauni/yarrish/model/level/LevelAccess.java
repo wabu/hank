@@ -17,7 +17,7 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.space.ManagedModelAccess;
+import de.javauni.jarcade.model.scene.ManagedModelAccess;
 
 /**
  *

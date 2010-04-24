@@ -51,4 +51,11 @@ public class Box extends Coord {
     public void setW(int w) {
         this.w = w;
     }
+
+    public void setBox(int x, int y, int w, int h) {
+        setX(x);
+        setY(y);
+        setW(w);
+        setH(h);
+    }
 }

@@ -42,8 +42,14 @@ public class UpdateLoop implements Runnable {
      * @param intervall aspired time intervall in ms between the calls
      * @param tf factory used to create a thread
      */
-    public UpdateLoop(Function<Long, Void> task, int intervall, ThreadFactory tf) {
+    private UpdateLoop(Function<Long, Void> task, int intervall, ThreadFactory tf) {
         this.task = task;
+        this.intervall = intervall;
+        this.thread = tf.newThread(this);
+    }
+
+    public UpdateLoop(int intervall, ThreadFactory tf) {
+        this.task = null;
         this.intervall = intervall;
         this.thread = tf.newThread(this);
     }

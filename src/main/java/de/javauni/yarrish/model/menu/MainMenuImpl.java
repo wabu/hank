@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.impl.model.AbstractMenuModel;
 import de.javauni.jarcade.model.menu.MenuItem;
-import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.jarcade.model.StateListener;
 import de.javauni.utils.guice.ManagedScope;
 import de.javauni.yarrish.model.main.MainModelAccess;
 import de.javauni.yarrish.model.main.MainState;

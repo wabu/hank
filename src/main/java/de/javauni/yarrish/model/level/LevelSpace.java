@@ -18,12 +18,9 @@
 package de.javauni.yarrish.model.level;
 
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.impl.space.SpaceImpl;
-import de.javauni.jarcade.model.space.LayerEdit;
-import de.javauni.jarcade.model.space.SpaceChangeListener;
-import de.javauni.utils.geom.Box;
+import de.javauni.jarcade.model.scene.SceneChangeListener;
 import de.javauni.utils.guice.ManagedScope;
 
 /**
@@ -33,12 +30,7 @@ import de.javauni.utils.guice.ManagedScope;
 @ManagedScope
 public class LevelSpace extends SpaceImpl {
     @Inject
-    public LevelSpace(Channel<SpaceChangeListener> chan,
-            @Named("level-size")
-            Box size,
-            @Named("zero-layer")
-            LayerEdit zero) {
-        super(chan, size, zero);
+    public LevelSpace(Channel<SceneChangeListener> chan) {
+        super(chan);
     }
-
 }

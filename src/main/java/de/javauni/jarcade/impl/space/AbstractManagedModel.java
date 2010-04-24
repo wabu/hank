@@ -24,14 +24,14 @@ import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
 import de.javauni.jarcade.impl.model.AbstractStateModel;
-import de.javauni.jarcade.model.space.ManagedModelAccess;
-import de.javauni.jarcade.model.space.Space;
-import de.javauni.jarcade.model.space.SpaceChangeListener;
-import de.javauni.jarcade.model.space.ManagedModelExport;
-import de.javauni.jarcade.model.space.SpaceEdit;
-import de.javauni.jarcade.model.space.SpacePhase;
+import de.javauni.jarcade.model.scene.ManagedModelAccess;
+import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.SceneChangeListener;
+import de.javauni.jarcade.model.scene.ManagedModelExport;
+import de.javauni.jarcade.model.scene.SceneEdit;
+import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.space.logic.EntityHandler;
-import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.jarcade.model.StateListener;
 import de.javauni.utils.UpdateLoop;
 import java.io.IOException;
 
@@ -44,18 +44,18 @@ import java.io.IOException;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public abstract class AbstractManagedModel extends
-                AbstractStateModel<SpacePhase> implements ManagedModelAccess,
+                AbstractStateModel<ScenePhase> implements ManagedModelAccess,
                 ManagedModelExport {
     private final EntityHandler logic;
     private final UpdateLoop loop;
 
-    private final SpaceEdit space;
+    private final SceneEdit space;
 
     @Inject
     public AbstractManagedModel(
-            final Channel<StateListener<SpacePhase>> chan,
+            final Channel<StateListener<ScenePhase>> chan,
             final EntityHandlerFactory ehFactory,
-            final SpaceEdit space,
+            final SceneEdit space,
             @Named("model-update-intervall") int intervall) {
         super(chan);
         this.logic = ehFactory.create(space.getZeroLayer());
@@ -69,7 +69,7 @@ public abstract class AbstractManagedModel extends
     }
 
     @Override
-    protected void doStateTransition(SpacePhase src, SpacePhase tgt) throws IllegalAction {
+    protected void doStateTransition(ScenePhase src, ScenePhase tgt) throws IllegalAction {
         switch(tgt) {
             case loading:
                 break;
@@ -97,20 +97,20 @@ public abstract class AbstractManagedModel extends
     public abstract void loadLevel(String ressources) throws IOException;
 
     public void initialize(String ressources) throws IllegalStateException, IOException {
-        Preconditions.checkState(getState().ordinal() < SpacePhase.loading.ordinal(),
+        Preconditions.checkState(getState().ordinal() < ScenePhase.loading.ordinal(),
                 "level allready initialized");
 
-        setState(SpacePhase.loading);
+        setState(ScenePhase.loading);
         loadLevel(ressources);
 
-        setState(SpacePhase.initialized);
+        setState(ScenePhase.initialized);
     }
 
-    public Channel<SpaceChangeListener> getSpaceChannel() {
+    public Channel<SceneChangeListener> getSpaceChannel() {
         return space.getSpaceChannel();
     }
 
-    public Space getSpace() {
+    public Scene getSpace() {
         return space;
     }
 }

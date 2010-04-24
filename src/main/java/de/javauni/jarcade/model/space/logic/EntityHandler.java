@@ -19,7 +19,7 @@ package de.javauni.jarcade.model.space.logic;
 
 import com.google.inject.ImplementedBy;
 import de.javauni.jarcade.impl.space.EntityHandlerImpl;
-import de.javauni.jarcade.model.space.Entity;
+import de.javauni.jarcade.model.scene.entity.Entity;
 
 /**
  * An EntityHandler just invokes an update on every active(?) entity

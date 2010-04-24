@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.model.menu;
 
-import de.javauni.jarcade.model.state.StateModelAccess;
+import de.javauni.jarcade.model.StateModelAccess;
 import java.util.List;
 
 /**

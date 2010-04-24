@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.model.space.logic;
 
-import de.javauni.jarcade.model.space.Entity;
+import de.javauni.jarcade.model.scene.entity.Entity;
 
 /**
  * @param <E> entity

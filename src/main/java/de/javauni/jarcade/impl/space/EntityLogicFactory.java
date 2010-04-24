@@ -5,7 +5,7 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.Entity;
+import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.jarcade.model.space.logic.EntityLogic;
 import javax.annotation.CheckForNull;
 

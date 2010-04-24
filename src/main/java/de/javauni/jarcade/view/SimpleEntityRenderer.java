@@ -1,5 +1,6 @@
 package de.javauni.jarcade.view;
 
+import de.javauni.jarcade.view.render.Renderer;
 import de.javauni.jarcade.impl.space.SimpleEntity;
 import java.awt.Color;
 import java.awt.Graphics2D;

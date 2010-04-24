@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.Layer;
+import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.space.logic.EntityHandler;
 
 /**

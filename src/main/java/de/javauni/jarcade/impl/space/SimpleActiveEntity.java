@@ -17,8 +17,8 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.Actity;
-import de.javauni.jarcade.model.space.ActityAccess;
+import de.javauni.jarcade.model.scene.entity.ActiveEntity;
+import de.javauni.jarcade.model.scene.entity.ActiveEntityAccess;
 import de.javauni.utils.geom.Box;
 
 /**
@@ -26,7 +26,7 @@ import de.javauni.utils.geom.Box;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public class SimpleActiveEntity<A extends Enum<A>>
-        extends SimpleCollidableEntity implements Actity<A>, ActityAccess<A> {
+        extends SimpleCollidableEntity implements ActiveEntity<A>, ActiveEntityAccess<A> {
 
     private A activity;
 
@@ -44,7 +44,7 @@ public class SimpleActiveEntity<A extends Enum<A>>
         return activity;
     }
 
-    public void setActity(A activity) {
+    public void setActivity(A activity) {
         this.activity = activity;
     }
 

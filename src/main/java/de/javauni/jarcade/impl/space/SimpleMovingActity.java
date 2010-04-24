@@ -17,8 +17,8 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.act.Movement;
-import de.javauni.jarcade.model.space.act.Moving;
+import de.javauni.jarcade.model.scene.entity.Movement;
+import de.javauni.jarcade.model.scene.entity.Moving;
 import de.javauni.jarcade.model.space.props.ImpliedProperty;
 import de.javauni.jarcade.model.space.props.Property;
 import de.javauni.utils.geom.Box;

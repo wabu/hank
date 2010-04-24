@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.act.Jumping;
+import de.javauni.jarcade.model.scene.entity.Jumping;
 import de.javauni.jarcade.model.space.props.ImpliedProperty;
 import de.javauni.jarcade.model.space.props.Property;
 import de.javauni.utils.geom.Box;

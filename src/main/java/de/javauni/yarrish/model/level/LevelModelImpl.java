@@ -23,10 +23,11 @@ import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.impl.space.AbstractManagedModel;
 import de.javauni.jarcade.impl.space.EntityHandlerFactory;
+import de.javauni.jarcade.impl.space.LayerImpl;
 import de.javauni.jarcade.impl.space.SimpleCollidableEntity;
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.SpacePhase;
-import de.javauni.jarcade.model.state.StateListener;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.StateListener;
 import de.javauni.utils.geom.Box;
 import de.javauni.utils.guice.ManagedScope;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class LevelModelImpl extends AbstractManagedModel implements LevelAccess,
     private final LevelSpace space;
 
     @Inject
-    public LevelModelImpl(Channel<StateListener<SpacePhase>> chan,
+    public LevelModelImpl(Channel<StateListener<ScenePhase>> chan,
             EntityHandlerFactory ehFactory,
             LevelSpace space,
             @Named("level-update-intervall") int intervall) {
@@ -50,6 +51,10 @@ public class LevelModelImpl extends AbstractManagedModel implements LevelAccess,
 
     @Override
     public void loadLevel(String ressources) throws IOException {
+        // XXX layer channel foo
+        space.getWorldBox().setBox(0,0, 100, 500);
+        space.addLayer(new LayerImpl(0, 0, null));
+
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
                 return new SimpleCollidableEntity(f, new Box(0, 200, 200, 100));

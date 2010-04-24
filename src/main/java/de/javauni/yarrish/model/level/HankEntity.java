@@ -18,8 +18,8 @@
 package de.javauni.yarrish.model.level;
 
 import de.javauni.jarcade.impl.space.SimpleActiveEntity;
-import de.javauni.jarcade.model.space.act.Movement;
-import de.javauni.jarcade.model.space.act.Moving;
+import de.javauni.jarcade.model.scene.entity.Movement;
+import de.javauni.jarcade.model.scene.entity.Moving;
 import de.javauni.utils.geom.Box;
 import de.javauni.utils.geom.Coord;
 

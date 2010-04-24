@@ -19,7 +19,7 @@ package de.javauni.yarrish;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.javauni.jarcade.model.space.SpacePhase;
+import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.yarrish.model.level.LevelAccess;
 import de.javauni.yarrish.model.main.MainModelAccess;
 import de.javauni.yarrish.model.main.MainState;
@@ -52,7 +52,7 @@ public class Main {
         log.debug("controlling level "+la);
         la.initialize("");
 
-        la.setState(SpacePhase.running);
+        la.setState(ScenePhase.running);
 
         Thread.sleep(5000);
 

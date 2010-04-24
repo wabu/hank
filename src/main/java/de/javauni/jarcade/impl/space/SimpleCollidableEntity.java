@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.impl.space;
 
-import de.javauni.jarcade.model.space.CollidableEntity;
+import de.javauni.jarcade.model.scene.entity.CollidableEntity;
 import de.javauni.jarcade.model.space.props.ImpliedProperty;
 import de.javauni.utils.geom.Box;
 

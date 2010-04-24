@@ -21,9 +21,9 @@ import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
-import de.javauni.jarcade.model.state.StateListener;
-import de.javauni.jarcade.model.state.StateModelAccess;
-import de.javauni.jarcade.model.state.StateModelExport;
+import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.StateModelAccess;
+import de.javauni.jarcade.model.StateModelExport;
 import javax.annotation.concurrent.GuardedBy;
 
 /**

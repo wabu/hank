@@ -19,9 +19,9 @@ package de.javauni.jarcade.impl.space;
 
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.LayerChangeListener;
-import de.javauni.jarcade.model.space.LayerEdit;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.LayerChangeListener;
+import de.javauni.jarcade.model.scene.LayerEdit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

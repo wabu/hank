@@ -17,7 +17,7 @@
 
 package de.javauni.yarrish.model.main;
 
-import de.javauni.jarcade.model.state.StateModelAccess;
+import de.javauni.jarcade.model.StateModelAccess;
 
 /**
  * access interface to the main game state

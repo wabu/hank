@@ -20,39 +20,42 @@ package de.javauni.jarcade.impl.space;
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.model.space.Entity;
-import de.javauni.jarcade.model.space.LayerEdit;
-import de.javauni.jarcade.model.space.Space;
-import de.javauni.jarcade.model.space.SpaceChangeListener;
-import de.javauni.jarcade.model.space.SpaceEdit;
+import de.javauni.jarcade.model.scene.Viewport;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.LayerEdit;
+import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.SceneChangeListener;
+import de.javauni.jarcade.model.scene.SceneEdit;
 import de.javauni.utils.IdList;
 import de.javauni.utils.geom.Box;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import javax.annotation.Nullable;
 
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class SpaceImpl implements Space, SpaceEdit {
+public class SpaceImpl implements Scene, SceneEdit {
     private final Box size;
     private final IdList<Entity> entities;
     private final SortedMap<Integer, LayerEdit> layers;
-    private final LayerEdit zero;
-    private final Channel<SpaceChangeListener> chan;
+    // XXX when to get t3h zero layer
+    @Nullable private LayerEdit zero;
+    private final Channel<SceneChangeListener> chan;
 
+    @Inject
     public SpaceImpl(
-            Channel<SpaceChangeListener> chan,
-            Box size, LayerEdit zero) {
-        assert zero.getIndex() == 0;
-
+            Channel<SceneChangeListener> chan) {
         this.chan = chan;
-        this.size = size;
+        this.size = new Box(0, 0, 0, 0);
         this.entities = new IdList<Entity>();
         this.layers = new TreeMap<Integer, LayerEdit>();
-        this.zero = zero;
+
+        this.zero = null;
         layers.put(0,zero);
     }
 
@@ -60,7 +63,7 @@ public class SpaceImpl implements Space, SpaceEdit {
         return size;
     }
 
-    public Channel<SpaceChangeListener> getSpaceChannel() {
+    public Channel<SceneChangeListener> getSpaceChannel() {
         return chan;
     }
 
@@ -93,6 +96,9 @@ public class SpaceImpl implements Space, SpaceEdit {
             throw new IllegalArgumentException(
                     "space already contains a layer with index "+l.getIndex());
         }
+        if(l.getIndex() == 0) {
+            zero = l;
+        }
         layers.put(l.getIndex(), l);
         return l.getIndex();
     }
@@ -103,8 +109,8 @@ public class SpaceImpl implements Space, SpaceEdit {
         final E entity = entities.add(construct);
         layer.add(entity);
 
-        chan.broadcast(new Broadcastor<SpaceChangeListener>() {
-            public void apply(SpaceChangeListener l) {
+        chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            public void apply(SceneChangeListener l) {
                 l.onEntitySpawned(entity, layer);
             }
         });
@@ -118,8 +124,8 @@ public class SpaceImpl implements Space, SpaceEdit {
         l1.remove(e);
         l2.add(e);
 
-        chan.broadcast(new Broadcastor<SpaceChangeListener>() {
-            public void apply(SpaceChangeListener l) {
+        chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            public void apply(SceneChangeListener l) {
                 l.onEntityLayerChange(e, l1, l2);
             }
         });
@@ -129,10 +135,16 @@ public class SpaceImpl implements Space, SpaceEdit {
         final LayerEdit layer = getLayer(layerIndex);
         layer.remove(e);
 
-        chan.broadcast(new Broadcastor<SpaceChangeListener>() {
-            public void apply(SpaceChangeListener l) {
+        chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            public void apply(SceneChangeListener l) {
                 l.onEntitySpawned(e, layer);
             }
         });
+    }
+
+    @Override
+    public Viewport getViewport() {
+        // FIXME viewport impl
+        return null;
     }
 }
