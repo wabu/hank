@@ -14,7 +14,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.javauni.jarcade.impl.space.SimpleEntity;
 
-import de.javauni.jarcade.renderer.Renderer;
 import de.javauni.jarcade.renderer.map.RendererMap;
 import de.javauni.jarcade.renderer.map.RendererMapImpl;
 import de.javauni.jarcade.renderer.map.RendererMapModule;

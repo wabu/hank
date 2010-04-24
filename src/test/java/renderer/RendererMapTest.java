@@ -1,4 +1,4 @@
-package de.javauni.yarrish.view.renderer;
+package renderer;
 
 import static org.junit.Assert.*;
 

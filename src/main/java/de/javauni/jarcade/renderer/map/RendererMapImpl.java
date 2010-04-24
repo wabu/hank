@@ -1,10 +1,10 @@
 package de.javauni.jarcade.renderer.map;
 
 import de.javauni.jarcade.model.space.Entity;
+import de.javauni.jarcade.view.Renderer;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.javauni.jarcade.renderer.Renderer;
 public class RendererMapImpl implements RendererMap{
 	
 	Map<Entity, Renderer> rendererMap = new HashMap<Entity, Renderer>();
