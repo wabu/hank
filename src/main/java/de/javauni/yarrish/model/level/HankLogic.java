@@ -5,7 +5,7 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.space.logic.EntityLogic;
+import de.javauni.jarcade.model.scene.logic.EntityLogic;
 
 /**
  *

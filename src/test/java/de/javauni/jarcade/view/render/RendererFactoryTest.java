@@ -22,13 +22,14 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 import com.google.inject.util.Providers;
-import de.javauni.jarcade.impl.space.SimpleEntity;
-import de.javauni.jarcade.impl.space.SpaceImpl;
+
+import de.javauni.jarcade.impl.OutputModule;
+import de.javauni.jarcade.impl.DefaultRendererBindingsModule;
+import de.javauni.jarcade.impl.RendererModule;
+import de.javauni.jarcade.impl.scene.SceneImpl;
+import de.javauni.jarcade.impl.scene.SimpleEntity;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.jarcade.view.RendererBindingsModule;
-import de.javauni.jarcade.view.impl.RendererModule;
-import de.javauni.jarcade.view.output.OutputModule;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.junit.Before;
@@ -46,7 +47,7 @@ public class RendererFactoryTest {
     public void setUp() {
         inj = Guice.createInjector(
                 new RendererModule(),
-                new RendererBindingsModule(),
+                new DefaultRendererBindingsModule(),
                 new OutputModule(),
                 new AbstractModule() {
             @Override
@@ -55,7 +56,7 @@ public class RendererFactoryTest {
                         .annotatedWith(Names.named("channel-broadcast-executor"))
                         .toInstance(Executors.newSingleThreadExecutor());
                 //bind(SimpleEntity.class).toProvider(Providers.of(null));
-                bind(Scene.class).to(SpaceImpl.class);
+                bind(Scene.class).to(SceneImpl.class);
             }
         }
         );

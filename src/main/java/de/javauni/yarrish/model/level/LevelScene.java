@@ -17,12 +17,20 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import com.google.inject.Inject;
+import de.javauni.jarcade.event.Channel;
+import de.javauni.jarcade.impl.scene.SceneImpl;
+import de.javauni.jarcade.model.scene.SceneChangeListener;
+import de.javauni.utils.guice.ManagedScope;
 
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+@ManagedScope
+public class LevelScene extends SceneImpl {
+    @Inject
+    public LevelScene(Channel<SceneChangeListener> chan) {
+        super(chan);
+    }
 }

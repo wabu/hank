@@ -15,14 +15,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.StateModelAccess;
+import java.io.IOException;
 
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public interface SceneModelAccess extends StateModelAccess<ScenePhase>{
+    /**
+     * initializes the world by loading it from a given ressources
+     * @param ressources ressources location
+     * @throws IllegalStateException when already initialized
+     * @throws IOException when level can't be loaded
+     */
+    void initialize(String ressources) throws IllegalStateException, IOException;
 }

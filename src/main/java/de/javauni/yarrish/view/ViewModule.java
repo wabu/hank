@@ -19,6 +19,10 @@ package de.javauni.yarrish.view;
 
 import com.google.inject.AbstractModule;
 
+import de.javauni.jarcade.impl.DefaultRendererBindingsModule;
+import de.javauni.jarcade.impl.OutputModule;
+import de.javauni.jarcade.impl.RendererModule;
+
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
@@ -27,8 +31,12 @@ public class ViewModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(DummyView.class);
-        bind(LevelDummyView.class);
+        install(new RendererModule());
+        install(new DefaultRendererBindingsModule());
+        install(new OutputModule());
+
+        bind(MainView.class);
+        bind(LevelView.class);
     }
 
 }

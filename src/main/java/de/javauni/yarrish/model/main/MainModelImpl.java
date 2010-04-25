@@ -35,7 +35,7 @@ import de.javauni.yarrish.model.menu.MainMenuExport;
 public class MainModelImpl extends AbstractStateModel<MainState>
         implements MainModelAccess, MainModelExport{
     private final ScopeManager<MainState> scopes;
-    private final Provider<MainMenuExport> mmp;
+    private final Provider<MainMenuExport> menuProvider;
 
     @Inject MainModelImpl(
             Channel<StateListener<MainState>> channel,
@@ -43,7 +43,7 @@ public class MainModelImpl extends AbstractStateModel<MainState>
             Provider<MainMenuExport> mmp) {
         super(channel);
         this.scopes = scopes;
-        this.mmp = mmp;
+        this.menuProvider = mmp;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class MainModelImpl extends AbstractStateModel<MainState>
         switch(tgt) {
             case Menu:
                 scopes.clearOtherScopes(tgt);
-                mmp.get();
+                menuProvider.get();
                 break;
             case Game:
                 scopes.clearScope(MainState.Level);

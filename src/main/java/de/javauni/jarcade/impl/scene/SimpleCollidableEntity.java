@@ -15,14 +15,32 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.jarcade.impl.scene;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.scene.entity.CollidableEntity;
+import de.javauni.utils.geom.Box;
+import de.javauni.utils.props.ImpliedProperty;
 
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public class SimpleCollidableEntity extends SimpleEntity implements CollidableEntity {
+    private final Box collision;
+
+    public SimpleCollidableEntity(int id, Box pos) {
+        super(id, pos);
+        collision = pos;
+    }
+
+    public SimpleCollidableEntity(int id,
+            @ImpliedProperty(name="position") Box pos,
+            @ImpliedProperty(name="collision") Box collision) {
+        super(id, pos);
+        this.collision = collision;
+    }
+
+    public Box getCollisionBox() {
+        return collision;
+    }
 }

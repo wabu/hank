@@ -15,14 +15,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.jarcade.impl.scene;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.scene.entity.Jumping;
+import de.javauni.utils.geom.Box;
+import de.javauni.utils.props.ImpliedProperty;
+import de.javauni.utils.props.Property;
 
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public class SimpleJumpingActity extends SimpleMovingActity implements Jumping {
+    private final float jump;
+
+    public SimpleJumpingActity(
+            int id,
+            @ImpliedProperty(name="position") Box pos,
+            @ImpliedProperty(name="collision") Box collision,
+            @Property(name="movement speed", value="1.0f") float speed,
+            @Property(name="jumping height", value="1.0f") float jump
+            ) {
+        super(id, pos, collision, speed);
+        this.jump = jump;
+    }
+
+    public float getJumpHeight() {
+        return jump;
+    }
 }

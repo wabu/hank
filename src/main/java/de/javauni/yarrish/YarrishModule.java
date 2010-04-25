@@ -19,8 +19,9 @@ package de.javauni.yarrish;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import de.javauni.yarrish.model.level.LevelModule;
-import de.javauni.yarrish.model.main.MainModelModule;
+
+import de.javauni.yarrish.model.LevelModule;
+import de.javauni.yarrish.model.MainModelModule;
 import de.javauni.yarrish.model.menu.MenuModule;
 import de.javauni.yarrish.view.ViewModule;
 import java.util.concurrent.Executor;

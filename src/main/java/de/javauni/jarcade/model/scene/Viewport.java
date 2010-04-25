@@ -18,6 +18,7 @@
 package de.javauni.jarcade.model.scene;
 
 import de.javauni.jarcade.event.Channel;
+
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.utils.geom.Box;
 
@@ -26,7 +27,6 @@ import de.javauni.utils.geom.Box;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface Viewport extends Iterable<Entity> {
-    Box getView();
-
     Channel<ViewportListener> getViewportChannel();
+    Box getView();
 }

@@ -15,32 +15,37 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.jarcade.impl.scene;
 
-import de.javauni.jarcade.impl.scene.SimpleActiveEntity;
-import de.javauni.jarcade.model.scene.entity.Movement;
-import de.javauni.jarcade.model.scene.entity.Moving;
+import de.javauni.jarcade.model.scene.entity.ActiveEntity;
+import de.javauni.jarcade.model.scene.entity.ActiveEntityAccess;
 import de.javauni.utils.geom.Box;
-import de.javauni.utils.geom.Coord;
 
 /**
+ * @param <A> activity enum type
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class HankEntity extends SimpleActiveEntity<Movement> implements Moving {
-    public final static float DEFAULT_HANK_W = 0.8f;
-    public final static float DEFAULT_HANK_H = 1.8f;
+public class SimpleActiveEntity<A extends Enum<A>>
+        extends SimpleCollidableEntity implements ActiveEntity<A>, ActiveEntityAccess<A> {
 
-    public HankEntity(int id, Coord coord) {
-        this(id, new Box(coord,
-                DEFAULT_HANK_W, DEFAULT_HANK_H));
+    private A activity;
+
+    public SimpleActiveEntity(int id, Box pos, Box collision, A activity) {
+        super(id, pos, collision);
+        this.activity = activity;
     }
 
-    public HankEntity(int id, Box pos) {
-        super(id, pos, Movement.none);
+    public SimpleActiveEntity(int id, Box pos, A activity) {
+        super(id, pos);
+        this.activity = activity;
     }
 
-    public float getMovementSpeed() {
-        // TODO extract
-        return 1f;
+    public A getCurrentActivity() {
+        return activity;
     }
+
+    public void setActivity(A activity) {
+        this.activity = activity;
+    }
+
 }

@@ -15,14 +15,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.yarrish.model;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import com.google.inject.AbstractModule;
+import de.javauni.utils.guice.ScopeManagerModule;
+import de.javauni.yarrish.model.main.MainModelAccess;
+import de.javauni.yarrish.model.main.MainModelExport;
+import de.javauni.yarrish.model.main.MainModelImpl;
 
 /**
- *
+ * guice submodule for the main state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public class MainModelModule extends AbstractModule {
+
+    @Override
+    protected void configure() {
+        install(new ScopeManagerModule());
+        bind(MainModelAccess.class).to(MainModelImpl.class);
+        bind(MainModelExport.class).to(MainModelImpl.class);
+    }
+
 }

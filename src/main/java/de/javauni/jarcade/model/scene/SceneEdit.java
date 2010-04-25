@@ -19,7 +19,6 @@ package de.javauni.jarcade.model.scene;
 
 import de.javauni.jarcade.model.scene.entity.Entity;
 import com.google.common.base.Function;
-import de.javauni.jarcade.event.Channel;
 import java.util.NoSuchElementException;
 
 /**
@@ -66,6 +65,5 @@ public interface SceneEdit extends Scene {
      */
     void removeEnity(Entity e, int layerIndex)
             throws NoSuchElementException, IndexOutOfBoundsException;
-
-    Channel<SceneChangeListener> getSpaceChannel();
 }
+

@@ -15,14 +15,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
-
-import de.javauni.jarcade.model.scene.SceneModelExport;
+package de.javauni.utils.props;
 
 /**
- *
+ * The property annotation is used in entitys for constructor parameters
+ * that can be set inside the level editor.
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public @interface Property {
+    /** @return name of the propertie */
+    String name();
+    /** @return descripton of the property */
+    String description() default "";
+    /** @return default value */
+    String value();
 }

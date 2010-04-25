@@ -15,14 +15,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
+package de.javauni.jarcade.impl.scene;
 
-import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.utils.geom.Box;
+import de.javauni.utils.props.ImpliedProperty;
 
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+public class SimpleEntity implements Entity {
+    private final Box pos;
+    private final int id;
+
+    public SimpleEntity(int id,
+            @ImpliedProperty(name="position") Box pos) {
+        this.pos = pos;
+        this.id = id;
+    }
+
+    public Box getPositionBox() {
+        return pos;
+    }
+    public int getId() {
+        return id;
+    }
 }

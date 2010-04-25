@@ -21,10 +21,10 @@ import com.google.common.base.Function;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.impl.space.AbstractManagedModel;
-import de.javauni.jarcade.impl.space.EntityHandlerFactory;
-import de.javauni.jarcade.impl.space.LayerImpl;
-import de.javauni.jarcade.impl.space.SimpleCollidableEntity;
+import de.javauni.jarcade.impl.scene.SceneModelImpl;
+import de.javauni.jarcade.impl.scene.EntityHandlerFactory;
+import de.javauni.jarcade.impl.scene.LayerImpl;
+import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.StateListener;
@@ -37,13 +37,13 @@ import java.io.IOException;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ManagedScope
-public class LevelModelImpl extends AbstractManagedModel implements LevelAccess, LevelExport {
-    private final LevelSpace space;
+public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
+    private final LevelScene space;
 
     @Inject
     public LevelModelImpl(Channel<StateListener<ScenePhase>> chan,
             EntityHandlerFactory ehFactory,
-            LevelSpace space,
+            LevelScene space,
             @Named("level-update-intervall") int intervall) {
         super(chan, ehFactory, space, intervall);
         this.space = space;
@@ -68,7 +68,7 @@ public class LevelModelImpl extends AbstractManagedModel implements LevelAccess,
         // TODO behavior, perhaps in super classes
     }
 
-    public LevelSpace getSpace() {
+    public LevelScene getScene() {
         return space;
     }
 }

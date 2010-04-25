@@ -17,6 +17,8 @@
 
 package de.javauni.jarcade.model.scene;
 
+import de.javauni.jarcade.event.Channel;
+
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.utils.geom.Box;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
@@ -28,8 +30,9 @@ import edu.umd.cs.findbugs.annotations.CheckForNull;
  */
 public interface Scene {
     Box getWorldBox();
-
     Viewport getViewport();
+
+    Channel<SceneChangeListener> getSceneChannel();
 
     /**
      * get a list of all layers, starting with the layer with 

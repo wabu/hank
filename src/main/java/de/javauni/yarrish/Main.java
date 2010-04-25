@@ -23,7 +23,7 @@ import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.yarrish.model.level.LevelAccess;
 import de.javauni.yarrish.model.main.MainModelAccess;
 import de.javauni.yarrish.model.main.MainState;
-import de.javauni.yarrish.view.DummyView;
+import de.javauni.yarrish.view.MainView;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IllegalStateException, IOException {
         Injector inj = Guice.createInjector(new YarrishModule());
         MainModelAccess yma = inj.getInstance(MainModelAccess.class);
-        inj.getInstance(DummyView.class);
+        inj.getInstance(MainView.class);
 
         yma.setState(MainState.Menu);
         Thread.sleep(500);
