@@ -17,53 +17,40 @@
 
 package de.javauni.jarcade.impl.scene;
 
-import com.google.common.base.Function;
+import java.io.IOException;
+
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
+
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.exceptions.IllegalAction;
 import de.javauni.jarcade.impl.model.AbstractStateModel;
-import de.javauni.jarcade.model.scene.SceneModelAccess;
-import de.javauni.jarcade.model.scene.Scene;
-import de.javauni.jarcade.model.scene.SceneModelExport;
-import de.javauni.jarcade.model.scene.SceneEdit;
-import de.javauni.jarcade.model.scene.ScenePhase;
-import de.javauni.jarcade.model.scene.logic.EntityHandler;
 import de.javauni.jarcade.model.StateListener;
-import de.javauni.utils.UpdateLoop;
-import java.io.IOException;
+import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.SceneEdit;
+import de.javauni.jarcade.model.scene.SceneModelAccess;
+import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
 
 /**
- * An AbstractMangedModel is...very useful
- *
- * What a ManagedModel does is the following:
- * initiates
+ * the scene model manages a scene and its operation
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public abstract class SceneModelImpl extends
                 AbstractStateModel<ScenePhase> implements SceneModelAccess,
                 SceneModelExport {
-    private final EntityHandler logic;
-    private final UpdateLoop loop;
-
     private final SceneEdit scene;
+    private final SceneUpdateLoop loop;
 
     @Inject
     public SceneModelImpl(
             final Channel<StateListener<ScenePhase>> chan,
-            final EntityHandlerFactory ehFactory,
             final SceneEdit space,
-            @Named("model-update-intervall") int intervall) {
+            final SceneUpdateLoop loop) {
         super(chan);
-        this.logic = ehFactory.create(space.getZeroLayer());
-        this.loop = new UpdateLoop(new Function<Long, Void>() {
-            public Void apply(Long f) {
-                logic.updateEntities(f);
-                return null;
-            }
-        }, intervall);
+        this.loop = loop;
         this.scene = space;
     }
 

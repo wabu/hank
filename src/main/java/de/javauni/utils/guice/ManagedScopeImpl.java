@@ -20,8 +20,8 @@ package de.javauni.utils.guice;
 import com.google.inject.Key;
 import com.google.inject.Provider;
 import com.google.inject.Scope;
-import com.google.inject.internal.Nullable;
 import javax.annotation.CheckForNull;
+import javax.annotation.Nullable;
 
 public class ManagedScopeImpl implements Scope {
     @CheckForNull private ScopeMap scope;

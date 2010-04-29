@@ -18,18 +18,17 @@
 package de.javauni.yarrish.model.level;
 
 import com.google.common.base.Function;
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import de.javauni.jarcade.event.Channel;
-import de.javauni.jarcade.impl.scene.SceneModelImpl;
-import de.javauni.jarcade.impl.scene.EntityHandlerFactory;
 import de.javauni.jarcade.impl.scene.LayerImpl;
+import de.javauni.jarcade.impl.scene.SceneModelImpl;
 import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
-import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
 import de.javauni.utils.geom.Box;
 import de.javauni.utils.guice.ManagedScope;
+
 import java.io.IOException;
 
 /**
@@ -40,13 +39,9 @@ import java.io.IOException;
 public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
     private final LevelScene space;
 
-    @Inject
-    public LevelModelImpl(Channel<StateListener<ScenePhase>> chan,
-            EntityHandlerFactory ehFactory,
-            LevelScene space,
-            @Named("level-update-intervall") int intervall) {
-        super(chan, ehFactory, space, intervall);
-        this.space = space;
+    public LevelModelImpl(final Channel<StateListener<ScenePhase>> chan, final LevelScene scene, final SceneUpdateLoop loop) {
+        super(chan, scene, loop);
+        this.space = scene;
     }
 
     @Override

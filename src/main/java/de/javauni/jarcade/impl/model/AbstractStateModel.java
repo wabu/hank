@@ -46,11 +46,13 @@ public abstract class AbstractStateModel<S extends Enum<S>>
         this.channel = channel;
     }
 
-    public S getState() {
+    @Override
+    final public S getState() {
         return state;
     }
 
-    public void setState(S state) throws IllegalAction {
+    @Override
+    final public void setState(S state) throws IllegalAction {
         synchronized(mutex) {
             S old = this.state;
             try {
@@ -63,7 +65,7 @@ public abstract class AbstractStateModel<S extends Enum<S>>
         }
     }
 
-    public Channel<StateListener<S>> getStateChannel() {
+    final public Channel<StateListener<S>> getStateChannel() {
         return channel;
     }
 

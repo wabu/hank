@@ -18,15 +18,11 @@
 package de.javauni.yarrish.model;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.assistedinject.FactoryProvider;
 import com.google.inject.name.Names;
-import de.javauni.jarcade.impl.scene.EntityHandlerFactory;
-import de.javauni.jarcade.impl.scene.EntityHandlerImpl;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.yarrish.model.level.LevelAccess;
 import de.javauni.yarrish.model.level.LevelExport;
 import de.javauni.yarrish.model.level.LevelModelImpl;
-
 import de.javauni.yarrish.model.level.LevelScene;
 
 /**
@@ -44,8 +40,5 @@ public class LevelModule extends AbstractModule {
         bind(Integer.class).annotatedWith(Names.named("level-update-intervall"))
                 .toInstance(20);
         
-        bind(EntityHandlerFactory.class).toProvider(
-                FactoryProvider.newFactory(EntityHandlerFactory.class, EntityHandlerImpl.class));
-
     }
 }
