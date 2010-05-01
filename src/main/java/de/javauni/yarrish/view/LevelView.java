@@ -23,6 +23,10 @@ import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.SceneChangeListener;
 import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.StateListener;
+
+import de.javauni.jarcade.view.render.RendererFactory;
+import de.javauni.jarcade.view.render.RendererMap;
+import de.javauni.jarcade.view.render.RendererThread;
 import de.javauni.yarrish.model.level.LevelExport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,15 +37,30 @@ import org.slf4j.LoggerFactory;
  */
 public class LevelView implements StateListener<ScenePhase>, SceneChangeListener {
     private final Logger log = LoggerFactory.getLogger(LevelView.class);
+    private final RendererThread thread;
+    private final RendererMap map;
+    private final RendererFactory fac;
 
     @Inject
-    public LevelView(LevelExport e) {
+    public LevelView(LevelExport e, 
+            RendererThread thread, RendererMap map, RendererFactory fac) {
         e.getScene().getSceneChannel().addListener(this);
         e.getStateChannel().addListener(this);
+        this.thread = thread;
+        this.map = map;
+        this.fac = fac;
     }
 
     public void onStateChange(ScenePhase state) {
         log.debug("level state is now {}",state);
+        switch(state) {
+            case initialized:
+                thread.start();
+                break;
+            case closed:
+                thread.stop();
+                break;
+        }
     }
 
     public void onLayerAdded(Layer layer) {
@@ -49,6 +68,9 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
 
     public void onEntitySpawned(Entity e, Layer layer) {
         log.debug("new entity {}",e);
+        if(fac.isRenderable(e)) {
+            map.put(e, fac.getRenderer(e));
+        }
     }
 
     public void onEntityRemoved(Entity e, Layer layer) {

@@ -8,7 +8,6 @@ import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
 import de.javauni.jarcade.impl.OutputModule;
-import de.javauni.jarcade.impl.DefaultRendererBindingsModule;
 import de.javauni.jarcade.impl.RendererModule;
 import de.javauni.jarcade.impl.scene.SceneImpl;
 import de.javauni.jarcade.impl.scene.SimpleEntity;
@@ -17,6 +16,8 @@ import de.javauni.jarcade.impl.view.RendererMapImpl;
 import de.javauni.jarcade.impl.view.renderers.SimpleEntityRenderer;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.utils.geom.Box;
+import de.javauni.yarrish.view.RendererBindingsModule;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import org.junit.Before;
@@ -30,7 +31,7 @@ public class RendererMapTest {
     public void setUp() {
         inj = Guice.createInjector(
                 new RendererModule(),
-                new DefaultRendererBindingsModule(),
+                new RendererBindingsModule(),
                 new OutputModule(),
                 new AbstractModule() {
 

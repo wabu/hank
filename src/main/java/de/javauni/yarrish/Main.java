@@ -35,7 +35,8 @@ import org.slf4j.LoggerFactory;
 public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static void main(String[] args) throws InterruptedException, IllegalStateException, IOException {
+    public static void main(String[] args) 
+            throws InterruptedException, IllegalStateException, IOException {
         Injector inj = Guice.createInjector(new YarrishModule());
         MainModelAccess yma = inj.getInstance(MainModelAccess.class);
         inj.getInstance(MainView.class);

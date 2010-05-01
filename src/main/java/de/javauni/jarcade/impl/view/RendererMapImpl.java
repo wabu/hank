@@ -6,6 +6,9 @@ import de.javauni.jarcade.view.render.Renderer;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.javauni.utils.guice.ManagedScope;
+
+@ManagedScope
 public class RendererMapImpl implements RendererMap {
     // XXX make a faster implemntation using entity.getId() and IDList
     private final Map<Entity, Renderer<?>> rendererMap

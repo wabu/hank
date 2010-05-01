@@ -14,6 +14,9 @@ import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.Viewport;
 import de.javauni.jarcade.model.scene.entity.Entity;
 
+import de.javauni.utils.guice.ManagedScope;
+
+@ManagedScope
 public class RendererThreadImpl implements RendererThread {
     public static final int defaultFPS = 60;
 

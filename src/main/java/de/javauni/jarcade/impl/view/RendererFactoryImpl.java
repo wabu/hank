@@ -10,7 +10,9 @@ import com.google.inject.util.Types;
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.jarcade.view.render.Renderer;
 
+import de.javauni.utils.guice.ManagedScope;
 
+@ManagedScope
 public class RendererFactoryImpl implements RendererFactory {
     private Injector inj;
 
@@ -24,6 +26,11 @@ public class RendererFactoryImpl implements RendererFactory {
     public <E extends Entity> Renderer<? super E> getRenderer(E entity) {
         Class<?> klass = entity.getClass();
         return (Renderer<? super E>)inj.getInstance(
-                Key.get(Types.newParameterizedType(Renderer.class, Types.subtypeOf(klass))));
+                Key.get(Types.newParameterizedType(Renderer.class, Types.supertypeOf(klass))));
+    }
+
+    @Override
+    public boolean isRenderable(Entity entity) {
+        return true;
     }
 }

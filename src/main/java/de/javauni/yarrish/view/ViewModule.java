@@ -19,7 +19,6 @@ package de.javauni.yarrish.view;
 
 import com.google.inject.AbstractModule;
 
-import de.javauni.jarcade.impl.DefaultRendererBindingsModule;
 import de.javauni.jarcade.impl.OutputModule;
 import de.javauni.jarcade.impl.RendererModule;
 
@@ -32,7 +31,7 @@ public class ViewModule extends AbstractModule {
     @Override
     protected void configure() {
         install(new RendererModule());
-        install(new DefaultRendererBindingsModule());
+        install(new RendererBindingsModule());
         install(new OutputModule());
 
         bind(MainView.class);
