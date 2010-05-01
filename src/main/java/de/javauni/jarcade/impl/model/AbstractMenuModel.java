@@ -40,7 +40,7 @@ public class AbstractMenuModel<S extends Enum<S>>
     public AbstractMenuModel(Channel<StateListener<S>> channel,
             Map<S, ? extends List<? extends MenuItem>> pages,
             S startPage) {
-        super(channel);
+        super(channel, startPage);
         this.pages = pages;
         this.page = pages.get(startPage);
     }

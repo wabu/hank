@@ -19,7 +19,10 @@ package de.javauni.yarrish.model;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
+
+import de.javauni.jarcade.impl.PhysModule;
 import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.SceneEdit;
 import de.javauni.yarrish.model.level.LevelAccess;
 import de.javauni.yarrish.model.level.LevelExport;
 import de.javauni.yarrish.model.level.LevelModelImpl;
@@ -33,9 +36,12 @@ public class LevelModule extends AbstractModule {
 
     @Override
     protected void configure() {
+        install(new PhysModule());
+
         bind(LevelAccess.class).to(LevelModelImpl.class);
         bind(LevelExport.class).to(LevelModelImpl.class);
-        bind(Scene.class).to(LevelScene.class);
+        bind(Scene.class).to(SceneEdit.class); // XXX this binding should be propagated upwords
+        bind(SceneEdit.class).to(LevelScene.class);
 
         bind(Integer.class).annotatedWith(Names.named("level-update-intervall"))
                 .toInstance(20);

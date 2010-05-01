@@ -44,6 +44,9 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
         log.debug("level state is now {}",state);
     }
 
+    public void onLayerAdded(Layer layer) {
+    }
+
     public void onEntitySpawned(Entity e, Layer layer) {
         log.debug("new entity {}",e);
     }

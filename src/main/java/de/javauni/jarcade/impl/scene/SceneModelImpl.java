@@ -31,13 +31,15 @@ import de.javauni.jarcade.model.scene.SceneEdit;
 import de.javauni.jarcade.model.scene.SceneModelAccess;
 import de.javauni.jarcade.model.scene.SceneModelExport;
 import de.javauni.jarcade.model.scene.ScenePhase;
-import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
+
+import de.javauni.utils.guice.ManagedScope;
 
 /**
  * the scene model manages a scene and its operation
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
+@ManagedScope
 public abstract class SceneModelImpl extends
                 AbstractStateModel<ScenePhase> implements SceneModelAccess,
                 SceneModelExport {
@@ -49,7 +51,7 @@ public abstract class SceneModelImpl extends
             final Channel<StateListener<ScenePhase>> chan,
             final SceneEdit space,
             final SceneUpdateLoop loop) {
-        super(chan);
+        super(chan, ScenePhase.loading);
         this.loop = loop;
         this.scene = space;
     }
@@ -83,7 +85,7 @@ public abstract class SceneModelImpl extends
     public abstract void loadLevel(String ressources) throws IOException;
 
     public void initialize(String ressources) throws IllegalStateException, IOException {
-        Preconditions.checkState(getState().ordinal() < ScenePhase.loading.ordinal(),
+        Preconditions.checkState(getState().ordinal() <= ScenePhase.loading.ordinal(),
                 "level allready initialized");
 
         setState(ScenePhase.loading);

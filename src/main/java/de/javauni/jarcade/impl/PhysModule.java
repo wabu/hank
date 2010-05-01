@@ -7,6 +7,8 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.assistedinject.FactoryProvider;
 
 import de.javauni.jarcade.impl.phys.PhysicalOperator;
+
+import de.javauni.jarcade.model.scene.ZeroLayer;
 import de.javauni.jarcade.model.scene.operate.LayerOperatorFactory;
 
 import net.phys2d.math.Vector2f;
@@ -21,6 +23,7 @@ public class PhysModule extends AbstractModule {
 				return new World(new Vector2f(0,9.81f), 5);
 			}});
         bind(new TypeLiteral<LayerOperatorFactory<PhysicalOperator>>(){})
+            .annotatedWith(ZeroLayer.class)
             .toProvider(FactoryProvider.newFactory(
                 new TypeLiteral<LayerOperatorFactory<PhysicalOperator>>(){},
                 new TypeLiteral<PhysicalOperator>(){}));

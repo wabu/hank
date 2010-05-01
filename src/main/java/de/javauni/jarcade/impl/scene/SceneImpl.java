@@ -56,7 +56,6 @@ public class SceneImpl implements Scene, SceneEdit {
         this.layers = new TreeMap<Integer, LayerEdit>();
 
         this.zero = null;
-        layers.put(0,zero);
     }
 
     public Box getWorldBox() {
@@ -92,16 +91,23 @@ public class SceneImpl implements Scene, SceneEdit {
         return Iterables.filter(entities, Predicates.notNull());
     }
 
-    public int addLayer(LayerEdit l) throws IllegalArgumentException {
-        if(layers.containsKey(l.getIndex())) {
+    public int addLayer(final LayerEdit lay) throws IllegalArgumentException {
+        if(layers.containsKey(lay.getIndex())) {
             throw new IllegalArgumentException(
-                    "space already contains a layer with index "+l.getIndex());
+                    "space already contains a layer with index "+lay.getIndex());
         }
-        if(l.getIndex() == 0) {
-            zero = l;
+        if(lay.getIndex() == 0) {
+            zero = lay;
         }
-        layers.put(l.getIndex(), l);
-        return l.getIndex();
+        layers.put(lay.getIndex(), lay);
+
+        chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            public void apply(SceneChangeListener l) {
+                l.onLayerAdded(lay);
+            }
+                });
+
+        return lay.getIndex();
     }
 
     public <E extends Entity> E addEntity(Function<Integer, E> construct, final int layerIndex)
@@ -118,7 +124,8 @@ public class SceneImpl implements Scene, SceneEdit {
         return entity;
     }
 
-    public void moveEntity(final Entity e, int oldLayer, int newLayer) throws NoSuchElementException, IndexOutOfBoundsException {
+    public void moveEntity(final Entity e, int oldLayer, int newLayer) 
+            throws NoSuchElementException, IndexOutOfBoundsException {
         final LayerEdit l1 = getLayer(oldLayer);
         final LayerEdit l2 = getLayer(newLayer);
 
@@ -132,7 +139,8 @@ public class SceneImpl implements Scene, SceneEdit {
         });
     }
 
-    public void removeEnity(final Entity e, int layerIndex) throws NoSuchElementException, IndexOutOfBoundsException {
+    public void removeEnity(final Entity e, int layerIndex) 
+            throws NoSuchElementException, IndexOutOfBoundsException {
         final LayerEdit layer = getLayer(layerIndex);
         layer.remove(e);
 

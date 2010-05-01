@@ -22,5 +22,5 @@ package de.javauni.yarrish.model.main;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public enum MainState {
-    Menu, Game, Level;
+    Void, Menu, Game, Level;
 }

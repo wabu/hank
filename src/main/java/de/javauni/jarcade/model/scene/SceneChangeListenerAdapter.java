@@ -24,6 +24,10 @@ import de.javauni.jarcade.model.scene.entity.Entity;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public class SceneChangeListenerAdapter implements SceneChangeListener {
+    public void onLayerAdded(Layer layer) {
+        // this is an adapter class
+    }
+
     @Override
     public void onEntitySpawned(Entity e, Layer layer) {
         // this is an adapter class
@@ -38,4 +42,5 @@ public class SceneChangeListenerAdapter implements SceneChangeListener {
     public void onEntityLayerChange(Entity e, Layer before, Layer layer) {
         // this is an adapter class
     }
+
 }

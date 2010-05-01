@@ -41,9 +41,9 @@ public abstract class AbstractStateModel<S extends Enum<S>>
 
     private final Channel<StateListener<S>> channel;
 
-    @Inject
-    public AbstractStateModel(Channel<StateListener<S>> channel) {
+    public AbstractStateModel(Channel<StateListener<S>> channel, S initial) {
         this.channel = channel;
+        this.state = initial;
     }
 
     @Override

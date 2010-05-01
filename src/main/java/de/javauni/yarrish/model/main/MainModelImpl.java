@@ -41,7 +41,7 @@ public class MainModelImpl extends AbstractStateModel<MainState>
             Channel<StateListener<MainState>> channel,
             ScopeManager<MainState> scopes,
             Provider<MainMenuExport> mmp) {
-        super(channel);
+        super(channel, MainState.Void);
         this.scopes = scopes;
         this.menuProvider = mmp;
     }

@@ -18,14 +18,20 @@
 package de.javauni.yarrish.model.level;
 
 import com.google.common.base.Function;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import de.javauni.jarcade.event.Channel;
+
+import de.javauni.jarcade.impl.phys.Block;
+import de.javauni.jarcade.impl.phys.Ground;
 import de.javauni.jarcade.impl.scene.LayerImpl;
 import de.javauni.jarcade.impl.scene.SceneModelImpl;
-import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
+import de.javauni.jarcade.impl.scene.SceneUpdateLoop;
 import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.scene.LayerChangeListener;
 import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
 import de.javauni.utils.geom.Box;
 import de.javauni.utils.guice.ManagedScope;
 
@@ -38,26 +44,37 @@ import java.io.IOException;
 @ManagedScope
 public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
     private final LevelScene space;
+    private final Provider<Channel<LayerChangeListener>> layerChan;
 
-    public LevelModelImpl(final Channel<StateListener<ScenePhase>> chan, final LevelScene scene, final SceneUpdateLoop loop) {
+    @Inject
+    public LevelModelImpl(
+            final Channel<StateListener<ScenePhase>> chan, final LevelScene scene, final SceneUpdateLoop loop,
+            final Provider<Channel<LayerChangeListener>> layerChan) {
         super(chan, scene, loop);
         this.space = scene;
+        this.layerChan = layerChan;
     }
 
     @Override
     public void loadLevel(String ressources) throws IOException {
         // XXX layer channel foo
-        space.getWorldBox().setBox(0,0, 100, 500);
-        space.addLayer(new LayerImpl(0, 0, null));
+        space.getWorldBox().setBox(0,-1, 100, 51);
+        space.addLayer(new LayerImpl(0, 0, layerChan.get()));
 
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
-                return new SimpleCollidableEntity(f, new Box(0, 200, 200, 100));
+                return new Ground(f, new Box(0,-10, 100, 10), new Box(0,-10, 100, 10));
             }
         }, 0);
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
-                return new HankEntity(f, new Box(20, 180, 20, 10));
+                return new Block(f, new Box(1, 1, .5f, .5f), new Box(1, 1, .5f, .5f), 3f);
+            }
+        }, 0);
+
+        space.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer f) {
+                return new Block(f, new Box(1.5f, 1.6f, .5f, .5f), new Box(1, 1, .5f, .5f), 3f);
             }
         }, 0);
         // TODO behavior, perhaps in super classes

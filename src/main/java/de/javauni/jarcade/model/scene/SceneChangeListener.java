@@ -25,6 +25,8 @@ import de.javauni.jarcade.event.Listener;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface SceneChangeListener extends Listener {
+    void onLayerAdded(Layer layer);
+
     void onEntitySpawned(Entity e, Layer layer);
     void onEntityRemoved(Entity e, Layer layer);
 
