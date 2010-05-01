@@ -17,6 +17,9 @@
 
 package de.javauni.jarcade.impl.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
@@ -34,6 +37,7 @@ import javax.annotation.concurrent.GuardedBy;
  */
 public abstract class AbstractStateModel<S extends Enum<S>>
         implements StateModelExport<S>, StateModelAccess<S> {
+    private final Logger log = LoggerFactory.getLogger(AbstractStateModel.class);
 
     @GuardedBy("mutex")
     private S state;
@@ -56,10 +60,12 @@ public abstract class AbstractStateModel<S extends Enum<S>>
         synchronized(mutex) {
             S old = this.state;
             try {
+                log.debug("trying to transite from "+old+" to "+ state);
                 doStateTransition(old, state);
             } catch (RuntimeException e) {
                 throw new IllegalAction("error while changing state to "+state, e);
             }
+            log.debug("state transition from "+old+" to "+ state);
             this.state = state;
             doStateBroadcast(old, state);
         }
@@ -72,10 +78,10 @@ public abstract class AbstractStateModel<S extends Enum<S>>
 
     protected abstract void doStateTransition(S src, S tgt) throws IllegalAction;
 
-    protected void doStateBroadcast(S src, S tgt) {
+    protected void doStateBroadcast(final S src, final S tgt) {
         channel.broadcast(new Broadcastor<StateListener<S>>() {
             public void apply(StateListener<S> l) {
-                l.onStateChange(state);
+                l.onStateChange(tgt);
             }
         });
     }

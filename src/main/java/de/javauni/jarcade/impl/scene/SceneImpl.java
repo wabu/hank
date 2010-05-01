@@ -24,6 +24,7 @@ import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.model.scene.Viewport;
+import de.javauni.jarcade.model.scene.ViewportListener;
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.jarcade.model.scene.LayerEdit;
 import de.javauni.jarcade.model.scene.Scene;
@@ -47,13 +48,17 @@ public class SceneImpl implements Scene, SceneEdit {
     @Nullable private LayerEdit zero;
     private final Channel<SceneChangeListener> chan;
 
+    private final Viewport view;
+
     @Inject
     public SceneImpl(
-            Channel<SceneChangeListener> chan) {
+            Channel<SceneChangeListener> chan,
+            Channel<ViewportListener> viewChan) {
         this.chan = chan;
         this.size = new Box(0, 0, 0, 0);
         this.entities = new IdList<Entity>();
         this.layers = new TreeMap<Integer, LayerEdit>();
+        this.view = new WholeSceneView(viewChan, this);
 
         this.zero = null;
     }
@@ -153,7 +158,6 @@ public class SceneImpl implements Scene, SceneEdit {
 
     @Override
     public Viewport getViewport() {
-        // FIXME viewport impl
-        return null;
+        return view;
     }
 }

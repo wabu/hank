@@ -43,4 +43,9 @@ public class SimpleCollidableEntity extends SimpleEntity implements CollidableEn
     public Box getCollisionBox() {
         return collision;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " at " + getPositionBox();
+    }
 }

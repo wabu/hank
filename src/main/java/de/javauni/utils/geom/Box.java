@@ -58,4 +58,9 @@ public class Box extends Coord {
         setW(w);
         setH(h);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%2f,%2f+%2f+2%f", getX(), getY(), getW(), getH());
+    }
 }

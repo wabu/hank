@@ -21,6 +21,7 @@ import com.google.inject.Inject;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.impl.scene.SceneImpl;
 import de.javauni.jarcade.model.scene.SceneChangeListener;
+import de.javauni.jarcade.model.scene.ViewportListener;
 import de.javauni.utils.guice.ManagedScope;
 
 /**
@@ -30,7 +31,8 @@ import de.javauni.utils.guice.ManagedScope;
 @ManagedScope
 public class LevelScene extends SceneImpl {
     @Inject
-    public LevelScene(Channel<SceneChangeListener> chan) {
-        super(chan);
+    public LevelScene(Channel<SceneChangeListener> chan,
+            Channel<ViewportListener> viewChan) {
+        super(chan, viewChan);
     }
 }

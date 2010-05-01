@@ -27,6 +27,8 @@ import de.javauni.jarcade.model.StateListener;
 import de.javauni.jarcade.view.render.RendererFactory;
 import de.javauni.jarcade.view.render.RendererMap;
 import de.javauni.jarcade.view.render.RendererThread;
+
+import de.javauni.utils.guice.ManagedScope;
 import de.javauni.yarrish.model.level.LevelExport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +37,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
+@ManagedScope
 public class LevelView implements StateListener<ScenePhase>, SceneChangeListener {
     private final Logger log = LoggerFactory.getLogger(LevelView.class);
     private final RendererThread thread;
@@ -52,9 +55,9 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
     }
 
     public void onStateChange(ScenePhase state) {
-        log.debug("level state is now {}",state);
+        log.debug("level is now {}",state);
         switch(state) {
-            case initialized:
+            case running:
                 thread.start();
                 break;
             case closed:

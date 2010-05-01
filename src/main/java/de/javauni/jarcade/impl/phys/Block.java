@@ -5,6 +5,8 @@ import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
 import de.javauni.utils.props.ImpliedProperty;
 import de.javauni.utils.props.Property;
 
+import net.phys2d.math.ROVector2f;
+
 import net.phys2d.raw.Body;
 import net.phys2d.raw.World;
 import de.javauni.utils.geom.Box;
@@ -30,5 +32,13 @@ public class Block extends SimpleCollidableEntity implements Physical {
     @Override
     public void removeFrom(World w) {
         w.remove(phys);
+    }
+
+    @Override
+    public Box getPositionBox() {
+        //TODO pos interface so we can use phys object 
+        ROVector2f pos = phys.getPosition();
+        return new Box(pos.getX(), pos.getY(), 
+                super.getPositionBox().getW(), super.getPositionBox().getY());
     }
 }
