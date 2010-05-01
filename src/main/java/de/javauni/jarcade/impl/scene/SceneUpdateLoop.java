@@ -77,8 +77,8 @@ public class SceneUpdateLoop extends UpdateLoop implements SceneChangeListener {
     @Override
     protected void update(long delta) {
         for(OpBinding<?> op : ops) {
-            if(log.isDebugEnabled()) {
-                log.debug("calling "+op);
+            if(log.isTraceEnabled()) {
+                log.trace("calling "+op);
             }
             op.apply(delta);
         }

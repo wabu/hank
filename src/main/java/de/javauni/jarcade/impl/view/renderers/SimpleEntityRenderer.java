@@ -19,8 +19,8 @@ public class SimpleEntityRenderer implements Renderer<SimpleEntity> {
 
 	@Override
 	public void render(SimpleEntity entity, Graphics2D gfx, long timeDelta, long levelTime) {
-        if(log.isDebugEnabled()) {
-            log.debug("rendering "+entity);
+        if(log.isTraceEnabled()) {
+            log.trace("rendering "+entity);
         }
 
 		Box box = entity.getPositionBox();
