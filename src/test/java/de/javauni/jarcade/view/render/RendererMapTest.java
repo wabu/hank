@@ -13,7 +13,7 @@ import de.javauni.jarcade.impl.scene.SceneImpl;
 import de.javauni.jarcade.impl.scene.SimpleEntity;
 
 import de.javauni.jarcade.impl.view.RendererMapImpl;
-import de.javauni.jarcade.impl.view.renderers.SimpleEntityRenderer;
+import de.javauni.jarcade.impl.view.renderers.GeneralEntityRenderer;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.utils.geom.Box;
 import de.javauni.yarrish.view.RendererBindingsModule;
@@ -58,7 +58,7 @@ public class RendererMapTest {
     public void putAndGetOne() {
         RendererMap map = inj.getInstance(RendererMapImpl.class);
         SimpleEntity enty = new SimpleEntity(0, new Box(50.0f, 50.0f, 50, 50));
-        Renderer<SimpleEntity> entyrend = new SimpleEntityRenderer();
+        Renderer<SimpleEntity> entyrend = new GeneralEntityRenderer();
         map.put(enty, entyrend);
         Renderer<? super SimpleEntity> entyren2 = map.get(enty);
         assertTrue("the renderer put into the map is returend", entyrend

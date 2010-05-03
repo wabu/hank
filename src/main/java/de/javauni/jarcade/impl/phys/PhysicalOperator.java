@@ -28,7 +28,7 @@ public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
 
 	@Override
 	public void step(Layer e, long delta) {
-        physWorld.step(delta);
+        physWorld.step(delta/1000f);
 	}
 
 	@Override

@@ -33,6 +33,7 @@ import de.javauni.jarcade.model.scene.LayerChangeListener;
 import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.VecM;
 import de.javauni.utils.guice.ManagedScope;
 
 import java.io.IOException;
@@ -48,7 +49,8 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
 
     @Inject
     public LevelModelImpl(
-            final Channel<StateListener<ScenePhase>> chan, final LevelScene scene, final SceneUpdateLoop loop,
+            final Channel<StateListener<ScenePhase>> chan, 
+            final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {
         super(chan, scene, loop);
         this.space = scene;
@@ -58,25 +60,25 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
     @Override
     public void loadLevel(String ressources) throws IOException {
         // XXX layer channel foo
-        space.getWorldBox().setBox(0,-1, 100, 51);
+        space.getWorldSize().set(500, 50);
         space.addLayer(new LayerImpl(0, 0, layerChan.get()));
 
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
-                return new Ground(f, new Box(0,-10, 100, 10), new Box(0,-10, 100, 10));
+                return new Ground(f, new Box(0,0, 500, 10));
             }
         }, 0);
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
-                return new Block(f, new Box(1, 1, .5f, .5f), new Box(1, 1, .5f, .5f), 3f);
+                return new Block(f, new Box(11, 11, .5f, .5f), 3f);
+            }
+        }, 0);
+        space.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer f) {
+                return new Block(f, new Box(11.3f, 11.6f, .5f, .5f), 3f);
             }
         }, 0);
 
-        space.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer f) {
-                return new Block(f, new Box(1.5f, 1.6f, .5f, .5f), new Box(1, 1, .5f, .5f), 3f);
-            }
-        }, 0);
         // TODO behavior, perhaps in super classes
     }
 

@@ -1,66 +1,29 @@
-/*
- *  Copyright (C) 2010 Daniel Waeber <wabu@inf.fu-berlin.de>
- * 
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- * 
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>
- */
-
 package de.javauni.utils.geom;
 
-/**
- *
- * @author Daniel Waeber <wabu@inf.fu-berlin.de>
- */
-public class Box extends Coord {
-    private float w;
-    private float h;
+public class Box implements Shape {
+    private final Vec size;
+    private final Vec mid;
+
+    public Box(Vec mid, Vec size) {
+        this.size = size;
+        this.mid = mid;
+    }
 
     public Box(float x, float y, float w, float h) {
-        super(x, y);
-        this.w = w;
-        this.h = h;
-    }
-    public Box(Coord coord, float w, float h) {
-        super(coord.getX(), coord.getY());
-        this.w = w;
-        this.h = h;
+        this(Geoms.plus(new VecI(x,y), new VecI(w*.5f,h*.5f)), 
+                new VecI(w,h));
     }
 
-    public float getH() {
-        return h;
+    public Vec mid() {
+        return mid;
     }
 
-    public void setH(int h) {
-        this.h = h;
+    public Vec size() {
+        return size;
     }
 
-    public float getW() {
-        return w;
-    }
-
-    public void setW(int w) {
-        this.w = w;
-    }
-
-    public void setBox(int x, int y, int w, int h) {
-        setX(x);
-        setY(y);
-        setW(w);
-        setH(h);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%2f,%2f+%2f+2%f", getX(), getY(), getW(), getH());
+    public float rotation() {
+        return 0;
     }
 }
+

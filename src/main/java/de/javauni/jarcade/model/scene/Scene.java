@@ -20,7 +20,7 @@ package de.javauni.jarcade.model.scene;
 import de.javauni.jarcade.event.Channel;
 
 import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.Vec;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 
 /**
@@ -29,7 +29,7 @@ import edu.umd.cs.findbugs.annotations.CheckForNull;
  * @see Layer
  */
 public interface Scene {
-    Box getWorldBox();
+    Vec getWorldSize();
     Viewport getViewport();
 
     Channel<SceneChangeListener> getSceneChannel();

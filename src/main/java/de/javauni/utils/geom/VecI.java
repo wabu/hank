@@ -15,31 +15,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.impl.scene;
-
-import de.javauni.jarcade.model.scene.entity.Jumping;
-import de.javauni.utils.geom.Box;
-import de.javauni.utils.props.ImpliedProperty;
-import de.javauni.utils.props.Property;
+package de.javauni.utils.geom;
 
 /**
+ * immutable coord implemantation
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class SimpleJumpingActity extends SimpleMovingActity implements Jumping {
-    private final float jump;
+public final class VecI implements Vec {
+    private final float x;
+    private final float y;
 
-    public SimpleJumpingActity(
-            int id,
-            @ImpliedProperty(name="position") Box pos,
-            @ImpliedProperty(name="collision") Box collision,
-            @Property(name="movement speed", value="1.0f") float speed,
-            @Property(name="jumping height", value="1.0f") float jump
-            ) {
-        super(id, pos, collision, speed);
-        this.jump = jump;
+    public VecI(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public float getJumpHeight() {
-        return jump;
+    public float x() {
+        return x;
+    }
+
+    public float y() {
+        return y;
     }
 }

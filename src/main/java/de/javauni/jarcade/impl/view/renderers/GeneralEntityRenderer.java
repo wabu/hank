@@ -11,11 +11,11 @@ import de.javauni.jarcade.impl.scene.SimpleEntity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.Shape;
 
 @Singleton
-public class SimpleEntityRenderer implements Renderer<SimpleEntity> {
-    private final Logger log = LoggerFactory.getLogger(SimpleEntityRenderer.class);
+public class GeneralEntityRenderer implements Renderer<SimpleEntity> {
+    private final Logger log = LoggerFactory.getLogger(GeneralEntityRenderer.class);
 
 	@Override
 	public void render(SimpleEntity entity, Graphics2D gfx, long timeDelta, long levelTime) {
@@ -23,8 +23,13 @@ public class SimpleEntityRenderer implements Renderer<SimpleEntity> {
             log.trace("rendering "+entity);
         }
 
-		Box box = entity.getPositionBox();
+		Shape shape = entity.getShape();
 		gfx.setColor(Color.black);
-		gfx.fillRect((int) box.getX(), (int) box.getY(), (int) box.getH(), (int) box.getW());
+        // FIXME rotation
+        // FIXME mid is not corner
+		gfx.fillRect((int) shape.mid().x(), 
+                     (int) shape.mid().y(), 
+                     (int) shape.size().x(), 
+                     (int) shape.size().y());
 	}
 }

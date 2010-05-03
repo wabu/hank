@@ -20,7 +20,7 @@ public class PhysModule extends AbstractModule {
         bind(World.class).toProvider(new Provider<World>() {
 			@Override
 			public World get() {
-				return new World(new Vector2f(0,9.81f), 5);
+				return new World(new Vector2f(0,-9.81f), 5);
 			}});
         bind(new TypeLiteral<LayerOperatorFactory<PhysicalOperator>>(){})
             .annotatedWith(ZeroLayer.class)

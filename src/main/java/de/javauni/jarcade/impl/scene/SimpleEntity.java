@@ -18,24 +18,24 @@
 package de.javauni.jarcade.impl.scene;
 
 import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.Shape;
 import de.javauni.utils.props.ImpliedProperty;
 
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public class SimpleEntity implements Entity {
-    private final Box pos;
+    private final Shape shape;
     private final int id;
 
-    public SimpleEntity(int id,
-            @ImpliedProperty(name="position") Box pos) {
-        this.pos = pos;
+    public SimpleEntity(int id, 
+            @ImpliedProperty(name="shape") Shape shape) {
+        this.shape = shape;
         this.id = id;
     }
 
-    public Box getPositionBox() {
-        return pos;
+    public Shape getShape() {
+        return shape;
     }
     public int getId() {
         return id;

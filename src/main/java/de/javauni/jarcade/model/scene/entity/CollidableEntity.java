@@ -17,12 +17,9 @@
 
 package de.javauni.jarcade.model.scene.entity;
 
-import de.javauni.utils.geom.Box;
-
 /**
  * an entity that will collide with other objects
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface CollidableEntity extends Entity {
-    Box getCollisionBox();
 }

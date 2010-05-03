@@ -1,44 +1,44 @@
 package de.javauni.jarcade.impl.phys;
 
-import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
+import de.javauni.jarcade.impl.scene.SimpleEntity;
+
+import de.javauni.jarcade.model.scene.entity.CollidableEntity;
+
+import de.javauni.utils.geom.Shape;
 
 import de.javauni.utils.props.ImpliedProperty;
 import de.javauni.utils.props.Property;
 
-import net.phys2d.math.ROVector2f;
-
 import net.phys2d.raw.Body;
 import net.phys2d.raw.World;
-import de.javauni.utils.geom.Box;
 
-public class Block extends SimpleCollidableEntity implements Physical {
-    private final Body phys;
+public class Block extends SimpleEntity implements Physical, CollidableEntity {
+    private final Body body;
 
     public Block(int id, 
-            @ImpliedProperty(name="position") Box pos,
-            @ImpliedProperty(name="collision") Box col,
+            @ImpliedProperty(name="position") Shape shape,
             @Property(name="mass", value="20") float m) {
-        super(id, pos, col);
-
-        phys = new Body(Utils.toPhys(col), m);
-        phys.setPosition(col.getX(), col.getY());
+        super(id, shape);
+        body = Phys.to(shape, m);
     }
 
     @Override
     public void addTo(World w) {
-        w.add(phys); 
+        w.add(body); 
     }
 
     @Override
     public void removeFrom(World w) {
-        w.remove(phys);
+        w.remove(body);
     }
 
     @Override
-    public Box getPositionBox() {
-        //TODO pos interface so we can use phys object 
-        ROVector2f pos = phys.getPosition();
-        return new Box(pos.getX(), pos.getY(), 
-                super.getPositionBox().getW(), super.getPositionBox().getY());
+    public Shape getShape() {
+        // XXX cache shape object?
+        return Phys.from(body);
+    }
+
+    public String toString() {
+        return body.toString();
     }
 }

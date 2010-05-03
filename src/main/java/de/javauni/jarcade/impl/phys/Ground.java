@@ -1,33 +1,38 @@
 package de.javauni.jarcade.impl.phys;
 
-import de.javauni.jarcade.impl.scene.SimpleCollidableEntity;
+import de.javauni.jarcade.impl.scene.SimpleEntity;
+
+import de.javauni.jarcade.model.scene.entity.CollidableEntity;
+
+import de.javauni.utils.geom.Shape;
 
 import de.javauni.utils.props.ImpliedProperty;
 
 import net.phys2d.raw.Body;
 import net.phys2d.raw.World;
-import de.javauni.utils.geom.Box;
 
-public class Ground extends SimpleCollidableEntity implements Physical {
-    private final Body phys;
+public class Ground extends SimpleEntity implements Physical, CollidableEntity {
+    private final Body body;
 
     public Ground(int id, 
-            @ImpliedProperty(name="position") Box pos,
-            @ImpliedProperty(name="collision") Box col) {
-        super(id, pos, col);
+            @ImpliedProperty(name="shape") Shape shape) {
+        super(id, shape);
 
-        phys = new Body(Utils.toPhys(col), Float.MIN_VALUE);
-        phys.setPosition(col.getX(), col.getY());
-        phys.setMoveable(false);
+        body = Phys.to(shape, Float.MAX_VALUE);
+        body.setMoveable(false);
     }
 
     @Override
     public void addTo(World w) {
-        w.add(phys); 
+        w.add(body); 
     }
 
     @Override
     public void removeFrom(World w) {
-        w.remove(phys);
+        w.remove(body);
+    }
+
+    public String toString() {
+        return body.toString();
     }
 }

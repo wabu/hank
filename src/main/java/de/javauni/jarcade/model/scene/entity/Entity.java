@@ -18,7 +18,7 @@
 package de.javauni.jarcade.model.scene.entity;
 
 import de.javauni.utils.HavingId;
-import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.Shape;
 
 /**
  * an entity simply is an object in the virtual space.
@@ -28,7 +28,7 @@ import de.javauni.utils.geom.Box;
  * @see Space
  */
 public interface Entity extends HavingId {
-    Box getPositionBox();
+    Shape getShape();
 
     /**
      * all entities get numbered, so they can be easyly compared, hashed

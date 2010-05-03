@@ -20,7 +20,6 @@ package de.javauni.jarcade.impl.scene;
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.model.scene.Viewport;
@@ -31,17 +30,19 @@ import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.SceneChangeListener;
 import de.javauni.jarcade.model.scene.SceneEdit;
 import de.javauni.utils.IdList;
-import de.javauni.utils.geom.Box;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import javax.annotation.Nullable;
 
+import de.javauni.utils.geom.Vec;
+import de.javauni.utils.geom.VecM;
+
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public class SceneImpl implements Scene, SceneEdit {
-    private final Box size;
+    private final VecM size;
     private final IdList<Entity> entities;
     private final SortedMap<Integer, LayerEdit> layers;
     // XXX when to get t3h zero layer
@@ -50,12 +51,11 @@ public class SceneImpl implements Scene, SceneEdit {
 
     private final Viewport view;
 
-    @Inject
     public SceneImpl(
             Channel<SceneChangeListener> chan,
             Channel<ViewportListener> viewChan) {
+        this.size = new VecM(0,0);
         this.chan = chan;
-        this.size = new Box(0, 0, 0, 0);
         this.entities = new IdList<Entity>();
         this.layers = new TreeMap<Integer, LayerEdit>();
         this.view = new WholeSceneView(viewChan, this);
@@ -63,7 +63,8 @@ public class SceneImpl implements Scene, SceneEdit {
         this.zero = null;
     }
 
-    public Box getWorldBox() {
+    @Override
+    public VecM getWorldSize() {
         return size;
     }
 

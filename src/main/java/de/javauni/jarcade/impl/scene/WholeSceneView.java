@@ -8,6 +8,8 @@ import de.javauni.jarcade.model.scene.Viewport;
 import de.javauni.jarcade.model.scene.ViewportListener;
 import de.javauni.jarcade.model.scene.entity.Entity;
 import de.javauni.utils.geom.Box;
+import de.javauni.utils.geom.Geoms;
+import de.javauni.utils.geom.Vec;
 
 public class WholeSceneView implements Viewport {
     private final Channel<ViewportListener> chan;
@@ -20,7 +22,9 @@ public class WholeSceneView implements Viewport {
 
     @Override
     public Box getView() {
-        return scene.getWorldBox();
+        Vec vec = scene.getWorldSize();
+        Vec mid = Geoms.scale(vec, 0.5f);
+        return new Box(mid, vec);
     }
 
     @Override

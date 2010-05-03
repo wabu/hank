@@ -15,32 +15,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.yarrish.model.level;
-
-import de.javauni.jarcade.impl.scene.SimpleActiveEntity;
-import de.javauni.jarcade.model.scene.entity.Movement;
-import de.javauni.jarcade.model.scene.entity.Moving;
-import de.javauni.utils.geom.Box;
-import de.javauni.utils.geom.Coord;
+package de.javauni.utils.geom;
 
 /**
+ * mutable coord implmentation
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class HankEntity extends SimpleActiveEntity<Movement> implements Moving {
-    public final static float DEFAULT_HANK_W = 0.8f;
-    public final static float DEFAULT_HANK_H = 1.8f;
+public class VecM implements Vec {
+    private float x;
+    private float y;
 
-    public HankEntity(int id, Coord coord) {
-        this(id, new Box(coord,
-                DEFAULT_HANK_W, DEFAULT_HANK_H));
+    public VecM(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public HankEntity(int id, Box pos) {
-        super(id, pos, Movement.none);
+    public float x() {
+        return x;
     }
 
-    public float getMovementSpeed() {
-        // TODO extract
-        return 1f;
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float y() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public void set(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 }
