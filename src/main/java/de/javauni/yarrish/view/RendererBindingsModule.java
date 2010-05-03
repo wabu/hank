@@ -3,6 +3,8 @@ package de.javauni.yarrish.view;
 import de.javauni.jarcade.impl.phys.Block;
 import de.javauni.jarcade.impl.phys.Ground;
 
+import de.javauni.jarcade.impl.scene.SimpleEntity;
+
 import de.javauni.jarcade.view.render.Renderer;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
@@ -15,6 +17,8 @@ public class RendererBindingsModule extends AbstractModule {
         bind(new TypeLiteral<Renderer<? super Block>>(){})
                 .to(GeneralEntityRenderer.class);
         bind(new TypeLiteral<Renderer<? super Ground>>(){})
+                .to(GeneralEntityRenderer.class);
+        bind(new TypeLiteral<Renderer<? super SimpleEntity>>(){})
                 .to(GeneralEntityRenderer.class);
     };
 }

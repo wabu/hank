@@ -12,6 +12,8 @@ import de.javauni.jarcade.impl.RendererModule;
 import de.javauni.jarcade.impl.scene.SceneImpl;
 import de.javauni.jarcade.impl.view.RendererThreadImpl;
 import de.javauni.jarcade.model.scene.Scene;
+
+import de.javauni.utils.guice.ScopeManagerModule;
 import de.javauni.yarrish.view.RendererBindingsModule;
 
 import java.util.concurrent.Executor;
@@ -26,6 +28,7 @@ public class RendererThreadTest {
     @Before
     public void setUp() {
         inj = Guice.createInjector(
+                new ScopeManagerModule(),
                 new RendererModule(),
                 new RendererBindingsModule(),
                 new OutputModule(),

@@ -16,6 +16,8 @@ import de.javauni.jarcade.impl.view.RendererMapImpl;
 import de.javauni.jarcade.impl.view.renderers.GeneralEntityRenderer;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.utils.geom.Box;
+
+import de.javauni.utils.guice.ScopeManagerModule;
 import de.javauni.yarrish.view.RendererBindingsModule;
 
 import java.util.concurrent.Executor;
@@ -30,6 +32,7 @@ public class RendererMapTest {
     @Before
     public void setUp() {
         inj = Guice.createInjector(
+                new ScopeManagerModule(),
                 new RendererModule(),
                 new RendererBindingsModule(),
                 new OutputModule(),

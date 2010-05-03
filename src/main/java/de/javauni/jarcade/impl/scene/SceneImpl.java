@@ -20,6 +20,8 @@ package de.javauni.jarcade.impl.scene;
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+
+import com.google.inject.Inject;
 import de.javauni.jarcade.event.Broadcastor;
 import de.javauni.jarcade.event.Channel;
 import de.javauni.jarcade.model.scene.Viewport;
@@ -35,7 +37,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import javax.annotation.Nullable;
 
-import de.javauni.utils.geom.Vec;
 import de.javauni.utils.geom.VecM;
 
 /**
@@ -51,6 +52,7 @@ public class SceneImpl implements Scene, SceneEdit {
 
     private final Viewport view;
 
+    @Inject
     public SceneImpl(
             Channel<SceneChangeListener> chan,
             Channel<ViewportListener> viewChan) {

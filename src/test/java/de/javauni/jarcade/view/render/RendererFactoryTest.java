@@ -27,6 +27,8 @@ import de.javauni.jarcade.impl.scene.SceneImpl;
 import de.javauni.jarcade.impl.scene.SimpleEntity;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.entity.Entity;
+
+import de.javauni.utils.guice.ScopeManagerModule;
 import de.javauni.yarrish.view.RendererBindingsModule;
 
 import java.util.concurrent.Executor;
@@ -45,6 +47,7 @@ public class RendererFactoryTest {
     @Before
     public void setUp() {
         inj = Guice.createInjector(
+                new ScopeManagerModule(),
                 new RendererModule(),
                 new RendererBindingsModule(),
                 new OutputModule(),
