@@ -17,8 +17,10 @@
 
 package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.jarcade.event.Channel;
+
+import de.javauni.jarcade.geom.Bound;
+import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.scene.event.LayerChangeListener;
 
 /**
  * the virtual space consists of different layers where all the entities live.
@@ -40,4 +42,6 @@ public interface Layer extends Iterable<Entity>{
      * @return distance of the layer
      */
     int getDistance();
+
+    Bound getPosition();
 }

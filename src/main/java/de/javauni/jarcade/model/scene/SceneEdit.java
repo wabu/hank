@@ -17,12 +17,10 @@
 
 package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
 import com.google.common.base.Function;
 import java.util.NoSuchElementException;
 
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface SceneEdit extends Scene {

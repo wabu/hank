@@ -19,14 +19,17 @@ package de.javauni.yarrish;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.javauni.jarcade.model.scene.ScenePhase;
-import de.javauni.yarrish.model.level.LevelAccess;
-import de.javauni.yarrish.model.main.MainModelAccess;
-import de.javauni.yarrish.model.main.MainState;
-import de.javauni.yarrish.view.MainView;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+import de.javauni.jarcade.model.main.MainModelAccess;
+import de.javauni.jarcade.model.main.MainState;
+import de.javauni.jarcade.model.scene.SceneModelAccess;
+import de.javauni.jarcade.model.scene.ScenePhase;
+
+import de.javauni.jarcade.view.MainView;
 
 /**
  * t3h main class
@@ -37,7 +40,7 @@ public class Main {
 
     public static void main(String[] args) 
             throws InterruptedException, IllegalStateException, IOException {
-        Injector inj = Guice.createInjector(new YarrishModule());
+        Injector inj = Guice.createInjector(new HankModule());
         MainModelAccess yma = inj.getInstance(MainModelAccess.class);
         inj.getInstance(MainView.class);
 
@@ -49,14 +52,14 @@ public class Main {
 
         Thread.sleep(500);
 
-        LevelAccess la = inj.getInstance(LevelAccess.class);
+        SceneModelAccess la = inj.getInstance(SceneModelAccess.class);
         log.debug("controlling level "+la);
         la.initialize("");
 
         la.setState(ScenePhase.running);
 
-        Thread.sleep(5000);
+        Thread.sleep(50000);
 
-        System.exit(0);
+        //System.exit(0);
     }
 }

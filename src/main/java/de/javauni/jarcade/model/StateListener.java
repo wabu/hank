@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.model;
 
-import de.javauni.jarcade.event.Listener;
+import de.javauni.jarcade.model.event.Listener;
 
 /**
  * listener interface for a state change

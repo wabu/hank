@@ -17,12 +17,10 @@
 
 package de.javauni.jarcade.model;
 
-import de.javauni.jarcade.exceptions.IllegalAction;
-
 /**
  * access to a model with a concreate main state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface StateModelAccess<S extends Enum<S>> {
-    void setState(S state) throws IllegalAction;
+    void setState(S state) throws IllegalArgumentException;
 }

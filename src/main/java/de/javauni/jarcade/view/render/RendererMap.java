@@ -1,7 +1,8 @@
 package de.javauni.jarcade.view.render;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
 import javax.annotation.Nullable;
+
+import de.javauni.jarcade.model.scene.Entity;
 
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>

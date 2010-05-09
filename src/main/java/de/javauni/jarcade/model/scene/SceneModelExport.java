@@ -20,7 +20,6 @@ package de.javauni.jarcade.model.scene;
 import de.javauni.jarcade.model.StateModelExport;
 
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface SceneModelExport extends StateModelExport<ScenePhase>{

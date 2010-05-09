@@ -16,7 +16,7 @@
  */
 package de.javauni.jarcade.model;
 
-import de.javauni.jarcade.event.Channel;
+import de.javauni.jarcade.model.event.Channel;
 
 /**
  * exports the state of a model with a concreate main state

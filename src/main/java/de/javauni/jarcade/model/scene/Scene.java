@@ -17,10 +17,11 @@
 
 package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.event.Channel;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.utils.geom.Vec;
+import de.javauni.jarcade.geom.Bound;
+import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.scene.event.SceneChangeListener;
+
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 
 /**
@@ -29,7 +30,7 @@ import edu.umd.cs.findbugs.annotations.CheckForNull;
  * @see Layer
  */
 public interface Scene {
-    Vec getWorldSize();
+    Bound getWorldSize();
     Viewport getViewport();
 
     Channel<SceneChangeListener> getSceneChannel();
@@ -48,7 +49,7 @@ public interface Scene {
      */
     Layer getLayer(int index) throws IndexOutOfBoundsException;
     /**
-     * get the layer with the zero index
+     * get the layer with the zero index, normally the main active layer
      * @return
      */
     Layer getZeroLayer();

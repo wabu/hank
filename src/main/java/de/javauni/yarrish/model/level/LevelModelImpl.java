@@ -21,22 +21,28 @@ import com.google.common.base.Function;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import de.javauni.jarcade.event.Channel;
-
-import de.javauni.jarcade.impl.phys.Block;
-import de.javauni.jarcade.impl.phys.Ground;
-import de.javauni.jarcade.impl.scene.LayerImpl;
-import de.javauni.jarcade.impl.scene.SceneModelImpl;
-import de.javauni.jarcade.impl.scene.SceneUpdateLoop;
-import de.javauni.jarcade.model.StateListener;
-import de.javauni.jarcade.model.scene.LayerChangeListener;
-import de.javauni.jarcade.model.scene.ScenePhase;
-import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.utils.geom.Box;
-import de.javauni.utils.geom.VecM;
-import de.javauni.utils.guice.ManagedScope;
 
 import java.io.IOException;
+
+import de.javauni.jarcade.geom.immutable.BoundI;
+import de.javauni.jarcade.geom.immutable.RectI;
+
+import de.javauni.jarcade.model.StateListener;
+
+import de.javauni.jarcade.model.event.Channel;
+
+import de.javauni.jarcade.model.phys.Grounded;
+
+import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.scene.LayerImpl;
+import de.javauni.jarcade.model.scene.SceneModelImpl;
+import de.javauni.jarcade.model.scene.ScenePhase;
+
+import de.javauni.jarcade.model.scene.event.LayerChangeListener;
+
+import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
+
+import de.javauni.jarcade.utils.guice.ManagedScope;
 
 /**
  *
@@ -44,7 +50,7 @@ import java.io.IOException;
  */
 @ManagedScope
 public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
-    private final LevelScene space;
+    private final LevelScene scene;
     private final Provider<Channel<LayerChangeListener>> layerChan;
 
     @Inject
@@ -53,21 +59,24 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
             final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {
         super(chan, scene, loop);
-        this.space = scene;
+        this.scene = scene;
         this.layerChan = layerChan;
     }
 
     @Override
     public void loadLevel(String ressources) throws IOException {
         // XXX layer channel foo
-        space.getWorldSize().set(500, 50);
-        space.addLayer(new LayerImpl(0, 0, layerChan.get()));
+        scene.setBounds(0,-10,200,100);
+        // TODO factory
+        scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10,200, 100),
+                    layerChan.get()));
 
-        space.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer f) {
-                return new Ground(f, new Box(0,0, 500, 10));
+        scene.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer id) {
+                return new Grounded(id, new RectI(0, -10, 200, 10));
             }
         }, 0);
+        /*
         space.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer f) {
                 return new Block(f, new Box(11, 11, .5f, .5f), 3f);
@@ -78,11 +87,12 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
                 return new Block(f, new Box(11.3f, 11.6f, .5f, .5f), 3f);
             }
         }, 0);
+        */
 
         // TODO behavior, perhaps in super classes
     }
 
     public LevelScene getScene() {
-        return space;
+        return scene;
     }
 }

@@ -1,6 +1,6 @@
 package de.javauni.jarcade.view.render;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
+import de.javauni.jarcade.model.scene.Entity;
 
 public interface RendererFactory {
 	<E extends Entity> Renderer<? super E> getRenderer(E entity);

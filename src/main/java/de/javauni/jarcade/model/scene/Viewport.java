@@ -17,10 +17,10 @@
 
 package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.event.Channel;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
-import de.javauni.utils.geom.Box;
+import de.javauni.jarcade.geom.Bound;
+import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.scene.event.ViewportListener;
 
 /**
  *
@@ -28,5 +28,5 @@ import de.javauni.utils.geom.Box;
  */
 public interface Viewport extends Iterable<Entity> {
     Channel<ViewportListener> getViewportChannel();
-    Box getView();
+    Bound getViewport();
 }

@@ -18,10 +18,10 @@
 package de.javauni.jarcade.model.scene;
 
 import de.javauni.jarcade.model.StateModelAccess;
+
 import java.io.IOException;
 
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface SceneModelAccess extends StateModelAccess<ScenePhase>{

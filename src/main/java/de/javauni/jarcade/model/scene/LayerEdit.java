@@ -17,7 +17,6 @@
 
 package de.javauni.jarcade.model.scene;
 
-import de.javauni.jarcade.model.scene.entity.Entity;
 import java.util.NoSuchElementException;
 
 /**

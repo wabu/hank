@@ -24,3 +24,4 @@ package de.javauni.jarcade.model.scene;
 public enum ScenePhase {
     loading, initialized, intro, warmup, running, paused, outro, closed;
 }
+
