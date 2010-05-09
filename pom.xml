@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.javauni</groupId>
-  <artifactId>yarrish</artifactId>
+  <artifactId>hank</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>yarrish game engine</name>
+  <name>The Advantures of Captain Hank</name>
   <url>https://dev.spline.de/trac/softspiele/</url>
   <licenses>
     <license>
@@ -29,7 +29,7 @@
   </developers>
 
   <properties>
-    <mainClass>de.javauni.yarrish.Main</mainClass>
+    <mainClass>de.javauni.hank.Main</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <netbeans.hint.license>gpl30</netbeans.hint.license>
   </properties>
