@@ -20,4 +20,8 @@ public final class VecI implements Vec {
     public float y() {
         return y;
     }
+
+    public String toString() {
+        return x+","+y;
+    };
 }

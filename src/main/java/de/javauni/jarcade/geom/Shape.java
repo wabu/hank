@@ -11,12 +11,6 @@ public interface Shape {
     float rotation();
 
     /**
-     * @return iterator through vertexes of the shape 
-     * @throws UnsupportedOperationException for some special shapes as circles ...  
-     * */
-    Iterable<? extends Vec> getVertexes() throws UnsupportedOperationException;
-
-    /**
      * call visitor for shapes interface
      * @param visitor
      * @return return value of visited method

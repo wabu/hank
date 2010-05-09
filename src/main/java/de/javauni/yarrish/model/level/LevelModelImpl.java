@@ -31,7 +31,8 @@ import de.javauni.jarcade.model.StateListener;
 
 import de.javauni.jarcade.model.event.Channel;
 
-import de.javauni.jarcade.model.phys.Grounded;
+import de.javauni.jarcade.model.phys.SimpleDynamicBody;
+import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
 import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.LayerImpl;
@@ -68,26 +69,24 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
         // XXX layer channel foo
         scene.setBounds(0,-10,200,100);
         // TODO factory
-        scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10,200, 100),
+        scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10, 200, 100),
                     layerChan.get()));
 
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
-                return new Grounded(id, new RectI(0, -10, 200, 10));
+                return new SimpleStaticBody(id, new RectI(0, -10, 200, 10));
             }
         }, 0);
-        /*
-        space.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer f) {
-                return new Block(f, new Box(11, 11, .5f, .5f), 3f);
+        scene.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer id) {
+                return new SimpleDynamicBody(id, new RectI(21, 13, 5, 5));
             }
         }, 0);
-        space.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer f) {
-                return new Block(f, new Box(11.3f, 11.6f, .5f, .5f), 3f);
+        scene.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer id) {
+                return new SimpleDynamicBody(id, new RectI(23, 20, 5, 5));
             }
         }, 0);
-        */
 
         // TODO behavior, perhaps in super classes
     }

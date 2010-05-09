@@ -1,13 +1,11 @@
 package de.javauni.jarcade.view.renderers;
 
-import java.awt.Polygon;
+import java.awt.geom.AffineTransform;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Singleton;
-
-
 
 import de.javauni.jarcade.geom.Vec;
 import de.javauni.jarcade.model.scene.Entity;
@@ -26,12 +24,17 @@ public class GeneralEntityRenderer implements Renderer<Entity> {
             log.trace("rendering "+entity);
         }
 
-        Polygon p = new Polygon();
-        for(Vec v : entity.getShape().getVertexes()) {
-            // XXX int cast are stupid, as we use a affine transform on them
-            p.addPoint((int)v.x(), (int)v.y());
-        }
+        Vec pos = entity.getShape().mid();
+        Vec size = entity.getShape().size();
+
+        AffineTransform tr = gfx.getTransform();
+
+        gfx.translate(pos.x(), pos.y());
+        gfx.rotate(entity.getShape().rotation());
+
 		gfx.setColor(Color.black);
-        gfx.fillPolygon(p);
+        gfx.fillRect((int)-size.x()/2, (int)-size.y()/2, (int)size.x(), (int)size.y());
+
+        gfx.setTransform(tr);
 	}
 }

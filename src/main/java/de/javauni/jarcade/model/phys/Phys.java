@@ -1,5 +1,7 @@
 package de.javauni.jarcade.model.phys;
 
+import java.lang.Iterable;
+
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -7,7 +9,9 @@ import java.util.LinkedList;
 import javax.annotation.CheckForNull;
 
 import org.jbox2d.collision.shapes.CircleDef;
+import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonDef;
+import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.ShapeDef;
 
 import org.jbox2d.common.Vec2;
@@ -17,9 +21,10 @@ import org.jbox2d.dynamics.Body;
 
 import com.google.common.base.Function;
 
+import com.google.common.collect.AbstractIterator;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
 
+import de.javauni.jarcade.geom.Bound;
 import de.javauni.jarcade.geom.Circle;
 import de.javauni.jarcade.geom.CompositeShape;
 import de.javauni.jarcade.geom.Polygon;
@@ -28,6 +33,15 @@ import de.javauni.jarcade.geom.Shape;
 import de.javauni.jarcade.geom.ShapeVisitor;
 import de.javauni.jarcade.geom.ShapeVisitorAdapter;
 import de.javauni.jarcade.geom.Vec;
+
+import de.javauni.jarcade.geom.immutable.VecI;
+
+import de.javauni.jarcade.model.phys.Phys;
+import de.javauni.jarcade.model.phys.Phys;
+import de.javauni.jarcade.model.phys.Phys;
+import de.javauni.jarcade.model.phys.Phys;
+
+import de.javauni.jarcade.utils.ArrayIterable;
 
 public class Phys {
     public static class PhysVec implements Vec{
@@ -43,93 +57,104 @@ public class Phys {
         public float y() {
             return vec.y;
         }
+
+        public String toString() {
+            return vec.toString();
+        };
     }
 
-    public static class TransformedShape implements Shape { 
-        protected final Shape base;
-        protected final Body body;
-
-        public TransformedShape(Shape base, Body body) {
-            this.base = base;
+    protected static abstract class Transformed implements Shape, Function<Vec2, Vec> {
+        final Body body;
+        protected Transformed(Body body) {
             this.body = body;
         }
 
-        public final Vec map(Vec v) {
-            return from(XForm.mul(body.getXForm(), to(v)));
-        }
+        public float rotation() {
+            return body.getAngle();
+        };
 
-        public final Vec mid() {
-            return map(base.mid());
-        }
-        public final Vec size() {
-            return map(base.size());
-        }
-        
-        public final float rotation() {
-            return base.rotation() + body.getAngle();
-        }
+        public Vec apply(Vec2 from) {
+            return from(XForm.mul(body.getMemberXForm(), from));
+        };
 
-        public final Iterable<? extends Vec> getVertexes()
-            throws UnsupportedOperationException {
-            return Iterables.transform(
-                    base.getVertexes(),
-                    new Function<Vec,Vec>() {
-                        public Vec apply(Vec from) {
-                            return map(from);
-                        };
-                    });
-        }
-
-        public <E> E accept(ShapeVisitor<E> visitor) {
-            return visitor.visit(this);
-        }
+        public String toString() {
+            return "@"+mid()+"+"+size();
+        };
     }
 
-    public static class TransformedRect extends TransformedShape implements Rect { 
-        public TransformedRect(Rect base, Body body) {
-            super(base, body);
+    public static class TransformedPoly extends Transformed implements Polygon { 
+        private final PolygonShape shape;
+
+        public TransformedPoly(PolygonShape shape, Body body) {
+            super(body);
+            this.shape = shape;
+        }
+
+        public Iterable<? extends Vec> getVertexes(){
+            Iterable<Vec2> it = new ArrayIterable<Vec2>(
+                    shape.getVertices(), shape.getVertexCount());
+            return Iterables.transform(it, this);
+        }
+
+        public Vec mid() {
+            return apply(shape.getCentroid());
+        }
+        public Vec size() {
+            return from(shape.getOBB().extents.mul(2f));
         }
 
         @Override
         public <E> E accept(ShapeVisitor<E> visitor) {
             return visitor.visit(this);
         }
+
+        public String toString() {
+            return "poly"+super.toString();
+        };
     }
 
-    public static class TransformedCircle extends TransformedShape implements Circle { 
-        private final float rad;
-        public TransformedCircle(Circle base, Body body) {
-            super(base, body);
-            rad = base.radius();
+    public static class TransformedCircle extends Transformed implements Circle { 
+        private final CircleShape shape;
+        public TransformedCircle(CircleShape shape, Body body) {
+            super(body);
+            this.shape = shape;
         }
 
+        public Vec mid() {
+            return apply(shape.getLocalPosition());
+        };
+
+        public Vec size() {
+            float d = radius()*2f;
+            return new VecI(d,d);
+        };
+
         public float radius() {
-            return rad;
+            return shape.getRadius();
         };
 
         @Override
         public <E> E accept(ShapeVisitor<E> visitor) {
             return visitor.visit(this);
         }
+
+        public String toString() {
+            return "circle"+super.toString();
+        };
     }
 
-    public static class TransformedPolygon extends TransformedShape implements Polygon { 
-        public TransformedPolygon(Polygon base, Body body) {
-            super(base, body);
+    public static class TransformedComposite extends Transformed implements CompositeShape { 
+        public TransformedComposite(Body body) {
+            super(body);
         }
 
-        @Override
-        public <E> E accept(ShapeVisitor<E> visitor) {
-            return visitor.visit(this);
-        }
-    }
-
-    public static class TransformedComposite extends TransformedShape implements CompositeShape { 
-        protected final CompositeShape composite;
-        public TransformedComposite(CompositeShape base, Body body) {
-            super(base, body);
-            this.composite = base;
-        }
+        public Vec mid() {
+            return from(body.getWorldCenter());
+        };
+        public Vec size() {
+            // todo calculate size;
+            return null;
+        };
 
         @Override
         public <E> E accept(ShapeVisitor<E> visitor) {
@@ -137,12 +162,18 @@ public class Phys {
         }
 
         public Iterator<Shape> iterator() {
-            return Iterators.transform(composite.iterator(),
-                new Function<Shape,Shape>() {
-                    public Shape apply(Shape from) {
-                        return from(body, from);
-                    };
-                });
+            return new AbstractIterator<Shape>() {
+                private org.jbox2d.collision.shapes.Shape shape = body.getShapeList();
+                protected Shape computeNext() {
+                    // XXX are shapes rly a single linked list
+                    if(shape == null) {
+                        return endOfData();
+                    }
+                    Shape trans = from(body, shape);
+                    shape = shape.getNext();
+                    return trans;
+                };
+            };
         };
     }
 
@@ -156,7 +187,7 @@ public class Phys {
         return shape.accept(new ShapeVisitorAdapter<ShapeDef>(){
             public ShapeDef visit(Polygon poly) {
                 PolygonDef pd = new PolygonDef();
-                for(Vec v : shape.getVertexes()) {
+                for(Vec v : poly.getVertexes()) {
                     pd.addVertex(to(v));
                 }
                 return pd;
@@ -175,9 +206,18 @@ public class Phys {
                     to(rect.mid()), rect.rotation());
                 return pd;
             };
+            public ShapeDef visit(Bound bound) {
+                Vec size = bound.size();
+
+                PolygonDef pd = new PolygonDef();
+                pd.setAsBox(size.x()/2f, size.y()/2f,
+                    to(bound.mid()), bound.rotation());
+                return pd;
+            };
         });
     }
 
+    @Deprecated
     public static org.jbox2d.collision.shapes.Shape[]
             addTo(final Body bd, final Shape shape) throws IllegalArgumentException {
         return shape.accept(
@@ -205,24 +245,26 @@ public class Phys {
         return new PhysVec(vec);
     }
 
-    @SuppressWarnings("unchecked")
-    public static <S extends Shape> S from(final Body b, final S base) {
-        return base.accept(new ShapeVisitorAdapter<S>() {
-            public S visit(Circle cirle) {
-                return (S)new TransformedCircle(cirle, b);
-            };
-            public S visit(CompositeShape composite) {
-                return (S)new TransformedComposite(composite, b);
-            };
-            public S visit(Polygon poly) {
-                return (S)new TransformedPolygon(poly, b);
-            };
-            public S visit(Rect rect) {
-                return (S)new TransformedRect(rect, b);
-            };
-            public S visit(Shape other) {
-                return (S)new TransformedShape(other, b);
-            };
-        });
+    public static Shape from(final Body body, final org.jbox2d.collision.shapes.Shape shape) {
+        switch(shape.getType()) {
+        case CIRCLE_SHAPE:
+            return new TransformedCircle((CircleShape)shape, body);
+        case POLYGON_SHAPE:
+            return new TransformedPoly((PolygonShape)shape, body);
+        case SHAPE_TYPE_COUNT:
+        case POINT_SHAPE:
+        case EDGE_SHAPE:
+        case UNKNOWN_SHAPE:
+        default:
+            throw new UnsupportedOperationException("can't convert a "+shape.getClass());
+        }
+    }
+
+    public static Shape from(final Body b) {
+        if(b.m_shapeCount == 1) {
+            return from(b, b.getShapeList());
+        } else {
+            return new TransformedComposite(b);
+        }
     }
 }

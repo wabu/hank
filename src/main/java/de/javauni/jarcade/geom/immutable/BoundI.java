@@ -4,8 +4,6 @@ import de.javauni.jarcade.geom.Bound;
 import de.javauni.jarcade.geom.ShapeVisitor;
 import de.javauni.jarcade.geom.Vec;
 
-import de.javauni.jarcade.utils.ArrayIterable;
-
 public final class BoundI implements Bound {
     private final VecI[] corners;
     private final VecI mid;
@@ -34,11 +32,6 @@ public final class BoundI implements Bound {
 	@Override
 	public <E> E accept(ShapeVisitor<E> visitor) {
 		return visitor.visit(this);
-	}
-
-	@Override
-	public Iterable<? extends Vec> getVertexes() throws UnsupportedOperationException {
-        return new ArrayIterable<Vec>(corners);
 	}
 
 	@Override

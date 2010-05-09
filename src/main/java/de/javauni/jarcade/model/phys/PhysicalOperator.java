@@ -39,7 +39,7 @@ public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
 		bb.upperBound.set(ub.x(), ub.y());
 
         //XXX magic number
-		Vec2 g = new Vec2(0.0f, -10.0f);
+		Vec2 g = new Vec2(0.0f, 10.0f);
 		boolean sleep = true;
 
 		world = new World(bb, g, sleep);
@@ -48,7 +48,7 @@ public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
 	@Override
 	public void step(Layer e, long delta) {
         //XXX magic number
-        world.step(1f/delta, 5);
+        world.step((float)delta/1000f, 5);
 	}
 
 	@Override
