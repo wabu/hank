@@ -1,6 +1,7 @@
 package de.javauni.jarcade.view.renderers;
 
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,7 @@ public class GeneralEntityRenderer implements Renderer<Entity> {
         gfx.rotate(entity.getShape().rotation());
 
 		gfx.setColor(Color.black);
-        gfx.fillRect((int)-size.x()/2, (int)-size.y()/2, (int)size.x(), (int)size.y());
+        gfx.fill(new Rectangle2D.Float(-size.x()/2f, -size.y()/2f, size.x(), size.y()));
 
         gfx.setTransform(tr);
 	}
