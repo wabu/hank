@@ -4,6 +4,7 @@ import org.jbox2d.collision.AABB;
 
 import org.jbox2d.common.Vec2;
 
+import org.jbox2d.dynamics.Steppable;
 import org.jbox2d.dynamics.World;
 
 import org.slf4j.Logger;
@@ -13,16 +14,13 @@ import com.google.inject.assistedinject.Assisted;
 
 import com.google.inject.Inject;
 
-
-
-
 import de.javauni.jarcade.geom.Vec;
 import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;
 import de.javauni.jarcade.model.scene.operate.Operator;
 
-public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
+public class PhysicalOperator implements Operator<Layer>, LayerChangeListener, Steppable {
     private final Logger log = LoggerFactory.getLogger(PhysicalOperator.class);
 
     private final World world;
@@ -39,24 +37,25 @@ public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
 		bb.upperBound.set(ub.x(), ub.y());
 
         //XXX magic number
-		Vec2 g = new Vec2(0.0f, -10.0f);
+		Vec2 g = new Vec2(0.0f, -30.0f);
 		boolean sleep = true;
 
 		world = new World(bb, g, sleep);
+        world.registerPostStep(this);
     }
 
 	@Override
 	public void step(Layer e, long delta) {
         //XXX magic number
-        world.step((float)delta/1000f, 5);
+        world.step((float)delta/1000f, 10);
 	}
 
 	@Override
 	public void onEntityAdded(Entity e) {
         if(e instanceof Physical) {
             Physical p = (Physical)e;
-            log.debug("added physical object "+p);
             p.addTo(world);
+            log.debug("added physical object "+p);
         }
 	}
 
@@ -64,8 +63,11 @@ public class PhysicalOperator implements Operator<Layer>, LayerChangeListener {
 	public void onEntityRemoved(Entity e) {
         if(e instanceof Physical) {
             Physical p = (Physical)e;
+            p.removeFrom(world);
             log.debug("removed physical object "+p);
-            p.addTo(world);
         }
 	}
+
+    public void step(float dt, int iterations) {
+    };
 }

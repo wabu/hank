@@ -45,13 +45,14 @@ class ChannelImpl<L extends Listener> implements Channel<L> {
     }
 
     public void broadcast(final Broadcastor<L> bc) {
-        exec.execute(new Runnable() {
+        for(L l : ls) {
+            bc.apply(l);
+        }
+        // XXX channel in same or other thread
+        /*exec.execute(new Runnable() {
             public void run() {
-                for(L l : ls) {
-                    bc.apply(l);
-                }
             }
-        });
+        });*/
     }
 
 }

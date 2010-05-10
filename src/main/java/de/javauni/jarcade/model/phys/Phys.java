@@ -19,6 +19,9 @@ import org.jbox2d.common.XForm;
 
 import org.jbox2d.dynamics.Body;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Function;
 
 import com.google.common.collect.AbstractIterator;
@@ -44,6 +47,8 @@ import de.javauni.jarcade.model.phys.Phys;
 import de.javauni.jarcade.utils.ArrayIterable;
 
 public class Phys {
+    private static final Logger log = LoggerFactory.getLogger(Phys.class);
+
     public static class PhysVec implements Vec{
         private final Vec2 vec;
 
@@ -69,6 +74,8 @@ public class Phys {
             this.body = body;
         }
 
+        abstract org.jbox2d.collision.shapes.Shape getShape();
+
         public float rotation() {
             return body.getAngle();
         };
@@ -82,12 +89,16 @@ public class Phys {
         };
     }
 
-    public static class TransformedPoly extends Transformed implements Polygon { 
+    public static final class TransformedPoly extends Transformed implements Polygon { 
         private final PolygonShape shape;
 
         public TransformedPoly(PolygonShape shape, Body body) {
             super(body);
             this.shape = shape;
+        }
+
+        public PolygonShape getShape() {
+            return shape;
         }
 
         public Iterable<? extends Vec> getVertexes(){
@@ -113,11 +124,50 @@ public class Phys {
         };
     }
 
+    public static final class TransformedRect extends Transformed implements Rect { 
+        private final PolygonShape shape;
+
+        public TransformedRect(PolygonShape shape, Body body) {
+            super(body);
+            this.shape = shape;
+        }
+
+        public PolygonShape getShape() {
+            return shape;
+        }
+
+        public Iterable<? extends Vec> getVertexes(){
+            Iterable<Vec2> it = new ArrayIterable<Vec2>(
+                    shape.getVertices(), shape.getVertexCount());
+            return Iterables.transform(it, this);
+        }
+
+        public Vec mid() {
+            return apply(shape.getCentroid());
+        }
+        public Vec size() {
+            return from(shape.getOBB().extents.mul(2f));
+        }
+
+        @Override
+        public <E> E accept(ShapeVisitor<E> visitor) {
+            return visitor.visit(this);
+        }
+
+        public String toString() {
+            return "rect"+super.toString();
+        };
+    }
+
     public static class TransformedCircle extends Transformed implements Circle { 
         private final CircleShape shape;
         public TransformedCircle(CircleShape shape, Body body) {
             super(body);
             this.shape = shape;
+        }
+
+        public CircleShape getShape() {
+            return shape;
         }
 
         public Vec mid() {
@@ -146,6 +196,10 @@ public class Phys {
     public static class TransformedComposite extends Transformed implements CompositeShape { 
         public TransformedComposite(Body body) {
             super(body);
+        }
+
+        public org.jbox2d.collision.shapes.Shape getShape() {
+            return body.getShapeList();
         }
 
         public Vec mid() {
@@ -184,6 +238,10 @@ public class Phys {
 
     @CheckForNull
     public static ShapeDef to(final Shape shape) {
+        if (shape instanceof Transformed) {
+            log.warn("call Phys.to with physical shape in\n{}",
+                    Thread.currentThread().getStackTrace());
+        }
         return shape.accept(new ShapeVisitorAdapter<ShapeDef>(){
             public ShapeDef visit(Polygon poly) {
                 PolygonDef pd = new PolygonDef();
@@ -202,6 +260,7 @@ public class Phys {
                 Vec size = rect.size();
 
                 PolygonDef pd = new PolygonDef();
+                pd.userData = Rect.class;
                 pd.setAsBox(size.x()/2f, size.y()/2f,
                     to(rect.mid()), rect.rotation());
                 return pd;
@@ -220,8 +279,7 @@ public class Phys {
     @Deprecated
     public static org.jbox2d.collision.shapes.Shape[]
             addTo(final Body bd, final Shape shape) throws IllegalArgumentException {
-        return shape.accept(
-                new ShapeVisitorAdapter<org.jbox2d.collision.shapes.Shape[]>(){
+        return shape.accept(new ShapeVisitorAdapter<org.jbox2d.collision.shapes.Shape[]>(){
             public org.jbox2d.collision.shapes.Shape[] visit(CompositeShape composite) {
                 LinkedList<org.jbox2d.collision.shapes.Shape> lst 
                     = new LinkedList<org.jbox2d.collision.shapes.Shape>();
@@ -250,6 +308,10 @@ public class Phys {
         case CIRCLE_SHAPE:
             return new TransformedCircle((CircleShape)shape, body);
         case POLYGON_SHAPE:
+            // XXX evil hack to get TransformedRects out of polys
+            if(((PolygonShape) shape).m_userData == Rect.class) {
+                return new TransformedRect((PolygonShape)shape, body);
+            }
             return new TransformedPoly((PolygonShape)shape, body);
         case SHAPE_TYPE_COUNT:
         case POINT_SHAPE:

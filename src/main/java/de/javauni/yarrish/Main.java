@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import de.javauni.jarcade.model.main.MainModelAccess;
 import de.javauni.jarcade.model.main.MainState;
 import de.javauni.jarcade.model.scene.SceneModelAccess;
+import de.javauni.jarcade.model.scene.SceneModelExport;
 import de.javauni.jarcade.model.scene.ScenePhase;
 
 import de.javauni.jarcade.view.MainView;
@@ -45,21 +46,20 @@ public class Main {
         inj.getInstance(MainView.class);
 
         yma.setState(MainState.Menu);
-        Thread.sleep(500);
+        Thread.sleep(100);
         yma.setState(MainState.Game);
-        Thread.sleep(500);
+        Thread.sleep(100);
         yma.setState(MainState.Level);
-
-        Thread.sleep(500);
+        Thread.sleep(100);
 
         SceneModelAccess la = inj.getInstance(SceneModelAccess.class);
+        SceneModelExport le = inj.getInstance(SceneModelExport.class);
         log.debug("controlling level "+la);
         la.initialize("");
 
+        while(le.getState() == ScenePhase.loading) {
+            Thread.sleep(200);
+        }
         la.setState(ScenePhase.running);
-
-        Thread.sleep(50000);
-
-        //System.exit(0);
     }
 }

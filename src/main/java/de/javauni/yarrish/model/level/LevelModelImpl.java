@@ -17,6 +17,8 @@
 
 package de.javauni.yarrish.model.level;
 
+import java.util.Random;
+
 import com.google.common.base.Function;
 
 import com.google.inject.Inject;
@@ -71,7 +73,6 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
         // TODO factory
         scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10, 200, 150),
                     layerChan.get()));
-
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
                 return new SimpleStaticBody(id, new RectI(0, -10, 100, 10));
@@ -82,17 +83,16 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
                 return new SimpleStaticBody(id, new RectI(100, 0, 100, 10));
             }
         }, 0);
-        scene.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer id) {
-                return new SimpleDynamicBody(id, new RectI(21, 73, 5, 5));
-            }
-        }, 0);
-        scene.addEntity(new Function<Integer, Entity>() {
-            public Entity apply(Integer id) {
-                return new SimpleDynamicBody(id, new RectI(23, 80, 5, 5));
-            }
-        }, 0);
-
+        final Random rnd = new Random();
+        for (int i=0; i<100; i++) {
+            scene.addEntity(new Function<Integer, Entity>() {
+                public Entity apply(Integer id) {
+                    return new SimpleDynamicBody(id, new RectI(
+                            100+(float)rnd.nextGaussian()*10, 
+                            100+(float)rnd.nextGaussian()*30, 3, 3));
+                }
+            }, 0);
+        }
         // TODO behavior, perhaps in super classes
     }
 

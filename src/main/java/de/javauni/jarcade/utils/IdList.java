@@ -44,7 +44,7 @@ public class IdList<E> extends AbstractList<E>{
     private final AtomicInteger ids = new AtomicInteger();
 
     public IdList() {
-        this(64);
+        this(128);
     }
 
     @SuppressWarnings("unchecked")

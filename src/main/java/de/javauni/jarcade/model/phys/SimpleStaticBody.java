@@ -25,6 +25,7 @@ public class SimpleStaticBody extends AbstractEntity implements Physical {
     public void addTo(final World w) {
         ShapeDef def = Phys.to(shape);
         Body body = w.getGroundBody();
+        def.friction = 1.5f;
 
         phys = body.createShape(def);
         shape = Phys.from(body, phys);

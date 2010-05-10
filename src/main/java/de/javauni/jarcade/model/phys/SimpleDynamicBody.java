@@ -11,7 +11,7 @@ import de.javauni.jarcade.model.scene.AbstractEntity;
 
 public class SimpleDynamicBody extends AbstractEntity implements Physical {
     private Shape shape;
-    private org.jbox2d.collision.shapes.Shape phys;
+    private Body body;
 
     public SimpleDynamicBody(int id, Shape shape) {
         super(id);
@@ -26,17 +26,18 @@ public class SimpleDynamicBody extends AbstractEntity implements Physical {
     public void addTo(final World w) {
         ShapeDef def = Phys.to(shape);
         BodyDef bd = new BodyDef();
-        def.density = 0.3f;
+        def.density = 1.0f;
 
-        Body body = w.createBody(bd);
-        phys = body.createShape(def);
+        body = w.createBody(bd);
+        org.jbox2d.collision.shapes.Shape phys 
+            = body.createShape(def);
         body.setMassFromShapes();
 
         this.shape = Phys.from(body, phys);
     }
 
     public void removeFrom(World w) {
-        w.getGroundBody().destroyShape(phys);
+        w.destroyBody(body);
     }
 
     public String toString() {
