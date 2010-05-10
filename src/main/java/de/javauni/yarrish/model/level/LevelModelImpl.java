@@ -67,24 +67,29 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
     @Override
     public void loadLevel(String ressources) throws IOException {
         // XXX layer channel foo
-        scene.setBounds(0,-10,200,100);
+        scene.setBounds(0,-10,200,150);
         // TODO factory
-        scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10, 200, 100),
+        scene.addLayer(new LayerImpl(0, 0, new BoundI(0, -10, 200, 150),
                     layerChan.get()));
 
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
-                return new SimpleStaticBody(id, new RectI(0, -10, 200, 10));
+                return new SimpleStaticBody(id, new RectI(0, -10, 100, 10));
             }
         }, 0);
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
-                return new SimpleDynamicBody(id, new RectI(21, 13, 5, 5));
+                return new SimpleStaticBody(id, new RectI(100, 0, 100, 10));
             }
         }, 0);
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
-                return new SimpleDynamicBody(id, new RectI(23, 20, 5, 5));
+                return new SimpleDynamicBody(id, new RectI(21, 73, 5, 5));
+            }
+        }, 0);
+        scene.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer id) {
+                return new SimpleDynamicBody(id, new RectI(23, 80, 5, 5));
             }
         }, 0);
 

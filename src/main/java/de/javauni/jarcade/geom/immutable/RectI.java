@@ -17,7 +17,7 @@ public final class RectI implements Rect {
         corners[1] = new VecI(x+w,y);
         corners[2] = new VecI(x+w,y+h);
         corners[3] = new VecI(x  ,y+h);
-        mid = new VecI(x+w/2f, y+w/2f);
+        mid = new VecI(x+w/2f, y+h/2f);
         size = new VecI(w,h);
     }
 
@@ -45,5 +45,9 @@ public final class RectI implements Rect {
 	public Vec size() {
 		return size;
 	}
+
+    public String toString() {
+        return "rect@"+mid()+"+"+size();
+    };
 }
 
