@@ -7,7 +7,7 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.World;
 
 import de.javauni.jarcade.geom.Shape;
-import de.javauni.jarcade.model.scene.AbstractEntity;
+import de.javauni.jarcade.model.entities.AbstractEntity;
 
 public class SimpleDynamicBody extends AbstractEntity implements Physical {
     private Shape shape;

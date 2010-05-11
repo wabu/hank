@@ -11,7 +11,7 @@ import com.google.inject.name.Named;
 
 import de.javauni.jarcade.geom.Bound;
 
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.Viewport;
 import de.javauni.jarcade.utils.UpdateLoop;

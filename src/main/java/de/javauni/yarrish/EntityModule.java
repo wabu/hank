@@ -3,6 +3,7 @@ package de.javauni.yarrish;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 
+import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
@@ -18,6 +19,9 @@ public class EntityModule extends AbstractModule {
             .to(new TypeLiteral<GeneralEntityRenderer>(){});
         bind(new TypeLiteral<Renderer<? super SimpleDynamicBody>>(){})
             .to(new TypeLiteral<GeneralEntityRenderer>(){});
+        bind(new TypeLiteral<Renderer<? super ControlableBody>>(){})
+            .to(new TypeLiteral<GeneralEntityRenderer>(){});
+        
 	}
 
 }

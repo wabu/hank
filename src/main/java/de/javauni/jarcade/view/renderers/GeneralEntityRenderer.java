@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Singleton;
 
 import de.javauni.jarcade.geom.Vec;
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.view.render.Renderer;
 
 import java.awt.Color;

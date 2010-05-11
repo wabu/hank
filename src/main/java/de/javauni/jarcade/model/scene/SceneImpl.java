@@ -31,6 +31,7 @@ import de.javauni.jarcade.geom.Bound;
 
 import de.javauni.jarcade.geom.immutable.BoundI;
 
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.event.Broadcastor;
 import de.javauni.jarcade.model.event.Channel;
 

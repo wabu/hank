@@ -17,9 +17,9 @@
 
 package de.javauni.jarcade.model.scene.event;
 
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.event.Listener;
 
-import de.javauni.jarcade.model.scene.Entity;
 
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>

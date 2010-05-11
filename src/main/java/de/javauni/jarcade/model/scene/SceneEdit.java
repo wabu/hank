@@ -18,6 +18,10 @@
 package de.javauni.jarcade.model.scene;
 
 import com.google.common.base.Function;
+
+import de.javauni.jarcade.model.entities.Entity;
+
+
 import java.util.NoSuchElementException;
 
 /**

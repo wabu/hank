@@ -8,6 +8,8 @@ import java.util.LinkedList;
 
 import javax.annotation.CheckForNull;
 
+import org.jbox2d.collision.AABB;
+
 import org.jbox2d.collision.shapes.CircleDef;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonDef;
@@ -206,8 +208,21 @@ public class Phys {
             return from(body.getWorldCenter());
         };
         public Vec size() {
+            AABB tmp = new AABB();
+            AABB all = null;
             // todo calculate size;
-            return null;
+            org.jbox2d.collision.shapes.Shape shape;
+            for(shape = getShape(); shape != null; shape=shape.m_next) {
+                shape.computeAABB(tmp, body.getMemberXForm());
+                if(all == null) {
+                    all = new AABB(tmp);
+                } else {
+                    Vec2.minToOut(tmp.lowerBound, all.lowerBound, all.lowerBound);
+                    Vec2.maxToOut(tmp.upperBound, all.upperBound, all.upperBound);
+                }
+            }
+            return new VecI(all.upperBound.x-all.lowerBound.x,
+                    all.upperBound.y-all.lowerBound.y);
         };
 
         @Override

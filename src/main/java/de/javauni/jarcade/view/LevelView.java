@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 
 import de.javauni.jarcade.model.StateListener;
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.SceneModelExport;
 import de.javauni.jarcade.model.scene.ScenePhase;

@@ -2,7 +2,7 @@ package de.javauni.jarcade.view.render;
 
 import com.google.inject.Inject;
 
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.utils.guice.ManagedScope;
 
 import com.google.inject.Injector;

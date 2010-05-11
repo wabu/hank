@@ -31,12 +31,13 @@ import de.javauni.jarcade.geom.immutable.RectI;
 
 import de.javauni.jarcade.model.StateListener;
 
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.event.Channel;
 
+import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
-import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.LayerImpl;
 import de.javauni.jarcade.model.scene.SceneModelImpl;
 import de.javauni.jarcade.model.scene.ScenePhase;
@@ -81,6 +82,11 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
                 return new SimpleStaticBody(id, new RectI(100, 0, 100, 10));
+            }
+        }, 0);
+        scene.addEntity(new Function<Integer, Entity>() {
+            public Entity apply(Integer id) {
+                return new ControlableBody(id, new BoundI(20, 0, 3, 5));
             }
         }, 0);
         final Random rnd = new Random();

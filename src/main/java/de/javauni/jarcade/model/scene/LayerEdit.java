@@ -19,6 +19,9 @@ package de.javauni.jarcade.model.scene;
 
 import java.util.NoSuchElementException;
 
+import de.javauni.jarcade.model.entities.Entity;
+
+
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>

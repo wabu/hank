@@ -3,7 +3,7 @@ package de.javauni.jarcade.view.render;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.utils.guice.ManagedScope;
 
 
