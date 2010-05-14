@@ -17,6 +17,7 @@
 
 package de.javauni.yarrish.model.level;
 
+import de.javauni.jarcade.model.event.Channel;
 import de.javauni.jarcade.model.scene.SceneModelAccess;
 
 /**
@@ -24,4 +25,5 @@ import de.javauni.jarcade.model.scene.SceneModelAccess;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface LevelAccess extends SceneModelAccess {
+    Channel<CharacterControlListener> getCharacterChannel();
 }

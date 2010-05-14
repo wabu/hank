@@ -32,6 +32,7 @@ import de.javauni.jarcade.geom.immutable.RectI;
 import de.javauni.jarcade.model.StateListener;
 
 import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.event.Broadcastor;
 import de.javauni.jarcade.model.event.Channel;
 
 import de.javauni.jarcade.model.phys.ControlableBody;
@@ -56,15 +57,18 @@ import de.javauni.jarcade.utils.guice.ManagedScope;
 public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
     private final LevelScene scene;
     private final Provider<Channel<LayerChangeListener>> layerChan;
+    private final Channel<CharacterControlListener> charChan;
 
     @Inject
     public LevelModelImpl(
-            final Channel<StateListener<ScenePhase>> chan, 
+            final Channel<StateListener<ScenePhase>> sceneChan,
+            final Channel<CharacterControlListener> charChan,
             final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {
-        super(chan, scene, loop);
+        super(sceneChan, scene, loop);
         this.scene = scene;
         this.layerChan = layerChan;
+        this.charChan = charChan;
     }
 
     @Override
@@ -86,7 +90,15 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
         }, 0);
         scene.addEntity(new Function<Integer, Entity>() {
             public Entity apply(Integer id) {
-                return new ControlableBody(id, new BoundI(20, 0, 3, 5));
+                final ControlableBody c = new ControlableBody(id, new BoundI(20, 0, 3, 5));
+                charChan.broadcast(new Broadcastor<CharacterControlListener>() {
+
+                    @Override
+                    public void apply(CharacterControlListener l) {
+                        l.noCharacterControlCreated(c, 0);
+                    }
+                });
+                return c;
             }
         }, 0);
         final Random rnd = new Random();
@@ -104,5 +116,10 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
 
     public LevelScene getScene() {
         return scene;
+    }
+
+    @Override
+    public Channel<CharacterControlListener> getCharacterChannel() {
+        return charChan;
     }
 }

@@ -30,7 +30,7 @@ public abstract class AbstractControlableEntity extends AbstractEntity implement
         return new AbstractNeuron(false) {
             protected float apply() {
                 // XXX just a test
-                if(System.currentTimeMillis()%3000<=2000)
+                if(System.currentTimeMillis()%2000<=1000)
                     return 1;
                 else
                     return jump;
