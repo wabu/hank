@@ -22,13 +22,13 @@ public class KeyboardControlImpl implements KeyboardControl {
 	private KeyboardControlMap kbdMap;
 	
 	@Inject
-	public KeyboardControlImpl() {
+	public KeyboardControlImpl(Integer playerNo) {
 		Injector inj = Guice.createInjector(new ControlModule());
 		kbdMap = inj.getInstance(KeyboardControlMap.class);
 	}
 	public void keyPressed(KeyEvent e)
 	{
-		Pair<Integer, ControlEvent> event = kbdMap.get(e);
+		Pair<Integer, ControlEvent> event = kbdMap.get(e.getKeyCode());
 		
 		switch (event.snd)
 		{
