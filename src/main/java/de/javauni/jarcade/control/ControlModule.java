@@ -6,16 +6,26 @@ package de.javauni.jarcade.control;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
-import com.google.inject.name.Names;
+import com.google.inject.assistedinject.FactoryProvider;
 
-public class ControlModule implements Module{
+public class ControlModule implements Module {
 
-	@Override
-	public void configure(Binder binder) {
-		binder.bind(KeyboardControl.class).annotatedWith(
-				Names.named("KeyboardControl")).to(KeyboardControlImpl.class);
-		binder.bind(KeyboardControlMap.class).annotatedWith(
-				Names.named("KeyboardControlMap")).to(KeyboardControlMapImpl.class);
-	}
-	
+    @Override
+    public void configure(Binder binder) {
+        // we bind only the factory interface
+        binder.bind(KeyboardControlFactory.class)
+            // we won't have to implement the factory, as guice knows better how to create objects
+            .toProvider(FactoryProvider.newFactory(
+                // we have to give guice the interface for the factory
+                KeyboardControlFactory.class,
+                // and the implemnting class
+                KeyboardControlImpl.class));
+
+        binder.bind(KeyboardControlMap.class)
+            // don't use @Named Annotations if the type is non-ambiguous
+                // (for anything not String, Int, Long)
+            /*.annotatedWith(Names.named("KeyboardControlMap")) */
+            .to(KeyboardControlMapImpl.class);
+    }
+
 }

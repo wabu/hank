@@ -12,16 +12,14 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.javauni.jarcade.control.ControlModule;
-import de.javauni.jarcade.control.KeyboardControlMap;
 
 public class KeyboardInputTest {
 
-	private KeyboardControlMap kbdMap;
+	private Injector inj;
 	
 	@Before
 	public void setUp() throws Exception {
-		Injector inj = Guice.createInjector(new ControlModule());
-		kbdMap = inj.getInstance(KeyboardControlMap.class);
+	    inj = Guice.createInjector(new ControlModule());
 	}
 
 	@After
@@ -30,9 +28,9 @@ public class KeyboardInputTest {
 
 	@Test
 	public void testKeyboardInput() {
-		KeyboardInput input = new KeyboardInput();
-		input.keyPressed(new KeyEvent(null, 0, 0, 0, KeyEvent.VK_UP, ' '));
-		
+	    // use an injector to create the object, not any contructor
+	    KeyboardInput input = inj.getInstance(KeyboardInput.class);
+	    input.keyPressed(new KeyEvent(null, 0, 0, 0, KeyEvent.VK_UP, ' '));
 	}
 
 	@Test
