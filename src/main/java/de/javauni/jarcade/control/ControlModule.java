@@ -6,7 +6,6 @@ package de.javauni.jarcade.control;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
-import com.google.inject.assistedinject.FactoryProvider;
 
 public class ControlModule implements Module {
 
