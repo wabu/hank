@@ -6,11 +6,8 @@ package de.javauni.jarcade.view.gui;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import com.google.inject.Guice;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 
-import de.javauni.jarcade.control.ControlModule;
 import de.javauni.jarcade.control.KeyboardControl;
 
 public class KeyboardInput extends KeyAdapter {
