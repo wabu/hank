@@ -19,17 +19,10 @@ public class ControlManagementImpl implements ControlManagement {
     private KeyboardControlMap keymap;
 
     public ControlManagementImpl() {
-        try {
+        
             Injector inj = Guice.createInjector(new ControlModule());
             keymap = inj.getInstance(KeyboardControlMapImpl.class);
-            load();
-            Pair<Integer,ControlEvent> a = keymap.get(1);
-            System.out.println(a.fst+" "+a.snd);
-        } catch (CouldNotLoadExeption ex) {
-            Logger.getLogger(ControlManagementImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ControlDataIsCorruptExeption ex) {
-            Logger.getLogger(ControlManagementImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+         
 
     }
 
@@ -88,7 +81,5 @@ public class ControlManagementImpl implements ControlManagement {
         Logger.getLogger("(ControleManagement)Controls saved");
     }
 
-    public static void main(String[] args) throws IOException {
-        ControlManagementImpl cm = new ControlManagementImpl();
-    }
+    
 }
