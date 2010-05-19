@@ -16,7 +16,7 @@ public class ControlModule implements Module {
         binder.bind(KeyboardControl.class)
             .to(KeyboardControlImpl.class);
         binder.bind(KeyboardControlMap.class)
-            .to(KeyboardControlMapImpl.class);
+            .to(KeyboardControlMapImpl.class).asEagerSingleton();
         binder.bind(ControlManagement.class)
                 .to(ControlManagementImpl.class);
 
