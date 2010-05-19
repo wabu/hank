@@ -59,7 +59,6 @@ public class ControlManagementImpl implements ControlManagement {
     }
 
     public void save(String dateiname) throws CouldNotSaveExeption {
-        
         file=new File(dateiname);
         save();
     }
@@ -80,6 +79,13 @@ public class ControlManagementImpl implements ControlManagement {
         }
         Logger.getLogger("(ControleManagement)Controls saved");
     }
-
+    public static void main(String[] args){
+        Injector inj = Guice.createInjector(new ControlModule());
+        KeyboardControlMap map1 = inj.getInstance(KeyboardControlMap.class);
+        
+        KeyboardControlMap map2 = inj.getInstance(KeyboardControlMap.class);
+        map1.put(1, new Pair(1,ControlEvent.Jump));
+        System.out.println(map2.get(1).fst+""+map2.get(1).snd);
+    }
     
 }
