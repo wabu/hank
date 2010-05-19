@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.util.logging.Logger;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+
+import de.javauni.jarcade.utils.Pair;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
