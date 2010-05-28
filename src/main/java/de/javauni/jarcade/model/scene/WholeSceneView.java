@@ -39,6 +39,7 @@ public class WholeSceneView extends SceneChangeListenerAdapter implements Viewpo
     @Override
     public void onEntitySpawned(final Entity e, Layer layer) {
         chan.broadcast(new Broadcastor<ViewportListener>() {
+            @Override
             public void apply(ViewportListener l) {
                 l.entityEntersViewport(e);
             };
@@ -48,6 +49,7 @@ public class WholeSceneView extends SceneChangeListenerAdapter implements Viewpo
     @Override
     public void onEntityRemoved(final Entity e, Layer layer) {
         chan.broadcast(new Broadcastor<ViewportListener>() {
+            @Override
             public void apply(ViewportListener l) {
                 l.entityLeavesViewport(e);
             };
