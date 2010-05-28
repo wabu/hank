@@ -63,6 +63,7 @@ public abstract class AbstractStateModel<S extends Enum<S>>
         }
     }
 
+    @Override
     final public Channel<StateListener<S>> getStateChannel() {
         return channel;
     }
@@ -72,6 +73,7 @@ public abstract class AbstractStateModel<S extends Enum<S>>
 
     protected void doStateBroadcast(final S src, final S tgt) {
         channel.broadcast(new Broadcastor<StateListener<S>>() {
+            @Override
             public void apply(StateListener<S> l) {
                 l.onStateChange(tgt);
             }
