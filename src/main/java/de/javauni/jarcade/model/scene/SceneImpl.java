@@ -82,6 +82,7 @@ public class SceneImpl implements Scene, SceneEdit {
         return chan;
     }
 
+    @Override
     public LayerEdit getLayer(int index) {
         if(!layers.containsKey(index)){
             throw new IndexOutOfBoundsException(
@@ -90,22 +91,27 @@ public class SceneImpl implements Scene, SceneEdit {
         return layers.get(index);
     }
 
+    @Override
     public Iterable<? extends LayerEdit> getLayers() {
         return layers.values();
     }
 
+    @Override
     public LayerEdit getZeroLayer() {
         return zero;
     }
 
+    @Override
     public Entity getEntity(int id) {
         return entities.get(id);
     }
 
+    @Override
     public Iterable<Entity> getAllEntities() {
         return Iterables.filter(entities, Predicates.notNull());
     }
 
+    @Override
     public int addLayer(final LayerEdit lay) throws IllegalArgumentException {
         if(layers.containsKey(lay.getIndex())) {
             throw new IllegalArgumentException(
@@ -117,6 +123,7 @@ public class SceneImpl implements Scene, SceneEdit {
         layers.put(lay.getIndex(), lay);
 
         chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            @Override
             public void apply(SceneChangeListener l) {
                 l.onLayerAdded(lay);
             }
@@ -125,6 +132,7 @@ public class SceneImpl implements Scene, SceneEdit {
         return lay.getIndex();
     }
 
+    @Override
     public <E extends Entity> E addEntity(Function<Integer, E> construct, final int layerIndex)
             throws IndexOutOfBoundsException {
         final LayerEdit layer = getLayer(layerIndex);
@@ -132,6 +140,7 @@ public class SceneImpl implements Scene, SceneEdit {
         layer.add(entity);
 
         chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            @Override
             public void apply(SceneChangeListener l) {
                 l.onEntitySpawned(entity, layer);
             }
@@ -139,6 +148,7 @@ public class SceneImpl implements Scene, SceneEdit {
         return entity;
     }
 
+    @Override
     public void moveEntity(final Entity e, int oldLayer, int newLayer) 
             throws NoSuchElementException, IndexOutOfBoundsException {
         final LayerEdit l1 = getLayer(oldLayer);
@@ -148,12 +158,14 @@ public class SceneImpl implements Scene, SceneEdit {
         l2.add(e);
 
         chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            @Override
             public void apply(SceneChangeListener l) {
                 l.onEntityLayerChange(e, l1, l2);
             }
         });
     }
 
+    @Override
     public void removeEnity(final Entity e, int layerIndex) 
             throws NoSuchElementException, IndexOutOfBoundsException {
         final LayerEdit layer = getLayer(layerIndex);
@@ -161,6 +173,7 @@ public class SceneImpl implements Scene, SceneEdit {
         entities.remove(e);
 
         chan.broadcast(new Broadcastor<SceneChangeListener>() {
+            @Override
             public void apply(SceneChangeListener l) {
                 l.onEntitySpawned(e, layer);
             }
