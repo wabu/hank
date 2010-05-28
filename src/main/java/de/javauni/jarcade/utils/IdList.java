@@ -64,9 +64,11 @@ public class IdList<E> extends AbstractList<E>{
         final int id = ids.getAndIncrement();
         assureSize(id);
         return new AddHelper<S>() {
+            @Override
             public void set(S e) {
                 IdList.this.set(id, e);
             }
+            @Override
             public int getId() {
                 return id;
             }
