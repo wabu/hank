@@ -79,6 +79,7 @@ public abstract class SceneModelImpl extends
     
     public abstract void loadLevel(String ressources) throws IOException;
 
+    @Override
     public void initialize(String ressources) throws IllegalStateException, IOException {
         Preconditions.checkState(getState().ordinal() <= ScenePhase.loading.ordinal(),
                 "level allready initialized");
@@ -89,6 +90,7 @@ public abstract class SceneModelImpl extends
         setState(ScenePhase.initialized);
     }
 
+    @Override
     public Scene getScene() {
         return scene;
     }
