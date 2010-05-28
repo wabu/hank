@@ -46,6 +46,7 @@ public final class RectI implements Rect {
 		return size;
 	}
 
+    @Override
     public String toString() {
         return "rect@"+mid()+"+"+size();
     };
