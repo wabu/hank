@@ -57,6 +57,7 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
         this.fac = fac;
     }
 
+    @Override
     public void onStateChange(ScenePhase state) {
         log.debug("level is now {}",state);
         switch(state) {
@@ -77,9 +78,11 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
         }
     }
 
+    @Override
     public void onLayerAdded(Layer layer) {
     }
 
+    @Override
     public void onEntitySpawned(Entity e, Layer layer) {
         log.debug("new entity {}",e);
         if(fac.isRenderable(e)) {
@@ -87,10 +90,12 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
         }
     }
 
+    @Override
     public void onEntityRemoved(Entity e, Layer layer) {
         log.debug("entity {} removed",e);
     }
 
+    @Override
     public void onEntityLayerChange(Entity e, Layer before, Layer layer) {
         log.debug("entity {} channged layer", e);
     }
