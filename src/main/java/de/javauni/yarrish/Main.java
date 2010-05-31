@@ -23,6 +23,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.javauni.jarcade.control.ControlDataIsCorruptExeption;
+import de.javauni.jarcade.control.ControlManagement;
+
 
 import de.javauni.jarcade.model.main.MainModelAccess;
 import de.javauni.jarcade.model.main.MainState;
@@ -40,10 +43,13 @@ public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) 
-            throws InterruptedException, IllegalStateException, IOException {
+            throws InterruptedException, IllegalStateException, IOException, ControlDataIsCorruptExeption {
         Injector inj = Guice.createInjector(new HankModule());
         MainModelAccess yma = inj.getInstance(MainModelAccess.class);
         inj.getInstance(MainView.class);
+
+        ControlManagement cm = inj.getInstance(ControlManagement.class);
+        cm.load();
 
         yma.setState(MainState.Menu);
         Thread.sleep(100);

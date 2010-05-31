@@ -17,6 +17,8 @@
 
 package de.javauni.yarrish.model.level;
 
+import de.javauni.jarcade.model.event.Channel;
+
 import de.javauni.jarcade.model.scene.SceneModelExport;
 
 /**
@@ -24,5 +26,5 @@ import de.javauni.jarcade.model.scene.SceneModelExport;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface LevelExport extends SceneModelExport {
-    LevelScene getScene();
+    Channel<CharacterControlListener> getCharacterChannel();
 }

@@ -27,6 +27,8 @@ import de.javauni.jarcade.model.StateListener;
 import de.javauni.jarcade.model.main.MainModelExport;
 import de.javauni.jarcade.model.main.MainState;
 
+import de.javauni.jarcade.view.gui.LevelView;
+
 /**
  * dummy view that shows how everything can be combined
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>

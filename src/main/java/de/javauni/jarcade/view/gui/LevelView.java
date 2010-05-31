@@ -19,10 +19,14 @@ package de.javauni.jarcade.view.gui;
 
 import com.google.inject.Inject;
 
+import de.javauni.jarcade.control.KeyboardControl;
+
 
 
 
 import de.javauni.jarcade.model.StateListener;
+
+import de.javauni.jarcade.model.control.CharacterControl;
 import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.SceneModelExport;
@@ -36,25 +40,35 @@ import de.javauni.jarcade.view.render.RenderingLoop;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.javauni.yarrish.model.level.CharacterControlListener;
+import de.javauni.yarrish.model.level.LevelExport;
+
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ManagedScope
-public class LevelView implements StateListener<ScenePhase>, SceneChangeListener {
+public class LevelView implements StateListener<ScenePhase>, 
+       SceneChangeListener, CharacterControlListener {
     private final Logger log = LoggerFactory.getLogger(LevelView.class);
     private final RenderingLoop loop;
     private final RendererMap map;
     private final RendererFactory fac;
+    private final KeyboardControl kbCtl;
 
     @Inject
-    public LevelView(SceneModelExport e, 
-            RenderingLoop loop, RendererMap map, RendererFactory fac) {
+    public LevelView(LevelExport e, 
+            RenderingLoop loop, 
+            RendererMap map, 
+            RendererFactory fac,
+            KeyboardControl kbCtl) {
         e.getScene().getSceneChannel().addListener(this);
         e.getStateChannel().addListener(this);
+        e.getCharacterChannel().addListener(this);
         this.loop = loop;
         this.map = map;
         this.fac = fac;
+        this.kbCtl = kbCtl;
     }
 
     @Override
@@ -100,4 +114,8 @@ public class LevelView implements StateListener<ScenePhase>, SceneChangeListener
         log.debug("entity {} channged layer", e);
     }
 
+    @Override
+    public void newCharacterControlCreated(CharacterControl ctl, int num) {
+        kbCtl.registerControl(ctl, num);
+    }
 }

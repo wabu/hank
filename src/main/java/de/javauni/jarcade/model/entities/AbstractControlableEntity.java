@@ -5,7 +5,7 @@ import de.javauni.jarcade.model.control.CharacterControl;
 import de.javauni.jarcade.model.control.Neuron;
 
 public abstract class AbstractControlableEntity extends AbstractEntity implements CharacterControl {
-    private float direction = 1;
+    private float direction = 0;
     private float jump = 0;
     private float crouch = 0;
 
@@ -29,11 +29,7 @@ public abstract class AbstractControlableEntity extends AbstractEntity implement
     public Neuron neuronalJump() {
         return new AbstractNeuron(false) {
             protected float apply() {
-                // XXX just a test
-                if(System.currentTimeMillis()%2000<=1000)
-                    return 1;
-                else
-                    return jump;
+                return jump;
             };
             protected void apply(float val) {
                 jump = val;

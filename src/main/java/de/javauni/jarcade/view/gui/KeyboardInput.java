@@ -16,12 +16,6 @@ public class KeyboardInput extends KeyAdapter {
 
     @Inject
     public KeyboardInput(KeyboardControl keyboardControl) {
-        /* injectors are only used to bootstrap the app, 
-         * they are never ever created locally, as we can't confiure them 
-         * form outside the class anymore
-        Injector inj = Guice.createInjector(new ControlModule());
-        keyboardControl = inj.getInstance(KeyboardControl.class);
-         */
         this.keyboardControl = keyboardControl;
     }
 

@@ -92,10 +92,9 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
             public Entity apply(Integer id) {
                 final ControlableBody c = new ControlableBody(id, new BoundI(20, 0, 3, 5));
                 charChan.broadcast(new Broadcastor<CharacterControlListener>() {
-
                     @Override
                     public void apply(CharacterControlListener l) {
-                        l.noCharacterControlCreated(c, 0);
+                        l.newCharacterControlCreated(c, 0);
                     }
                 });
                 return c;

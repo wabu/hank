@@ -22,10 +22,12 @@ public class OutputFrame extends ConstructorFrame implements Output {
                @Named("win-x") Integer x,
                @Named("win-y") Integer y,
                @Named("win-width") Integer width,
-               @Named("win-height") Integer height) {
+               @Named("win-height") Integer height,
+               KeyboardInput kbIn) {
         super(fenstername, x, y, width, height);
         panel = new OutputPanel(x, y, width, height);
         this.add(panel);
+        this.addKeyListener(kbIn);
         img_ghost = panel.createImage(width, height);
         g_ghost = (Graphics2D)img_ghost.getGraphics();
     }

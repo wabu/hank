@@ -25,5 +25,5 @@ import de.javauni.jarcade.model.event.Listener;
  * @author kmochi
  */
 public interface CharacterControlListener extends Listener {
-    void noCharacterControlCreated(CharacterControl ctl, int num);
+    void newCharacterControlCreated(CharacterControl ctl, int num);
 }
