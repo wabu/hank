@@ -1,4 +1,4 @@
-package de.javauni.jarcade.control;
+package de.javauni.jarcade.control.playercontrol;
 
 import java.awt.event.KeyEvent;
 
@@ -11,6 +11,11 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import de.javauni.jarcade.control.controlmanagement.ControlEvent;
+import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.main.MainModelExport;
+import de.javauni.jarcade.model.main.MainState;
+
 import de.javauni.jarcade.model.control.CharacterControl;
 import de.javauni.jarcade.utils.Pair;
 
@@ -19,16 +24,17 @@ import de.javauni.jarcade.utils.Pair;
  */
 
 @Singleton
-public class KeyboardControlImpl implements KeyboardControl {
+public class PlayerControlImpl implements PlayerControl, StateListener<MainState> {
 
-    private final Logger log = LoggerFactory.getLogger(KeyboardControlImpl.class);
-    private KeyboardControlMap kbdMap;
+    private final Logger log = LoggerFactory.getLogger(PlayerControlImpl.class);
+    private PlayerControlMap kbdMap;
     private Map<Integer, CharacterControl> ctlMap;
 
     @Inject
-    public KeyboardControlImpl(KeyboardControlMap kbdMap) {
+    public PlayerControlImpl(MainModelExport model, PlayerControlMap kbdMap) {
         this.kbdMap = kbdMap;
         this.ctlMap = new HashMap<Integer, CharacterControl>();
+        model.getStateChannel().addListener(this);
     }
 
     public void registerControl(CharacterControl ctl, int playerNo) {
@@ -84,4 +90,10 @@ public class KeyboardControlImpl implements KeyboardControl {
         }
 
      }
+
+	@Override
+	public void onStateChange(MainState state) {
+		
+		
+	}
 }

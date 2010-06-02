@@ -5,28 +5,46 @@ package de.javauni.jarcade.view.gui;
  */
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.inject.Inject;
 
-import de.javauni.jarcade.control.KeyboardControl;
+import de.javauni.jarcade.control.AbstractControl;
+import de.javauni.jarcade.control.playercontrol.PlayerControl;
+import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.main.MainState;
 
-public class KeyboardInput extends KeyAdapter {
+public class KeyboardInput extends KeyAdapter implements StateListener<MainState> {
 
-    private final KeyboardControl keyboardControl;
+    private AbstractControl control;
+    private Map<MainState, AbstractControl> stateControlMap;
 
     @Inject
-    public KeyboardInput(KeyboardControl keyboardControl) {
-        this.keyboardControl = keyboardControl;
+    public KeyboardInput(PlayerControl playerControl) {
+        this.control = playerControl;
+        stateControlMap = new HashMap<MainState, AbstractControl>();
+        stateControlMap.put(MainState.Level, playerControl);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keyboardControl.keyPressed(e);
+    	control.keyPressed(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keyboardControl.keyReleased(e);
+    	control.keyReleased(e);
     }
+
+	@Override
+	public void onStateChange(MainState state) {
+		switch (state)
+		{
+		case Level:
+			
+		}
+		
+	}
 
 }

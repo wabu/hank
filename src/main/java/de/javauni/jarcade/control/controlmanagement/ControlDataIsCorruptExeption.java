@@ -15,15 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package de.javauni.jarcade.control;
+package de.javauni.jarcade.control.controlmanagement;
 
 /**
  *
  * @author kmochi
  */
-public interface ControlManagement {
-    void save() throws CouldNotSaveExeption;
-    void save(String dateiname) throws CouldNotSaveExeption;
-    void load() throws CouldNotLoadExeption, ControlDataIsCorruptExeption;
-    void load(String dateiname) throws CouldNotLoadExeption, ControlDataIsCorruptExeption;
+public class ControlDataIsCorruptExeption extends Exception{
+    public ControlDataIsCorruptExeption(String s) {
+        super(s);
+    }
 }

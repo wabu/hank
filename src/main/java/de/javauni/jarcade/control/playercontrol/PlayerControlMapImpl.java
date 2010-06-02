@@ -1,4 +1,4 @@
-package de.javauni.jarcade.control;
+package de.javauni.jarcade.control.playercontrol;
 
 
 /**
@@ -8,10 +8,11 @@ package de.javauni.jarcade.control;
 import com.google.inject.Singleton;
 import java.util.HashMap;
 
+import de.javauni.jarcade.control.controlmanagement.ControlEvent;
 import de.javauni.jarcade.utils.Pair;
 
 @Singleton
-public class KeyboardControlMapImpl extends HashMap<Integer, Pair<Integer,ControlEvent>> implements KeyboardControlMap {
+public class PlayerControlMapImpl extends HashMap<Integer, Pair<Integer,ControlEvent>> implements PlayerControlMap {
 
 	/**
 	 * 

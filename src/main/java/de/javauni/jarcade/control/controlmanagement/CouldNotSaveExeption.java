@@ -1,4 +1,4 @@
-package de.javauni.jarcade.control;
+package de.javauni.jarcade.control.controlmanagement;
 
 import java.io.FileNotFoundException;
 

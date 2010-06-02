@@ -1,4 +1,4 @@
-package de.javauni.jarcade.control;
+package de.javauni.jarcade.control.controlmanagement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,9 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
+
+import de.javauni.jarcade.control.ControlModule;
+import de.javauni.jarcade.control.playercontrol.PlayerControlMap;
 import de.javauni.jarcade.utils.Pair;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,10 +23,10 @@ import java.util.Set;
 public class ControlManagementImpl implements ControlManagement {
     private final Logger log = LoggerFactory.getLogger(ControlManagementImpl.class);
     private File file = new File("Keyboard.ini");
-    private KeyboardControlMap keymap;
+    private PlayerControlMap keymap;
 
     @Inject
-    public ControlManagementImpl(KeyboardControlMap keymap) {
+    public ControlManagementImpl(PlayerControlMap keymap) {
         this.keymap = keymap;
     }
 
@@ -85,9 +88,9 @@ public class ControlManagementImpl implements ControlManagement {
         Injector inj = Guice.createInjector(new ControlModule());
         ControlManagement cm = inj.getInstance(ControlManagement.class);
 
-        KeyboardControlMap map1 = inj.getInstance(KeyboardControlMap.class);
+        PlayerControlMap map1 = inj.getInstance(PlayerControlMap.class);
         
-        KeyboardControlMap map2 = inj.getInstance(KeyboardControlMap.class);
+        PlayerControlMap map2 = inj.getInstance(PlayerControlMap.class);
         map1.put(1, new Pair(1,ControlEvent.Jump));
 
         cm.save();

@@ -23,8 +23,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.javauni.jarcade.control.ControlDataIsCorruptExeption;
-import de.javauni.jarcade.control.ControlManagement;
+import de.javauni.jarcade.control.controlmanagement.ControlDataIsCorruptExeption;
+import de.javauni.jarcade.control.controlmanagement.ControlManagement;
 
 
 import de.javauni.jarcade.model.main.MainModelAccess;

@@ -20,8 +20,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Logger;
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 
+import de.javauni.jarcade.control.controlmanagement.ControlDataIsCorruptExeption;
+import de.javauni.jarcade.control.controlmanagement.ControlEvent;
+import de.javauni.jarcade.control.controlmanagement.ControlManagement;
+import de.javauni.jarcade.control.controlmanagement.ControlManagementImpl;
+import de.javauni.jarcade.control.controlmanagement.CouldNotLoadExeption;
+import de.javauni.jarcade.control.controlmanagement.CouldNotSaveExeption;
+import de.javauni.jarcade.control.playercontrol.PlayerControlMap;
 import de.javauni.jarcade.utils.Pair;
 
 import java.io.BufferedReader;
@@ -43,7 +51,7 @@ import static org.junit.Assert.*;
  */
 public class ControlManagementTest {
 
-    KeyboardControlMap keymap;
+    PlayerControlMap keymap;
     ControlManagement manager;
 
     public ControlManagementTest() {
@@ -58,10 +66,10 @@ public class ControlManagementTest {
     }
 
     @Before
-    public void setUp() {
-        Injector inj = Guice.createInjector(new ControlModule());
-        keymap = inj.getInstance(KeyboardControlMapImpl.class);
-        manager = inj.getInstance(ControlManagementImpl.class);
+    @Inject
+    public void setUp(PlayerControlMap keymap, ControlManagement manager) {
+        this.keymap = keymap;
+        this.manager = manager;
     }
 
     @After
@@ -113,9 +121,9 @@ public class ControlManagementTest {
         }
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-            assertTrue(br.readLine().equals("1\t1\t3"));
-            assertTrue(br.readLine().equals("2\t1\t1"));
-            assertTrue(br.readLine().equals("3\t1\t2"));
+            assertTrue(br.readLine().equals("1\t1\tJump"));
+            assertTrue(br.readLine().equals("2\t1\tMoveLeft"));
+            assertTrue(br.readLine().equals("3\t1\tMoveRight"));
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ControlManagementTest.class.getName()).log(Level.SEVERE, null, ex);
         }

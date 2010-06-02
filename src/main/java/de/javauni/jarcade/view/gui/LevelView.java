@@ -19,7 +19,7 @@ package de.javauni.jarcade.view.gui;
 
 import com.google.inject.Inject;
 
-import de.javauni.jarcade.control.KeyboardControl;
+import de.javauni.jarcade.control.playercontrol.PlayerControl;
 
 
 
@@ -54,21 +54,21 @@ public class LevelView implements StateListener<ScenePhase>,
     private final RenderingLoop loop;
     private final RendererMap map;
     private final RendererFactory fac;
-    private final KeyboardControl kbCtl;
+    private final PlayerControl plCtl;
 
     @Inject
     public LevelView(LevelExport e, 
             RenderingLoop loop, 
             RendererMap map, 
             RendererFactory fac,
-            KeyboardControl kbCtl) {
+            PlayerControl plCtl) {
         e.getScene().getSceneChannel().addListener(this);
         e.getStateChannel().addListener(this);
         e.getCharacterChannel().addListener(this);
         this.loop = loop;
         this.map = map;
         this.fac = fac;
-        this.kbCtl = kbCtl;
+        this.plCtl = plCtl;
     }
 
     @Override
@@ -116,6 +116,6 @@ public class LevelView implements StateListener<ScenePhase>,
 
     @Override
     public void newCharacterControlCreated(CharacterControl ctl, int num) {
-        kbCtl.registerControl(ctl, num);
+        plCtl.registerControl(ctl, num);
     }
 }
