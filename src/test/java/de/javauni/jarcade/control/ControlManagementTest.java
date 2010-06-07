@@ -19,8 +19,8 @@ package de.javauni.jarcade.control;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Logger;
+
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import de.javauni.jarcade.control.controlmanagement.ControlDataIsCorruptExeption;
@@ -45,6 +45,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import de.javauni.yarrish.MainModelModule;
+
 /**
  *
  * @author kmochi
@@ -66,10 +68,11 @@ public class ControlManagementTest {
     }
 
     @Before
-    @Inject
-    public void setUp(PlayerControlMap keymap, ControlManagement manager) {
-        this.keymap = keymap;
-        this.manager = manager;
+    // COMMENT(wabu): @Inject does not work for junit tests
+    public void setUp() {  // PlayerControlMap keymap, ControlManagement manager) {
+        Injector inj = Guice.createInjector(new ControlModule(), new MainModelModule());
+        this.keymap = inj.getInstance(PlayerControlMap.class);
+        this.manager = inj.getInstance(ControlManagement.class);
     }
 
     @After
