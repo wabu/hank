@@ -10,6 +10,8 @@ import com.google.inject.Scopes;
 
 import de.javauni.jarcade.control.controlmanagement.ControlManagement;
 import de.javauni.jarcade.control.controlmanagement.ControlManagementImpl;
+import de.javauni.jarcade.control.gamecontrol.GameControl;
+import de.javauni.jarcade.control.gamecontrol.GameControlImpl;
 import de.javauni.jarcade.control.playercontrol.PlayerControl;
 import de.javauni.jarcade.control.playercontrol.PlayerControlImpl;
 import de.javauni.jarcade.control.playercontrol.PlayerControlMap;
@@ -27,7 +29,9 @@ public class ControlModule implements Module {
         binder.bind(PlayerControlMap.class)
             .to(PlayerControlMapImpl.class).in(Scopes.SINGLETON);
         binder.bind(ControlManagement.class)
-                .to(ControlManagementImpl.class);
+            .to(ControlManagementImpl.class);
+        binder.bind(GameControl.class)
+            .to(GameControlImpl.class);
     }
 
 }

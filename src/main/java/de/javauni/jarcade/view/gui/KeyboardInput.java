@@ -11,6 +11,7 @@ import java.util.Map;
 import com.google.inject.Inject;
 
 import de.javauni.jarcade.control.AbstractControl;
+import de.javauni.jarcade.control.gamecontrol.GameControl;
 import de.javauni.jarcade.control.playercontrol.PlayerControl;
 import de.javauni.jarcade.model.StateListener;
 import de.javauni.jarcade.model.main.MainState;
@@ -21,10 +22,12 @@ public class KeyboardInput extends KeyAdapter implements StateListener<MainState
     private Map<MainState, AbstractControl> stateControlMap;
 
     @Inject
-    public KeyboardInput(PlayerControl playerControl) {
+    public KeyboardInput(PlayerControl playerControl,
+    		GameControl gameControl) {
         this.control = playerControl;
         stateControlMap = new HashMap<MainState, AbstractControl>();
         stateControlMap.put(MainState.Level, playerControl);
+        stateControlMap.put(MainState.Game, gameControl);
     }
 
     @Override
@@ -39,12 +42,7 @@ public class KeyboardInput extends KeyAdapter implements StateListener<MainState
 
 	@Override
 	public void onStateChange(MainState state) {
-		switch (state)
-		{
-		case Level:
-			
-		}
-		
+		this.control = stateControlMap.get(state);
 	}
 
 }
