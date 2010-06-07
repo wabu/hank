@@ -9,27 +9,36 @@ import com.google.inject.name.Named;
 import de.javauni.jarcade.geom.Bound;
 
 import de.javauni.jarcade.geom.immutable.BoundI;
+import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.main.MainModelExport;
+import de.javauni.jarcade.model.main.MainState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @SuppressWarnings("serial")
-public class OutputFrame extends ConstructorFrame implements Output {
+public class OutputFrame extends ConstructorFrame implements Output, StateListener<MainState> {
 
     private final Image img_ghost;
     private final Graphics2D g_ghost;
     private final OutputPanel panel;
-
+    private final Logger logger = LoggerFactory.getLogger(OutputFrame.class);
     @Inject
     OutputFrame(@Named("win-name") String fenstername,
                @Named("win-x") Integer x,
                @Named("win-y") Integer y,
                @Named("win-width") Integer width,
                @Named("win-height") Integer height,
-               KeyboardInput kbIn) {
+               KeyboardInput kbIn, MainModelExport model) {
         super(fenstername, x, y, width, height);
+        model.getStateChannel().addListener(this);
+        
         panel = new OutputPanel(x, y, width, height);
         this.add(panel);
         this.addKeyListener(kbIn);
         img_ghost = panel.createImage(width, height);
         g_ghost = (Graphics2D)img_ghost.getGraphics();
+        
     }
 
     @Override
@@ -71,5 +80,12 @@ public class OutputFrame extends ConstructorFrame implements Output {
     @Override
     public void clear() {
         g_ghost.clearRect(0, 0, getWidth(), getHeight());
+    }
+
+    @Override
+    public void onStateChange(MainState state) {
+        for(;;){
+            logger.debug(state.toString());
+        }
     }
 }
