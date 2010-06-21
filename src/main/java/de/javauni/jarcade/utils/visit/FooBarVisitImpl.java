@@ -1,7 +1,8 @@
 package de.javauni.jarcade.utils.visit;
 
-public class FooBarVisitImpl implements FooBarVisitAdapter {
+import static de.javauni.jarcade.utils.visit.FooBarVisitAdapter.*;
 
+public class FooBarVisitImpl implements FooBarVisitAdapter {
     static class VisitorAdapter<R> {
         private final FooBarVisitor<R> visitor;
         public VisitorAdapter(FooBarVisitor<R> visitor) {
@@ -56,9 +57,10 @@ public class FooBarVisitImpl implements FooBarVisitAdapter {
         baz = new FooAdapter(foo);
     }
 
+
     @Override
-    public <R> R accept(FooBarVisitor<R> visitor) {
-        return baz.accept(visitor);
-    }
+    public <R, VR extends VisitAdapter.Fix<R,? extends FooBarVisitAdapter.FooBarVisitor<?>>> R accept(VR visitor) {
+        return baz.accept((FooBarVisitor<R>)visitor);
+    };
 }
 
