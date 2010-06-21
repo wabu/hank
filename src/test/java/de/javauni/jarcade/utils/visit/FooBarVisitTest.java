@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import static de.javauni.jarcade.utils.visit.FooBarVisitAdapter.*;
 
 public class FooBarVisitTest {
     private FooBarVisitImpl baz;
@@ -19,7 +18,7 @@ public class FooBarVisitTest {
     }
 
     @Test
-    public void testAccpet() {
+    public void testVisit() {
         baz.set(foo);
         String f = baz.accept(new FooBarVisitor<String>() {
             public String visit(Bar b) {
@@ -48,5 +47,12 @@ public class FooBarVisitTest {
 
         });
         assertEquals("value returned", "bar", b); 
+        /*
+        baz.accept(new PseudoVisitor());
+        Number num = baz.accept(new FooBarVisitor<String>() {
+            public String visit(Bar bar) {return null;}
+           public String visit(Foo foo) {return null;}
+        });
+        //*/
     }
 }
