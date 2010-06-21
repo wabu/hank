@@ -1,7 +1,7 @@
 package de.javauni.jarcade.view.impl;
 
+import java.awt.Component;
 import java.awt.Graphics2D;
-import java.awt.Panel;
 
 import java.awt.image.BufferStrategy;
 
@@ -12,16 +12,22 @@ import de.javauni.jarcade.geom.immutable.BoundI;
 import de.javauni.jarcade.view.GraphicsContext;
 
 public class JavaGraphicsContext implements GraphicsContext {
-    private final Panel panel;
+    private final Component win;
     private final BufferStrategy buffer;
+    private final Bound bound;
 
-    public JavaGraphicsContext(Panel panel, BufferStrategy buffer) {
-        this.panel = panel;
+    private Graphics2D gfx;
+
+    public JavaGraphicsContext(Component win, BufferStrategy buffer) {
+        this.win = win;
         this.buffer = buffer;
+        this.bound = new BoundI(0, 0, win.getWidth(), win.getHeight());
+        this.gfx = (Graphics2D)buffer.getDrawGraphics();
     }
 
-    public Panel getPanel(){
-        return this.panel;
+    // TODO use canvas+panel instead?
+    public Component getWindow(){
+        return this.win;
     }
 
 
@@ -30,15 +36,16 @@ public class JavaGraphicsContext implements GraphicsContext {
     }
 
     public Bound getBound() {
-        return new BoundI(0, 0,
-                panel.getWidth(), panel.getHeight());
+        return bound;
     }
 
+
     public Graphics2D getGraphics() {
-        return (Graphics2D)buffer.getDrawGraphics();
+        return gfx;
     }
 
     public void swapBuffer() {
         buffer.show();
+        gfx = (Graphics2D)buffer.getDrawGraphics();
     }
 }

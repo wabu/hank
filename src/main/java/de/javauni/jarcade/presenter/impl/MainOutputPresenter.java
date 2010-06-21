@@ -19,14 +19,17 @@ import de.javauni.jarcade.presenter.Presentor;
 
 import de.javauni.jarcade.presenter.interactions.TransitionPerformer;
 
+import de.javauni.jarcade.utils.guice.ManagedScope;
+
 import de.javauni.jarcade.view.GraphicsContext;
 import de.javauni.jarcade.view.GraphicsOutput;
 import de.javauni.jarcade.view.View;
 
 import de.javauni.jarcade.view.impl.JavaGraphicsContext;
 
+@ManagedScope
 public class MainOutputPresenter<G extends GraphicsContext> 
-    implements TransitionPerformer<MainState>, ChangeListener<MainState> {
+    implements Presentor<MainModel>, TransitionPerformer<MainState>, ChangeListener<MainState> {
 
     private static final Logger logger =
         LoggerFactory.getLogger(MainOutputPresenter.class);
