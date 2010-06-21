@@ -6,10 +6,10 @@ import com.google.inject.TypeLiteral;
 import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
+import de.javauni.jarcade.presenter.rendering.Renderer;
 
-import de.javauni.jarcade.view.render.Renderer;
 
-import de.javauni.jarcade.view.renderers.GeneralEntityRenderer;
+import de.javauni.jarcade.view.render.GeneralEntityRenderer;
 
 public class EntityModule extends AbstractModule {
 

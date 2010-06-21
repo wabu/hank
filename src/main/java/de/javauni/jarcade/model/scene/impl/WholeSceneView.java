@@ -4,10 +4,10 @@ import java.util.Iterator;
 
 import de.javauni.jarcade.geom.Bound;
 
-import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.impl.event.Broadcastor;
 import de.javauni.jarcade.model.impl.event.Channel;
 
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.Viewport;

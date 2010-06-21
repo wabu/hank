@@ -56,7 +56,27 @@ public class MainModelImpl extends AbstractStateModel<MainModel.State> implement
                 scopes.activateScope(tgt);
                 break;
             default:
-                throw new UnsupportedOperationException("menu "+tgt+" not implemented yet");
+                throw new UnsupportedOperationException("state "+tgt+" not implemented yet");
+        }
+    }
+
+    @Override
+    public void setNextState() {
+        switch(getState()) {
+            case Void:
+                setState(State.Menu);
+                break;
+            case Menu:
+                setState(State.Game);
+                break;
+            case Game:
+                setState(State.Level);
+                break;
+            case Level:
+                setState(State.Game);
+                break;
+            default:
+                throw new UnsupportedOperationException("can't set next state after "+getState());
         }
     }
 }

@@ -9,6 +9,6 @@ public interface StateModel<S extends Enum<S>> extends Model {
     Channel<ChangeListener<S>> getStateChangeChannel();
 
     interface ChangeListener<S extends Enum<S>> {
-        void onStateChange(S state);
+        void onStateChange(S src, S tgt);
     }
 }

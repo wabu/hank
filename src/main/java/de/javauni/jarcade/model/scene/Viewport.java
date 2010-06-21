@@ -19,7 +19,6 @@ package de.javauni.jarcade.model.scene;
 
 
 import de.javauni.jarcade.geom.Bound;
-import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.impl.event.Channel;
 import de.javauni.jarcade.model.scene.event.ViewportListener;
 
