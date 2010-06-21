@@ -17,7 +17,7 @@
 
 package de.javauni.yarrish.model.level;
 
-import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.impl.event.Channel;
 import de.javauni.jarcade.model.scene.SceneModelAccess;
 
 /**

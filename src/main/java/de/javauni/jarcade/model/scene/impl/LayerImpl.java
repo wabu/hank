@@ -15,15 +15,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.scene;
+package de.javauni.jarcade.model.scene.impl;
 
 import de.javauni.jarcade.geom.Bound;
 
 import de.javauni.jarcade.model.entities.Entity;
-import de.javauni.jarcade.model.event.Broadcastor;
-import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.impl.event.Broadcastor;
+import de.javauni.jarcade.model.impl.event.Channel;
 
-import de.javauni.jarcade.model.scene.LayerEdit;
+import de.javauni.jarcade.model.scene.Layer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +34,7 @@ import de.javauni.jarcade.model.scene.event.LayerChangeListener;
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class LayerImpl implements LayerEdit {
+public class LayerImpl implements Layer.Edit {
     private final Channel<LayerChangeListener> chan;
     private final int index;
     private final int distance;

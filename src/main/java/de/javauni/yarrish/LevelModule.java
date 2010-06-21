@@ -3,8 +3,8 @@ package de.javauni.yarrish;
 import com.google.inject.AbstractModule;
 
 
-import de.javauni.jarcade.model.scene.SceneImpl;
-import de.javauni.jarcade.model.scene.SceneModelImpl;
+import de.javauni.jarcade.model.scene.impl.SceneImpl;
+import de.javauni.jarcade.model.scene.impl.SceneModelImpl;
 import de.javauni.yarrish.model.level.LevelAccess;
 import de.javauni.yarrish.model.level.LevelExport;
 import de.javauni.yarrish.model.level.LevelModelImpl;

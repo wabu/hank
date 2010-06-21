@@ -16,8 +16,8 @@ import de.javauni.jarcade.control.playercontrol.PlayerControl;
 import de.javauni.jarcade.control.playercontrol.PlayerControlImpl;
 import de.javauni.jarcade.control.playercontrol.PlayerControlMap;
 import de.javauni.jarcade.control.playercontrol.PlayerControlMapImpl;
+import de.javauni.jarcade.model.impl.MainModelImpl;
 import de.javauni.jarcade.model.main.MainModelExport;
-import de.javauni.jarcade.model.main.MainModelImpl;
 
 public class ControlModule implements Module {
 

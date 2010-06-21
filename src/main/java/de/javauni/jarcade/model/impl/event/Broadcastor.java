@@ -15,12 +15,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.main;
+package de.javauni.jarcade.model.impl.event;
 
 /**
- * main state states
+ * interface used to broadcast messages on a channel
+ * @param <L> the listener type
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public enum MainState {
-    Void, Menu, Game, Level;
+public interface Broadcastor<L> {
+    void apply(L l);
 }

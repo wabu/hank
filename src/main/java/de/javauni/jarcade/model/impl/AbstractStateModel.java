@@ -15,15 +15,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model;
+package de.javauni.jarcade.model.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.concurrent.GuardedBy;
 
-import de.javauni.jarcade.model.event.Broadcastor;
-import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.StateModel;
+import de.javauni.jarcade.model.impl.event.Broadcastor;
+import de.javauni.jarcade.model.impl.event.Channel;
 
 /**
  * default implementation of a model with a concrete main state
@@ -31,17 +32,17 @@ import de.javauni.jarcade.model.event.Channel;
  * @param <S> state type
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public abstract class AbstractStateModel<S extends Enum<S>>
-        implements StateModelExport<S>, StateModelAccess<S> {
+public abstract class AbstractStateModel<S extends Enum<S>> implements StateModel<S> {
+
     private final Logger log = LoggerFactory.getLogger(AbstractStateModel.class);
 
     @GuardedBy("mutex")
     private S state;
     private final Object mutex = new Object();
 
-    private final Channel<StateListener<S>> channel;
+    private final Channel<StateModel.ChangeListener<S>> channel;
 
-    public AbstractStateModel(Channel<StateListener<S>> channel, S initial) {
+    public AbstractStateModel(Channel<StateModel.ChangeListener<S>> channel, S initial) {
         this.channel = channel;
         this.state = initial;
     }
@@ -64,7 +65,7 @@ public abstract class AbstractStateModel<S extends Enum<S>>
     }
 
     @Override
-    final public Channel<StateListener<S>> getStateChannel() {
+    final public Channel<StateModel.ChangeListener<S>> getStateChangeChannel() {
         return channel;
     }
 
@@ -72,9 +73,9 @@ public abstract class AbstractStateModel<S extends Enum<S>>
     protected abstract void doStateTransition(S src, S tgt) throws IllegalArgumentException;
 
     protected void doStateBroadcast(final S src, final S tgt) {
-        channel.broadcast(new Broadcastor<StateListener<S>>() {
+        channel.broadcast(new Broadcastor<StateModel.ChangeListener<S>>() {
             @Override
-            public void apply(StateListener<S> l) {
+            public void apply(StateModel.ChangeListener<S> l) {
                 l.onStateChange(tgt);
             }
         });

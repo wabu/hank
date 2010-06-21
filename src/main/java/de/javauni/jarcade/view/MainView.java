@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.StateModel;
 import de.javauni.jarcade.model.main.MainModelExport;
 import de.javauni.jarcade.model.main.MainState;
 
@@ -33,7 +33,7 @@ import de.javauni.jarcade.view.gui.LevelView;
  * dummy view that shows how everything can be combined
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public class MainView implements StateListener<MainState> {
+public class MainView implements StateModel.ChangeListener<MainState> {
     private final Logger log = LoggerFactory.getLogger(MainView.class);
     private final MainModelExport model;
 
@@ -46,7 +46,7 @@ public class MainView implements StateListener<MainState> {
         this.model = model;
         this.lvlProvider = lvlProvider;
 
-        model.getStateChannel().addListener(this);
+        //model.getStateChannel().addListener(this);
     }
 
     public void onStateChange(MainState state) {
