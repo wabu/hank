@@ -2,10 +2,8 @@ package de.javauni.jarcade.utils.visit;
 
 import static de.javauni.jarcade.utils.visit.VisitAdapter.*;
 
-public interface VisitAdapter<V extends Visitor<?,V>> {
-    interface Visitor<R, V extends Visitor<R,V>> extends Fix<R, V> {}
+public interface VisitAdapter<V extends FixV<?,V>> {
+    interface FixV<R, V extends FixV<R,V>> {}
 
-    interface Fix<R, V extends Visitor<R,V>> {}
-
-    <R, VR extends Fix<R, ? extends V>> R accept(VR visitor);
+    <R, Vr extends FixV<R, ? extends V>> R accept(Vr visitor);
 }
