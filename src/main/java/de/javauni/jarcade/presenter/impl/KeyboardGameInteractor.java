@@ -3,16 +3,21 @@ package de.javauni.jarcade.presenter.impl;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 import de.javauni.jarcade.presenter.interactions.GameActionPerformer;
+import de.javauni.jarcade.presenter.interactions.Interactor;
 import de.javauni.jarcade.view.impl.JavaGraphicsContext;
 
-public class KeyboardGameInteractor<A extends Enum<A>> implements KeyListener {
+public class KeyboardGameInteractor<A extends Enum<A>> 
+    implements KeyListener, Interactor<GameActionPerformer<A>, JavaGraphicsContext> {
+
     private final GameActionPerformer<A> perfomer;
 
     public KeyboardGameInteractor(GameActionPerformer<A> perfomer) {
         this.perfomer = perfomer;
     }
 
+    @Override
     public void register(JavaGraphicsContext gc) {
         gc.getPanel().addKeyListener(this);
     }

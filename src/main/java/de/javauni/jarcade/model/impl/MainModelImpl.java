@@ -22,6 +22,7 @@ import com.google.inject.Singleton;
 
 import de.javauni.jarcade.model.impl.AbstractStateModel;
 import de.javauni.jarcade.model.MainModel;
+import de.javauni.jarcade.model.MainState;
 import de.javauni.jarcade.model.StateModel;
 
 import de.javauni.jarcade.model.impl.event.Channel;
@@ -32,27 +33,27 @@ import de.javauni.jarcade.utils.guice.ScopeManager;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @Singleton
-public class MainModelImpl extends AbstractStateModel<MainModel.State> implements MainModel {
-    private final ScopeManager<MainModel.State> scopes;
+public class MainModelImpl extends AbstractStateModel<MainState> implements MainModel {
+    private final ScopeManager<MainState> scopes;
 
     @Inject MainModelImpl(
-            Channel<StateModel.ChangeListener<MainModel.State>> channel,
-            ScopeManager<MainModel.State> scopes) {
-        super(channel, MainModel.State.Void);
+            Channel<StateModel.ChangeListener<MainState>> channel,
+            ScopeManager<MainState> scopes) {
+        super(channel, MainState.init);
         this.scopes = scopes;
     }
 
     @Override
-    protected void doStateTransition(MainModel.State src, final MainModel.State tgt) {
+    protected void doStateTransition(MainState src, final MainState tgt) {
         switch(tgt) {
-            case Menu:
+            case menu:
                 scopes.clearOtherScopes(tgt);
                 break;
-            case Game:
-                scopes.clearScope(MainModel.State.Level);
+            case game:
+                scopes.clearScope(MainState.level);
                 scopes.activateScope(tgt);
                 break;
-            case Level:
+            case level:
                 scopes.activateScope(tgt);
                 break;
             default:
@@ -63,17 +64,17 @@ public class MainModelImpl extends AbstractStateModel<MainModel.State> implement
     @Override
     public void setNextState() {
         switch(getState()) {
-            case Void:
-                setState(State.Menu);
+            case init:
+                setState(MainState.menu);
                 break;
-            case Menu:
-                setState(State.Game);
+            case menu:
+                setState(MainState.game);
                 break;
-            case Game:
-                setState(State.Level);
+            case game:
+                setState(MainState.level);
                 break;
-            case Level:
-                setState(State.Game);
+            case level:
+                setState(MainState.game);
                 break;
             default:
                 throw new UnsupportedOperationException("can't set next state after "+getState());
