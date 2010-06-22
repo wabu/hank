@@ -27,6 +27,8 @@ import de.javauni.jarcade.model.impl.AbstractStateModel;
 import de.javauni.jarcade.model.impl.event.Channel;
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.SceneModel;
+
+import de.javauni.jarcade.model.scene.event.SceneChangeListener;
 import de.javauni.jarcade.model.scene.impl.operate.SceneUpdateLoop;
 
 public abstract class SceneModelImpl extends AbstractStateModel<SceneModel.Phase> implements SceneModel {
@@ -69,6 +71,10 @@ public abstract class SceneModelImpl extends AbstractStateModel<SceneModel.Phase
                 throw new UnsupportedOperationException(tgt+" not supported");
         }
     }
+
+    public Channel<SceneChangeListener> getSceneChannel() {
+        return scene.getSceneChannel();
+    };
     
     public abstract void loadLevel(String ressources);
 

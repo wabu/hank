@@ -24,8 +24,6 @@ import com.google.common.base.Function;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-import java.io.IOException;
-
 import de.javauni.jarcade.geom.immutable.BoundI;
 import de.javauni.jarcade.geom.immutable.RectI;
 
@@ -39,7 +37,7 @@ import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
-import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.scene.SceneModel;
 
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;
 import de.javauni.jarcade.model.scene.impl.LayerImpl;
@@ -54,14 +52,14 @@ import de.javauni.jarcade.utils.guice.ManagedScope;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ManagedScope
-public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
+public class LevelModelImpl extends SceneModelImpl implements LevelModel {
     private final LevelScene scene;
     private final Provider<Channel<LayerChangeListener>> layerChan;
     private final Channel<CharacterControlListener> charChan;
 
     @Inject
     public LevelModelImpl(
-            final Channel<StateModel.ChangeListener<ScenePhase>> sceneChan,
+            final Channel<StateModel.ChangeListener<SceneModel.Phase>> sceneChan,
             final Channel<CharacterControlListener> charChan,
             final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {
@@ -72,7 +70,7 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
     }
 
     @Override
-    public void loadLevel(String ressources) throws IOException {
+    public void loadLevel(String ressources) {
         // XXX layer channel foo
         scene.setBounds(0,-10,200,150);
         // TODO factory
