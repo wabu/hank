@@ -23,14 +23,17 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.Key;
+import de.javauni.jarcade.control.controlmanagement.ControlDataIsCorruptExeption;
+import de.javauni.jarcade.control.controlmanagement.ControlManagement;
 
-import de.javauni.jarcade.model.MainState;
 
-import de.javauni.jarcade.model.scene.SceneModel;
-import static de.javauni.jarcade.model.scene.SceneModel.Phase;
+import de.javauni.jarcade.model.main.MainModelAccess;
+import de.javauni.jarcade.model.main.MainState;
+import de.javauni.jarcade.model.scene.SceneModelAccess;
+import de.javauni.jarcade.model.scene.SceneModelExport;
+import de.javauni.jarcade.model.scene.ScenePhase;
 
-import de.javauni.jarcade.presenter.interactions.TransitionPerformer;
+import de.javauni.jarcade.view.MainView;
 
 /**
  * t3h main class
@@ -40,28 +43,29 @@ public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) 
-            throws InterruptedException, IllegalStateException, IOException {
+            throws InterruptedException, IllegalStateException, IOException, ControlDataIsCorruptExeption {
         Injector inj = Guice.createInjector(new HankModule());
-        TransitionPerformer<MainState> m = 
-            inj.getInstance(new Key<TransitionPerformer<MainState>>(){});
+        MainModelAccess yma = inj.getInstance(MainModelAccess.class);
+        inj.getInstance(MainView.class);
 
-        //ControlManagement cm = inj.getInstance(ControlManagement.class);
-        //cm.load();
+        ControlManagement cm = inj.getInstance(ControlManagement.class);
+        cm.load();
 
-        m.transitToNext();
+        yma.setState(MainState.Menu);
         Thread.sleep(100);
-        m.transitToNext();
+        yma.setState(MainState.Game);
         Thread.sleep(100);
-        m.transitToNext();
+        yma.setState(MainState.Level);
         Thread.sleep(100);
 
-        SceneModel sm = inj.getInstance(SceneModel.class);
-        log.debug("controlling level "+sm);
-        sm.initialize("");
+        SceneModelAccess la = inj.getInstance(SceneModelAccess.class);
+        SceneModelExport le = inj.getInstance(SceneModelExport.class);
+        log.debug("controlling level "+la);
+        la.initialize("");
 
-        while(sm.getState() == Phase.loading) {
+        while(le.getState() == ScenePhase.loading) {
             Thread.sleep(200);
         }
-        sm.setState(Phase.running);
+        la.setState(ScenePhase.running);
     }
 }

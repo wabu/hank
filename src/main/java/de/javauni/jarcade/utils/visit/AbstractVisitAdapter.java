@@ -2,7 +2,7 @@ package de.javauni.jarcade.utils.visit;
 
 import static de.javauni.jarcade.utils.visit.VisitAdapter.*;
 
-public abstract class AbstractVisitAdapter<V extends FixV<?,V>> implements VisitAdapter<V> {
+public abstract class AbstractVisitAdapter<V extends FixV<?,? extends V>> implements VisitAdapter<V> {
 
     protected static interface Visit<V extends FixV<R,?>, E, R> {
         R apply(V v, E e);

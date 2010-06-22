@@ -24,26 +24,28 @@ import com.google.common.base.Function;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import java.io.IOException;
+
 import de.javauni.jarcade.geom.immutable.BoundI;
 import de.javauni.jarcade.geom.immutable.RectI;
 
-import de.javauni.jarcade.model.StateModel;
+import de.javauni.jarcade.model.StateListener;
 
-import de.javauni.jarcade.model.impl.event.Broadcastor;
-import de.javauni.jarcade.model.impl.event.Channel;
+import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.event.Broadcastor;
+import de.javauni.jarcade.model.event.Channel;
 
 import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
-import de.javauni.jarcade.model.scene.Entity;
-import de.javauni.jarcade.model.scene.SceneModel;
+import de.javauni.jarcade.model.scene.LayerImpl;
+import de.javauni.jarcade.model.scene.SceneModelImpl;
+import de.javauni.jarcade.model.scene.ScenePhase;
 
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;
-import de.javauni.jarcade.model.scene.impl.LayerImpl;
-import de.javauni.jarcade.model.scene.impl.SceneModelImpl;
-import de.javauni.jarcade.model.scene.impl.operate.SceneUpdateLoop;
 
+import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
 
 import de.javauni.jarcade.utils.guice.ManagedScope;
 
@@ -52,14 +54,14 @@ import de.javauni.jarcade.utils.guice.ManagedScope;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ManagedScope
-public class LevelModelImpl extends SceneModelImpl implements LevelModel {
+public class LevelModelImpl extends SceneModelImpl implements LevelAccess, LevelExport {
     private final LevelScene scene;
     private final Provider<Channel<LayerChangeListener>> layerChan;
     private final Channel<CharacterControlListener> charChan;
 
     @Inject
     public LevelModelImpl(
-            final Channel<StateModel.ChangeListener<SceneModel.Phase>> sceneChan,
+            final Channel<StateListener<ScenePhase>> sceneChan,
             final Channel<CharacterControlListener> charChan,
             final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {
@@ -70,7 +72,7 @@ public class LevelModelImpl extends SceneModelImpl implements LevelModel {
     }
 
     @Override
-    public void loadLevel(String ressources) {
+    public void loadLevel(String ressources) throws IOException {
         // XXX layer channel foo
         scene.setBounds(0,-10,200,150);
         // TODO factory

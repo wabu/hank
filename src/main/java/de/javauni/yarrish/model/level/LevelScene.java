@@ -19,12 +19,12 @@ package de.javauni.yarrish.model.level;
 
 import com.google.inject.Inject;
 
-import de.javauni.jarcade.model.impl.event.Channel;
+import de.javauni.jarcade.model.event.Channel;
 
+import de.javauni.jarcade.model.scene.SceneImpl;
 
 import de.javauni.jarcade.model.scene.event.SceneChangeListener;
 import de.javauni.jarcade.model.scene.event.ViewportListener;
-import de.javauni.jarcade.model.scene.impl.SceneImpl;
 
 import de.javauni.jarcade.utils.guice.ManagedScope;
 

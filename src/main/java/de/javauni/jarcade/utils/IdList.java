@@ -149,5 +149,5 @@ public class IdList<E> extends AbstractList<E>{
  * 2.4:  if ns
  *          ns[i]=e
  * * * *
- * TODO: show that id list is threadsave
+ * TODO: show that id list is threadsave or make it threadsave
  */
