@@ -1,4 +1,4 @@
-package de.javauni.jarcade.view.renderers;
+package de.javauni.jarcade.view.render;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -9,18 +9,21 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Singleton;
 
 import de.javauni.jarcade.geom.Vec;
-import de.javauni.jarcade.model.entities.Entity;
-import de.javauni.jarcade.view.render.Renderer;
+import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.presenter.rendering.Renderer;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import de.javauni.jarcade.view.impl.JavaGraphicsContext;
+
 @Singleton
-public class GeneralEntityRenderer implements Renderer<Entity> {
+public class GeneralEntityRenderer implements Renderer<JavaGraphicsContext, Entity> {
     private final Logger log = LoggerFactory.getLogger(GeneralEntityRenderer.class);
 
 	@Override
-	public void render(Entity entity, Graphics2D gfx, long timeDelta) {
+	public void render(Entity entity, JavaGraphicsContext gc, long timeDelta) {
+        Graphics2D gfx = gc.getGraphics();
         if(log.isTraceEnabled()) {
             log.trace("rendering "+entity);
         }

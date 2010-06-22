@@ -15,7 +15,7 @@ import com.google.inject.assistedinject.Assisted;
 import com.google.inject.Inject;
 
 import de.javauni.jarcade.geom.Vec;
-import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.Operator;
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;

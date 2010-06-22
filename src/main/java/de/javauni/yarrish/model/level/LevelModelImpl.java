@@ -29,7 +29,6 @@ import de.javauni.jarcade.geom.immutable.RectI;
 
 import de.javauni.jarcade.model.StateModel;
 
-import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.impl.event.Broadcastor;
 import de.javauni.jarcade.model.impl.event.Channel;
 
@@ -37,6 +36,7 @@ import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.SceneModel;
 
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;

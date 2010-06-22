@@ -16,9 +16,9 @@ import com.google.inject.name.Named;
 
 import java.util.concurrent.ThreadFactory;
 
-import de.javauni.jarcade.model.entities.Entity;
 
 import de.javauni.jarcade.model.phys.ControlableBody;
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.Operator;
 import de.javauni.jarcade.model.scene.Scene;

@@ -25,4 +25,6 @@ public interface MainModel extends StateModel<MainModel.State>{
     public enum State {
         Void, Menu, Game, Level;
     }
+    
+    void setNextState();
 }

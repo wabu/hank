@@ -7,10 +7,10 @@ import com.google.inject.AbstractModule;
 
 import com.google.inject.name.Names;
 
-import de.javauni.jarcade.view.render.GuicyRendererFactory;
-import de.javauni.jarcade.view.render.RendererFactory;
-import de.javauni.jarcade.view.render.RendererMap;
-import de.javauni.jarcade.view.render.RendererMapImpl;
+import de.javauni.jarcade.presenter.impl.GuicyRendererFactory;
+import de.javauni.jarcade.presenter.impl.RendererMapImpl;
+import de.javauni.jarcade.presenter.rendering.RendererFactory;
+import de.javauni.jarcade.presenter.rendering.RendererMap;
 
 public class ViewRenderModule extends AbstractModule {
     @Override
