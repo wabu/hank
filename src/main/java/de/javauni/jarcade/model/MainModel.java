@@ -18,7 +18,7 @@
 package de.javauni.jarcade.model;
 
 /**
- * access interface to the main game state
+ * access interface to the main gaMainStateme state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public interface MainModel extends StateModel<MainState>{

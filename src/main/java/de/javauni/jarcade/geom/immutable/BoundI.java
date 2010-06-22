@@ -52,6 +52,6 @@ public final class BoundI implements Bound {
 
     @Override
     public String toString() {
-        return "bound@" + getLowerBound() + "/" + getLowerBound();
+        return "bound@" + getLowerBound() + "/" + getUpperBound();
     }
 }

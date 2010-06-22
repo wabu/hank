@@ -23,16 +23,14 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.javauni.jarcade.control.controlmanagement.ControlDataIsCorruptExeption;
-import de.javauni.jarcade.control.controlmanagement.ControlManagement;
+import com.google.inject.Key;
 
+import de.javauni.jarcade.model.MainState;
 
-import de.javauni.jarcade.model.MainModel;
-import static de.javauni.jarcade.model.MainState.*;
 import de.javauni.jarcade.model.scene.SceneModel;
 import static de.javauni.jarcade.model.scene.SceneModel.Phase;
 
-import de.javauni.jarcade.view.MainView;
+import de.javauni.jarcade.presenter.interactions.TransitionPerformer;
 
 /**
  * t3h main class
@@ -42,20 +40,19 @@ public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) 
-            throws InterruptedException, IllegalStateException, IOException,
-            ControlDataIsCorruptExeption {
+            throws InterruptedException, IllegalStateException, IOException {
         Injector inj = Guice.createInjector(new HankModule());
-        MainModel yma = inj.getInstance(MainModel.class);
-        inj.getInstance(MainView.class);
+        TransitionPerformer<MainState> m = 
+            inj.getInstance(new Key<TransitionPerformer<MainState>>(){});
 
-        ControlManagement cm = inj.getInstance(ControlManagement.class);
-        cm.load();
+        //ControlManagement cm = inj.getInstance(ControlManagement.class);
+        //cm.load();
 
-        yma.setState(Menu);
+        m.transitToNext();
         Thread.sleep(100);
-        yma.setState(Game);
+        m.transitToNext();
         Thread.sleep(100);
-        yma.setState(Level);
+        m.transitToNext();
         Thread.sleep(100);
 
         SceneModel sm = inj.getInstance(SceneModel.class);

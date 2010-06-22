@@ -67,30 +67,31 @@ public class SceneView implements RenderedView<Scene, JavaGraphicsContext> {
         float vux = vb.getUpperBound().x();
         float vly = vb.getLowerBound().y();
         float vuy = vb.getUpperBound().y();
-        float vh = vux - vlx;
-        float vw = vuy - vly;
+        float vw = vux - vlx;
+        float vh = vuy - vly;
 
         float rlx = rb.getLowerBound().x();
         float rux = rb.getUpperBound().x();
         float rly = rb.getLowerBound().y();
         float ruy = rb.getUpperBound().y();
-        float rh = rux - rlx;
-        float rw = ruy - rly;
+        float rw = rux - rlx;
+        float rh = ruy - rly;
 
         Graphics2D g = gfx.getGraphics();
 
-        AffineTransform tr = g.getTransform();
+        g.clearRect(0, 0, (int)rw, (int)rh);
+
+        g.getTransform();
         // push viewport to level transformation
         g.translate(0, ruy);
-        g.scale(rw/vw, -rh/vh);
+        g.scale(rh/vh, -rw/vw);
         g.translate(0, -vly);
 
         for (Entity e : scene.getViewport()) {
             map.get(e).render(e, gfx, delta);
         }
 
-        g.setTransform(tr);
-
+        g.dispose();
         gfx.swapBuffer();
     }
 }
