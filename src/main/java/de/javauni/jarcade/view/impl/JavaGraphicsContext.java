@@ -45,6 +45,7 @@ public class JavaGraphicsContext implements GraphicsContext {
     }
 
     public void swapBuffer() {
+        gfx.dispose();
         buffer.show();
         gfx = (Graphics2D)buffer.getDrawGraphics();
     }
