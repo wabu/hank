@@ -1,4 +1,4 @@
-package de.javauni.jarcade.presenter;
+package de.javauni.jarcade.presenter.interactions;
 
 
 

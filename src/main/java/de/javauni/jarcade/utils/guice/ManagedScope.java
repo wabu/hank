@@ -33,5 +33,7 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @ScopeAnnotation
 public @interface ManagedScope {
+    // TODO scopes
+    Class<?> value() default Object.class;
 }
 

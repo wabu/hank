@@ -32,18 +32,12 @@ import de.javauni.jarcade.utils.guice.ManagedScope;
 
 import de.javauni.jarcade.view.RenderedView;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ManagedScope
-public class SceneView implements RenderedView<JavaGraphicsContext> {
-    private final Logger log = LoggerFactory.getLogger(SceneView.class);
-
+public class SceneView implements RenderedView<Scene, JavaGraphicsContext> {
     private final Scene scene;
 
     @Inject

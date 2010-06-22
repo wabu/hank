@@ -28,7 +28,7 @@ import de.javauni.jarcade.control.controlmanagement.ControlManagement;
 
 
 import de.javauni.jarcade.model.MainModel;
-import static de.javauni.jarcade.model.MainModel.State.*;
+import static de.javauni.jarcade.model.MainState.*;
 import de.javauni.jarcade.model.scene.SceneModel;
 import static de.javauni.jarcade.model.scene.SceneModel.Phase;
 
