@@ -1,17 +1,16 @@
 package de.javauni.jarcade.view.render;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import de.javauni.jarcade.model.entities.Entity;
-import de.javauni.jarcade.utils.guice.ManagedScope;
 
 import com.google.inject.Injector;
 import com.google.inject.Key;
 
 import com.google.inject.util.Types;
 
-
-@ManagedScope
+@Singleton
 public class GuicyRendererFactory implements RendererFactory {
     private Injector inj;
 

@@ -21,16 +21,10 @@ import com.google.inject.Inject;
 import de.javauni.jarcade.control.AbstractControl;
 import de.javauni.jarcade.control.playercontrol.PlayerControl;
 
-
-
-
-import de.javauni.jarcade.model.StateListener;
-
 import de.javauni.jarcade.model.control.CharacterControl;
 import de.javauni.jarcade.model.entities.Entity;
 import de.javauni.jarcade.model.scene.Layer;
-import de.javauni.jarcade.model.scene.SceneModelExport;
-import de.javauni.jarcade.model.scene.ScenePhase;
+import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.event.SceneChangeListener;
 import de.javauni.jarcade.utils.guice.ManagedScope;
 import de.javauni.jarcade.view.render.RendererFactory;

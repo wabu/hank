@@ -28,10 +28,9 @@ import de.javauni.jarcade.control.controlmanagement.ControlManagement;
 
 
 import de.javauni.jarcade.model.MainModel;
-import de.javauni.jarcade.model.main.MainState;
-import de.javauni.jarcade.model.scene.SceneModelAccess;
-import de.javauni.jarcade.model.scene.SceneModelExport;
-import de.javauni.jarcade.model.scene.ScenePhase;
+import static de.javauni.jarcade.model.MainModel.State.*;
+import de.javauni.jarcade.model.scene.SceneModel;
+import static de.javauni.jarcade.model.scene.SceneModel.Phase;
 
 import de.javauni.jarcade.view.MainView;
 
@@ -52,21 +51,20 @@ public class Main {
         ControlManagement cm = inj.getInstance(ControlManagement.class);
         cm.load();
 
-        yma.setState(MainState.Menu);
+        yma.setState(Menu);
         Thread.sleep(100);
-        yma.setState(MainState.Game);
+        yma.setState(Game);
         Thread.sleep(100);
-        yma.setState(MainState.Level);
+        yma.setState(Level);
         Thread.sleep(100);
 
-        SceneModelAccess la = inj.getInstance(SceneModelAccess.class);
-        SceneModelExport le = inj.getInstance(SceneModelExport.class);
-        log.debug("controlling level "+la);
-        la.initialize("");
+        SceneModel sm = inj.getInstance(SceneModel.class);
+        log.debug("controlling level "+sm);
+        sm.initialize("");
 
-        while(le.getState() == ScenePhase.loading) {
+        while(sm.getState() == Phase.loading) {
             Thread.sleep(200);
         }
-        la.setState(ScenePhase.running);
+        sm.setState(Phase.running);
     }
 }

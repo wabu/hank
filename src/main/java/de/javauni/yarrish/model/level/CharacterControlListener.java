@@ -18,12 +18,11 @@
 package de.javauni.yarrish.model.level;
 
 import de.javauni.jarcade.model.control.CharacterControl;
-import de.javauni.jarcade.model.impl.event.Listener;
 
 /**
  *
  * @author kmochi
  */
-public interface CharacterControlListener extends Listener {
+public interface CharacterControlListener {
     void newCharacterControlCreated(CharacterControl ctl, int num);
 }
