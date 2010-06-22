@@ -1,0 +1,687 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-ann: <http://www.architexa.com/rdf/ann#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slmvp.relo> a atxa-core:reloFile .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node1555oeiocx1 .
+
+_:node1555oeiocx1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl> ;
+	atxa-core:posX "171" ;
+	atxa-core:posY "249" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.presenter.impl" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor> .
+
+_:node1555oeiocx1 atxa-core:contains _:node1555oeiocx2 .
+
+_:node1555oeiocx2 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor> ;
+	atxa-core:posX "676" ;
+	atxa-core:posY "291" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor> a atxa-jdt:class ;
+	atxa-core:name "KeyboardGameInteractor" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.register(JavaGraphicsContext,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.keyReleased(KeyEvent,)> .
+
+_:node1555oeiocx2 atxa-core:contains _:node1555oeiocx3 .
+
+_:node1555oeiocx3 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.register(JavaGraphicsContext,)> ;
+	atxa-core:posX "677" ;
+	atxa-core:posY "313" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.register(JavaGraphicsContext,)> a atxa-jdt:method ;
+	atxa-core:name "register" .
+
+_:node1555oeiocx2 atxa-core:contains _:node1555oeiocx4 .
+
+_:node1555oeiocx4 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.keyReleased(KeyEvent,)> ;
+	atxa-core:posX "677" ;
+	atxa-core:posY "329" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$KeyboardGameInteractor.keyReleased(KeyEvent,)> a atxa-jdt:method ;
+	atxa-core:name "keyReleased" .
+
+_:node1555oeiocx5 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx4 ;
+	rdf:object _:node1555oeiocx6 .
+
+_:node1555oeiocx1 atxa-core:contains _:node1555oeiocx7 .
+
+_:node1555oeiocx7 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter> ;
+	atxa-core:posX "177" ;
+	atxa-core:posY "274" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter> a atxa-jdt:class ;
+	atxa-core:name "MainOutputPresenter" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.MainOutputPresenter(GraphicsOutput,MainModel,Provider,Provider,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.onStateChange(State,State,)> .
+
+_:node1555oeiocx8 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx7 ;
+	rdf:object _:node1555oeiocx9 .
+
+_:node1555oeiocx10 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx7 ;
+	rdf:object _:node1555oeiocx11 .
+
+_:node1555oeiocx7 atxa-core:contains _:node1555oeiocx12 .
+
+_:node1555oeiocx12 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.MainOutputPresenter(GraphicsOutput,MainModel,Provider,Provider,)> ;
+	atxa-core:posX "178" ;
+	atxa-core:posY "296" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.MainOutputPresenter(GraphicsOutput,MainModel,Provider,Provider,)> a atxa-jdt:method ;
+	atxa-core:name "MainOutputPresenter" .
+
+_:node1555oeiocx7 atxa-core:contains _:node1555oeiocx13 .
+
+_:node1555oeiocx13 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.onStateChange(State,State,)> ;
+	atxa-core:posX "178" ;
+	atxa-core:posY "312" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$MainOutputPresenter.onStateChange(State,State,)> a atxa-jdt:method ;
+	atxa-core:name "onStateChange" .
+
+_:node1555oeiocx14 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx13 ;
+	rdf:object _:node1555oeiocx15 .
+
+_:node1555oeiocx16 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx13 ;
+	rdf:object _:node1555oeiocx17 .
+
+_:node1555oeiocx18 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx13 ;
+	rdf:object _:node1555oeiocx3 .
+
+_:node1555oeiocx19 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx13 ;
+	rdf:object _:node1555oeiocx20 .
+
+_:node1555oeiocx1 atxa-core:contains _:node1555oeiocx21 .
+
+_:node1555oeiocx21 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop> ;
+	atxa-core:posX "287" ;
+	atxa-core:posY "708" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop> a atxa-jdt:class ;
+	atxa-core:name "RenderingLoop" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.update(long,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.bindGraphics(GraphicsContext,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.unbindGraphics()> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.onEntitySpawned(Entity,Layer,)> .
+
+_:node1555oeiocx22 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx21 ;
+	rdf:object _:node1555oeiocx23 .
+
+_:node1555oeiocx24 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx21 ;
+	rdf:object _:node1555oeiocx25 .
+
+_:node1555oeiocx21 atxa-core:contains _:node1555oeiocx26 .
+
+_:node1555oeiocx26 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.update(long,)> ;
+	atxa-core:posX "288" ;
+	atxa-core:posY "730" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.update(long,)> a atxa-jdt:method ;
+	atxa-core:name "update" .
+
+_:node1555oeiocx27 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx26 ;
+	rdf:object _:node1555oeiocx28 .
+
+_:node1555oeiocx21 atxa-core:contains _:node1555oeiocx29 .
+
+_:node1555oeiocx29 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.bindGraphics(GraphicsContext,)> ;
+	atxa-core:posX "288" ;
+	atxa-core:posY "746" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.bindGraphics(GraphicsContext,)> a atxa-jdt:method ;
+	atxa-core:name "bindGraphics" .
+
+_:node1555oeiocx30 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx29 ;
+	rdf:object _:node1555oeiocx31 .
+
+_:node1555j4hujx275 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx29 ;
+	rdf:object _:node1555oeiocx15 .
+
+_:node1555oeiocx21 atxa-core:contains _:node1555oeiocx32 .
+
+_:node1555oeiocx32 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.unbindGraphics()> ;
+	atxa-core:posX "288" ;
+	atxa-core:posY "762" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.unbindGraphics()> a atxa-jdt:method ;
+	atxa-core:name "unbindGraphics" .
+
+_:node1555oeiocx33 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx32 ;
+	rdf:object _:node1555oeiocx34 .
+
+_:node1555j4hujx276 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx32 ;
+	rdf:object _:node1555oeiocx20 .
+
+_:node1555oeiocx21 atxa-core:contains _:node1555oeiocx35 .
+
+_:node1555oeiocx35 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.onEntitySpawned(Entity,Layer,)> ;
+	atxa-core:posX "288" ;
+	atxa-core:posY "778" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.impl$RenderingLoop.onEntitySpawned(Entity,Layer,)> a atxa-jdt:method ;
+	atxa-core:name "onEntitySpawned" .
+
+_:node1555oeiocx36 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx35 ;
+	rdf:object _:node1555oeiocx37 .
+
+_:node1555oeiocx38 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx35 ;
+	rdf:object _:node1555oeiocx39 .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx40 .
+
+_:node1555oeiocx40 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions> ;
+	atxa-core:posX "430" ;
+	atxa-core:posY "121" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.presenter.interactions" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$TransitionPerformer> .
+
+_:node1555oeiocx40 atxa-core:contains _:node1555oeiocx9 .
+
+_:node1555oeiocx9 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$TransitionPerformer> ;
+	atxa-core:posX "436" ;
+	atxa-core:posY "146" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$TransitionPerformer> a atxa-jdt:interface ;
+	atxa-core:name "TransitionPerformer" .
+
+_:node1555oeiocx40 atxa-core:contains _:node1555oeiocx41 .
+
+_:node1555oeiocx41 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer> ;
+	atxa-core:posX "602" ;
+	atxa-core:posY "147" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer> a atxa-jdt:interface ;
+	atxa-core:name "GameActionPerformer" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer.doGameAction(int,Enum,boolean,)> .
+
+_:node1555oeiocx41 atxa-core:contains _:node1555oeiocx6 .
+
+_:node1555oeiocx6 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer.doGameAction(int,Enum,boolean,)> ;
+	atxa-core:posX "603" ;
+	atxa-core:posY "169" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.interactions$GameActionPerformer.doGameAction(int,Enum,boolean,)> a atxa-jdt:method ;
+	atxa-core:name "doGameAction" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx42 .
+
+_:node1555oeiocx42 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view> ;
+	atxa-core:posX "677" ;
+	atxa-core:posY "367" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.view" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsContext> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput> .
+
+_:node1555oeiocx42 atxa-core:contains _:node1555oeiocx43 .
+
+_:node1555oeiocx43 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput> ;
+	atxa-core:posX "684" ;
+	atxa-core:posY "392" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput> a atxa-jdt:interface ;
+	atxa-core:name "GraphicsOutput" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput.getCleanGraphicsContext()> .
+
+_:node1555oeiocx44 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node1555oeiocx43 ;
+	rdf:object _:node1555oeiocx45 ;
+	atxa-core:commentTxt "  " .
+
+_:node1555oeiocx43 atxa-core:contains _:node1555oeiocx17 .
+
+_:node1555oeiocx17 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput.getCleanGraphicsContext()> ;
+	atxa-core:posX "685" ;
+	atxa-core:posY "414" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsOutput.getCleanGraphicsContext()> a atxa-jdt:method ;
+	atxa-core:name "getCleanGraphicsContext" .
+
+_:node1555oeiocx42 atxa-core:contains _:node1555oeiocx45 .
+
+_:node1555oeiocx45 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsContext> ;
+	atxa-core:posX "999" ;
+	atxa-core:posY "466" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$GraphicsContext> a atxa-jdt:interface ;
+	atxa-core:name "GraphicsContext" .
+
+_:node1555oeiocx42 atxa-core:contains _:node1555oeiocx46 .
+
+_:node1555oeiocx46 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView> ;
+	atxa-core:posX "684" ;
+	atxa-core:posY "562" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView> a atxa-jdt:interface ;
+	atxa-core:name "RenderedView" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView.render(GraphicsContext,RendererMap,long,)> .
+
+_:node1555oeiocx47 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx46 ;
+	rdf:object _:node1555oeiocx23 .
+
+_:node1555oeiocx46 atxa-core:contains _:node1555oeiocx28 .
+
+_:node1555oeiocx28 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView.render(GraphicsContext,RendererMap,long,)> ;
+	atxa-core:posX "685" ;
+	atxa-core:posY "584" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$RenderedView.render(GraphicsContext,RendererMap,long,)> a atxa-jdt:method ;
+	atxa-core:name "render" .
+
+_:node1555oeiocx42 atxa-core:contains _:node1555oeiocx23 .
+
+_:node1555oeiocx23 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View> ;
+	atxa-core:posX "683" ;
+	atxa-core:posY "471" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View> a atxa-jdt:interface ;
+	atxa-core:name "View" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.bindGraphics(GraphicsContext,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.unbindGraphics()> .
+
+_:node1555oeiocx23 atxa-core:contains _:node1555oeiocx15 .
+
+_:node1555oeiocx15 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.bindGraphics(GraphicsContext,)> ;
+	atxa-core:posX "684" ;
+	atxa-core:posY "493" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.bindGraphics(GraphicsContext,)> a atxa-jdt:method ;
+	atxa-core:name "bindGraphics" .
+
+_:node1555oeiocx23 atxa-core:contains _:node1555oeiocx20 .
+
+_:node1555oeiocx20 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.unbindGraphics()> ;
+	atxa-core:posX "684" ;
+	atxa-core:posY "509" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view$View.unbindGraphics()> a atxa-jdt:method ;
+	atxa-core:name "unbindGraphics" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx48 .
+
+_:node1555oeiocx48 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl> ;
+	atxa-core:posX "674" ;
+	atxa-core:posY "627" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.view.impl" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView> .
+
+_:node1555oeiocx48 atxa-core:contains _:node1555oeiocx49 .
+
+_:node1555oeiocx49 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView> ;
+	atxa-core:posX "680" ;
+	atxa-core:posY "785" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView> a atxa-jdt:class ;
+	atxa-core:name "SceneView" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView.render(JavaGraphicsContext,RendererMap,long,)> .
+
+_:node1555oeiocx50 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx49 ;
+	rdf:object _:node1555oeiocx46 .
+
+_:node1555oeiocx49 atxa-core:contains _:node1555oeiocx51 .
+
+_:node1555oeiocx51 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView.render(JavaGraphicsContext,RendererMap,long,)> ;
+	atxa-core:posX "681" ;
+	atxa-core:posY "807" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$SceneView.render(JavaGraphicsContext,RendererMap,long,)> a atxa-jdt:method ;
+	atxa-core:name "render" .
+
+_:node1555oeiocx52 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx51 ;
+	rdf:object _:node1555oeiocx53 .
+
+_:node1555oeiocx54 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx51 ;
+	rdf:object _:node1555oeiocx55 .
+
+_:node1555oeiocx56 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx51 ;
+	rdf:object _:node1555oeiocx57 .
+
+_:node1555oeiocx58 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx51 ;
+	rdf:object _:node1555oeiocx59 .
+
+_:node1555oeiocx60 a atxa-core:link ;
+	atxa-core:model atxa-jdt:calls ;
+	rdf:subject _:node1555oeiocx51 ;
+	rdf:object _:node1555oeiocx61 .
+
+_:node1555oeiocx48 atxa-core:contains _:node1555oeiocx62 .
+
+_:node1555oeiocx62 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext> ;
+	atxa-core:posX "1055" ;
+	atxa-core:posY "652" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext> a atxa-jdt:class ;
+	atxa-core:name "JavaGraphicsContext" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getGraphics()> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.swapBuffer()> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getPanel()> .
+
+_:node1555oeiocx63 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1555oeiocx62 ;
+	rdf:object _:node1555oeiocx45 .
+
+_:node1555oeiocx62 atxa-core:contains _:node1555oeiocx64 .
+
+_:node1555oeiocx64 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getPanel()> ;
+	atxa-core:posX "1056" ;
+	atxa-core:posY "674" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getPanel()> a atxa-jdt:method ;
+	atxa-core:name "getPanel" .
+
+_:node1555oeiocx62 atxa-core:contains _:node1555oeiocx55 .
+
+_:node1555oeiocx55 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getGraphics()> ;
+	atxa-core:posX "1056" ;
+	atxa-core:posY "690" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.getGraphics()> a atxa-jdt:method ;
+	atxa-core:name "getGraphics" .
+
+_:node1555oeiocx62 atxa-core:contains _:node1555oeiocx57 .
+
+_:node1555oeiocx57 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.swapBuffer()> ;
+	atxa-core:posX "1056" ;
+	atxa-core:posY "706" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.view.impl$JavaGraphicsContext.swapBuffer()> a atxa-jdt:method ;
+	atxa-core:name "swapBuffer" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx65 .
+
+_:node1555oeiocx65 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering> ;
+	atxa-core:posX "352" ;
+	atxa-core:posY "866" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.presenter.rendering" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory> .
+
+_:node1555oeiocx65 atxa-core:contains _:node1555oeiocx66 .
+
+_:node1555oeiocx66 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap> ;
+	atxa-core:posX "870" ;
+	atxa-core:posY "891" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap> a atxa-jdt:interface ;
+	atxa-core:name "RendererMap" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.put(Entity,Renderer,)> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.get(Entity,)> .
+
+_:node1555oeiocx66 atxa-core:contains _:node1555oeiocx61 .
+
+_:node1555oeiocx61 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.get(Entity,)> ;
+	atxa-core:posX "871" ;
+	atxa-core:posY "913" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.get(Entity,)> a atxa-jdt:method ;
+	atxa-core:name "get" .
+
+_:node1555oeiocx66 atxa-core:contains _:node1555oeiocx39 .
+
+_:node1555oeiocx39 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.put(Entity,Renderer,)> ;
+	atxa-core:posX "871" ;
+	atxa-core:posY "929" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererMap.put(Entity,Renderer,)> a atxa-jdt:method ;
+	atxa-core:name "put" .
+
+_:node1555oeiocx65 atxa-core:contains _:node1555oeiocx67 .
+
+_:node1555oeiocx67 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory> ;
+	atxa-core:posX "358" ;
+	atxa-core:posY "899" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory> a atxa-jdt:interface ;
+	atxa-core:name "RendererFactory" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory.getRenderer(Entity,)> .
+
+_:node1555oeiocx68 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node1555oeiocx67 ;
+	rdf:object _:node1555oeiocx69 ;
+	atxa-core:commentTxt "  " .
+
+_:node1555oeiocx67 atxa-core:contains _:node1555oeiocx37 .
+
+_:node1555oeiocx37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory.getRenderer(Entity,)> ;
+	atxa-core:posX "359" ;
+	atxa-core:posY "921" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$RendererFactory.getRenderer(Entity,)> a atxa-jdt:method ;
+	atxa-core:name "getRenderer" .
+
+_:node1555oeiocx65 atxa-core:contains _:node1555oeiocx69 .
+
+_:node1555oeiocx69 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer> ;
+	atxa-core:posX "869" ;
+	atxa-core:posY "957" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer> a atxa-jdt:interface ;
+	atxa-core:name "Renderer" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer.render(Object,GraphicsContext,long,)> .
+
+_:node1555oeiocx69 atxa-core:contains _:node1555oeiocx53 .
+
+_:node1555oeiocx53 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer.render(Object,GraphicsContext,long,)> ;
+	atxa-core:posX "870" ;
+	atxa-core:posY "979" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.presenter.rendering$Renderer.render(Object,GraphicsContext,long,)> a atxa-jdt:method ;
+	atxa-core:name "render" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx70 .
+
+_:node1555oeiocx70 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene> ;
+	atxa-core:posX "1105" ;
+	atxa-core:posY "773" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.model.scene" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene> .
+
+_:node1555oeiocx70 atxa-core:contains _:node1555oeiocx71 .
+
+_:node1555oeiocx71 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene> ;
+	atxa-core:posX "1111" ;
+	atxa-core:posY "798" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene> a atxa-jdt:interface ;
+	atxa-core:name "Scene" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene.getViewport()> .
+
+_:node1555oeiocx71 atxa-core:contains _:node1555oeiocx59 .
+
+_:node1555oeiocx59 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene.getViewport()> ;
+	atxa-core:posX "1112" ;
+	atxa-core:posY "820" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene$Scene.getViewport()> a atxa-jdt:method ;
+	atxa-core:name "getViewport" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx72 .
+
+_:node1555oeiocx72 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene.event> ;
+	atxa-core:posX "230" ;
+	atxa-core:posY "591" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene.event> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.model.scene.event" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene.event$SceneChangeListener> .
+
+_:node1555oeiocx72 atxa-core:contains _:node1555oeiocx25 .
+
+_:node1555oeiocx25 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene.event$SceneChangeListener> ;
+	atxa-core:posX "236" ;
+	atxa-core:posY "616" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model.scene.event$SceneChangeListener> a atxa-jdt:interface ;
+	atxa-core:name "SceneChangeListener" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx73 .
+
+_:node1555oeiocx73 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils> ;
+	atxa-core:posX "559" ;
+	atxa-core:posY "637" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.utils" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop> .
+
+_:node1555oeiocx73 atxa-core:contains _:node1555oeiocx74 .
+
+_:node1555oeiocx74 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop> ;
+	atxa-core:posX "565" ;
+	atxa-core:posY "662" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop> a atxa-jdt:class ;
+	atxa-core:name "UpdateLoop" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.start()> , <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.close()> .
+
+_:node1555oeiocx74 atxa-core:contains _:node1555oeiocx34 .
+
+_:node1555oeiocx34 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.close()> ;
+	atxa-core:posX "566" ;
+	atxa-core:posY "684" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.close()> a atxa-jdt:method ;
+	atxa-core:name "close" .
+
+_:node1555oeiocx74 atxa-core:contains _:node1555oeiocx31 .
+
+_:node1555oeiocx31 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.start()> ;
+	atxa-core:posX "566" ;
+	atxa-core:posY "700" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.utils$UpdateLoop.start()> a atxa-jdt:method ;
+	atxa-core:name "start" .
+
+atxa-core:docRoot atxa-core:contains _:node1555oeiocx75 .
+
+_:node1555oeiocx75 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model> ;
+	atxa-core:posX "198" ;
+	atxa-core:posY "113" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model> a atxa-jdt:package ;
+	atxa-core:name "de.javauni.jarcade.model" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel> .
+
+_:node1555oeiocx75 atxa-core:contains _:node1555oeiocx76 .
+
+_:node1555oeiocx76 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel> ;
+	atxa-core:posX "204" ;
+	atxa-core:posY "138" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel> a atxa-jdt:interface ;
+	atxa-core:name "StateModel" ;
+	atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel$ChangeListener> .
+
+_:node1555oeiocx76 atxa-core:contains _:node1555oeiocx11 .
+
+_:node1555oeiocx11 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel$ChangeListener> ;
+	atxa-core:posX "205" ;
+	atxa-core:posY "160" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#de.javauni.jarcade.model$StateModel$ChangeListener> a atxa-jdt:interface ;
+	atxa-core:name "ChangeListener" .
+

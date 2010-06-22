@@ -76,7 +76,7 @@ public abstract class AbstractStateModel<S extends Enum<S>> implements StateMode
         channel.broadcast(new Broadcastor<StateModel.ChangeListener<S>>() {
             @Override
             public void apply(StateModel.ChangeListener<S> l) {
-                l.onStateChange(tgt);
+                l.onStateChange(src, tgt);
             }
         });
     }

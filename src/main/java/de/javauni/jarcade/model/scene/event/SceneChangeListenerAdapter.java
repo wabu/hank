@@ -17,7 +17,7 @@
 
 package de.javauni.jarcade.model.scene.event;
 
-import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 
 /**

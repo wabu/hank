@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.entities;
+package de.javauni.jarcade.model.scene;
 
 import de.javauni.jarcade.geom.Shape;
 import de.javauni.jarcade.utils.HavingId;

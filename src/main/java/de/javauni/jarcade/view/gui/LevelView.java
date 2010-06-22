@@ -27,15 +27,15 @@ import de.javauni.jarcade.control.playercontrol.PlayerControl;
 import de.javauni.jarcade.model.StateListener;
 
 import de.javauni.jarcade.model.control.CharacterControl;
-import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.scene.Entity;
 import de.javauni.jarcade.model.scene.Layer;
 import de.javauni.jarcade.model.scene.SceneModelExport;
 import de.javauni.jarcade.model.scene.ScenePhase;
 import de.javauni.jarcade.model.scene.event.SceneChangeListener;
+import de.javauni.jarcade.presenter.impl.RenderingLoop;
+import de.javauni.jarcade.presenter.rendering.RendererFactory;
+import de.javauni.jarcade.presenter.rendering.RendererMap;
 import de.javauni.jarcade.utils.guice.ManagedScope;
-import de.javauni.jarcade.view.render.RendererFactory;
-import de.javauni.jarcade.view.render.RendererMap;
-import de.javauni.jarcade.view.render.RenderingLoop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
