@@ -18,7 +18,7 @@ import com.google.inject.Inject;
 
 import com.google.inject.assistedinject.Assisted;
 
-import de.javauni.jarcade.model.scene.Operator;
+import de.javauni.jarcade.model.scene.operate.Operator;
 
 public class ControlableBodyOperator implements Operator<ControlableBody> {
     private final ControlableBody entity;

@@ -1,7 +1,5 @@
 package de.javauni.jarcade.model.entities;
 
-import de.javauni.jarcade.model.scene.Entity;
-
 
 public abstract class AbstractEntity implements Entity {
     private final int id;

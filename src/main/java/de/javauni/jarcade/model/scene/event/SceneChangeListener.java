@@ -17,14 +17,15 @@
 
 package de.javauni.jarcade.model.scene.event;
 
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.event.Listener;
 import de.javauni.jarcade.model.scene.Layer;
 
 /**
  *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface SceneChangeListener {
+public interface SceneChangeListener extends Listener {
     void onLayerAdded(Layer layer);
 
     void onEntitySpawned(Entity e, Layer layer);

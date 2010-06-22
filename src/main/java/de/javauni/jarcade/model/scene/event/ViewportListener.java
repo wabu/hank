@@ -17,12 +17,14 @@
 
 package de.javauni.jarcade.model.scene.event;
 
-import de.javauni.jarcade.model.scene.Entity;
+import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.event.Listener;
+
 
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface ViewportListener {
+public interface ViewportListener extends Listener {
     void entityEntersViewport(Entity e);
     void entityLeavesViewport(Entity e);
 }
