@@ -9,10 +9,10 @@ import com.google.inject.name.Names;
 
 import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.SceneEdit;
-import de.javauni.jarcade.model.scene.SceneImpl;
 import de.javauni.jarcade.model.scene.SceneModelAccess;
 import de.javauni.jarcade.model.scene.SceneModelExport;
-import de.javauni.jarcade.model.scene.SceneModelImpl;
+import de.javauni.jarcade.model.scene.impl.SceneImpl;
+import de.javauni.jarcade.model.scene.impl.SceneModelImpl;
 
 public class ModelSceneModule extends AbstractModule {
 	@Override

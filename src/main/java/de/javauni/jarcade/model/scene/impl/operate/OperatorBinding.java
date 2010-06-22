@@ -1,4 +1,6 @@
-package de.javauni.jarcade.model.scene.operate;
+package de.javauni.jarcade.model.scene.impl.operate;
+
+import de.javauni.jarcade.model.scene.Operator;
 
 public class OperatorBinding<E> {
     private final Operator<E> op;

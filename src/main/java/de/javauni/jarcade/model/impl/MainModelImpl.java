@@ -15,41 +15,41 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.main;
+package de.javauni.jarcade.model.impl;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import de.javauni.jarcade.model.AbstractStateModel;
-import de.javauni.jarcade.model.StateListener;
-import de.javauni.jarcade.model.event.Channel;
-import de.javauni.jarcade.utils.guice.ScopeManager;
+import de.javauni.jarcade.model.impl.AbstractStateModel;
+import de.javauni.jarcade.model.MainModel;
+import de.javauni.jarcade.model.StateModel;
 
+import de.javauni.jarcade.model.impl.event.Channel;
+import de.javauni.jarcade.utils.guice.ScopeManager;
 
 /**
  * implements the main game state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @Singleton
-public class MainModelImpl extends AbstractStateModel<MainState>
-        implements MainModelAccess, MainModelExport{
-    private final ScopeManager<MainState> scopes;
+public class MainModelImpl extends AbstractStateModel<MainModel.State> implements MainModel {
+    private final ScopeManager<MainModel.State> scopes;
 
     @Inject MainModelImpl(
-            Channel<StateListener<MainState>> channel,
-            ScopeManager<MainState> scopes) {
-        super(channel, MainState.Void);
+            Channel<StateModel.ChangeListener<MainModel.State>> channel,
+            ScopeManager<MainModel.State> scopes) {
+        super(channel, MainModel.State.Void);
         this.scopes = scopes;
     }
 
     @Override
-    protected void doStateTransition(MainState src, final MainState tgt) {
+    protected void doStateTransition(MainModel.State src, final MainModel.State tgt) {
         switch(tgt) {
             case Menu:
                 scopes.clearOtherScopes(tgt);
                 break;
             case Game:
-                scopes.clearScope(MainState.Level);
+                scopes.clearScope(MainModel.State.Level);
                 scopes.activateScope(tgt);
                 break;
             case Level:

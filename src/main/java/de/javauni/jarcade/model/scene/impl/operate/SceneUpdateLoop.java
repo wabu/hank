@@ -1,8 +1,6 @@
-package de.javauni.jarcade.model.scene.operate;
+package de.javauni.jarcade.model.scene.impl.operate;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,8 @@ import de.javauni.jarcade.model.entities.Entity;
 
 import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.scene.Layer;
-import de.javauni.jarcade.model.scene.SceneEdit;
+import de.javauni.jarcade.model.scene.Operator;
+import de.javauni.jarcade.model.scene.Scene;
 import de.javauni.jarcade.model.scene.event.SceneChangeListener;
 import de.javauni.jarcade.utils.UpdateLoop;
 
@@ -30,7 +29,7 @@ import de.javauni.jarcade.utils.UpdateLoop;
  * @author wabu
  */
 public class SceneUpdateLoop extends UpdateLoop implements SceneChangeListener {
-    private final SceneEdit scene;
+    private final Scene.Edit scene;
     private final Logger log = LoggerFactory.getLogger(SceneUpdateLoop.class);
 
     private final List<OperatorBinding<?>> ops;
@@ -46,7 +45,7 @@ public class SceneUpdateLoop extends UpdateLoop implements SceneChangeListener {
     public SceneUpdateLoop(
             @Named("level-update-intervall") int intervall, 
             @Named("level-update-thread") ThreadFactory tf, 
-            SceneEdit scene) {
+            Scene.Edit scene) {
         super(intervall, tf);
         this.scene = scene;
         this.scene.getSceneChannel().addListener(this);

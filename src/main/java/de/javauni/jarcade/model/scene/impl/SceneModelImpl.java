@@ -15,43 +15,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.scene;
-
-import java.io.IOException;
+package de.javauni.jarcade.model.scene.impl;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import de.javauni.jarcade.model.StateModel;
 
-import de.javauni.jarcade.model.AbstractStateModel;
-import de.javauni.jarcade.model.StateListener;
-import de.javauni.jarcade.model.event.Channel;
-import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
+import de.javauni.jarcade.model.impl.AbstractStateModel;
 
+import de.javauni.jarcade.model.impl.event.Channel;
+import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.SceneModel;
+import de.javauni.jarcade.model.scene.impl.operate.SceneUpdateLoop;
 
-/**
- * the scene model manages a scene and its operation
- *
- * @author Daniel Waeber <wabu@inf.fu-berlin.de>
- */
-public abstract class SceneModelImpl extends
-                AbstractStateModel<ScenePhase> implements SceneModelAccess,
-                SceneModelExport {
-    private final SceneEdit scene;
+public abstract class SceneModelImpl extends AbstractStateModel<SceneModel.Phase> implements SceneModel {
+    private final Scene.Edit scene;
     private final SceneUpdateLoop loop;
 
     @Inject
     public SceneModelImpl(
-            final Channel<StateListener<ScenePhase>> chan,
-            final SceneEdit space,
+            final Channel<StateModel.ChangeListener<SceneModel.Phase>> chan,
+            final Scene.Edit space,
             final SceneUpdateLoop loop) {
-        super(chan, ScenePhase.loading);
+        super(chan, SceneModel.Phase.loading);
         this.loop = loop;
         this.scene = space;
     }
 
     @Override
-    protected void doStateTransition(ScenePhase src, ScenePhase tgt) 
+    protected void doStateTransition(SceneModel.Phase src, SceneModel.Phase tgt) 
             throws IllegalArgumentException {
         switch(tgt) {
             case loading:
@@ -77,17 +70,17 @@ public abstract class SceneModelImpl extends
         }
     }
     
-    public abstract void loadLevel(String ressources) throws IOException;
+    public abstract void loadLevel(String ressources);
 
     @Override
-    public void initialize(String ressources) throws IllegalStateException, IOException {
-        Preconditions.checkState(getState().ordinal() <= ScenePhase.loading.ordinal(),
+    public void initialize(String ressources) {
+        Preconditions.checkState(getState().ordinal() <= SceneModel.Phase.loading.ordinal(),
                 "level allready initialized");
 
-        setState(ScenePhase.loading);
+        setState(SceneModel.Phase.loading);
         loadLevel(ressources);
 
-        setState(ScenePhase.initialized);
+        setState(SceneModel.Phase.initialized);
     }
 
     @Override

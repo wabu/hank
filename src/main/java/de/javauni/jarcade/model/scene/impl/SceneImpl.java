@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.scene;
+package de.javauni.jarcade.model.scene.impl;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
@@ -31,10 +31,16 @@ import de.javauni.jarcade.geom.Bound;
 
 import de.javauni.jarcade.geom.immutable.BoundI;
 
-import de.javauni.jarcade.model.entities.Entity;
-import de.javauni.jarcade.model.event.Broadcastor;
-import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.MainModel;
 
+import de.javauni.jarcade.model.entities.Entity;
+import de.javauni.jarcade.model.impl.event.Broadcastor;
+import de.javauni.jarcade.model.impl.event.Channel;
+
+import de.javauni.jarcade.model.scene.Layer;
+
+import de.javauni.jarcade.model.scene.Scene;
+import de.javauni.jarcade.model.scene.Viewport;
 import de.javauni.jarcade.model.scene.event.SceneChangeListener;
 import de.javauni.jarcade.model.scene.event.ViewportListener;
 
@@ -45,12 +51,12 @@ import de.javauni.jarcade.utils.guice.ManagedScope;
 /**
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-@ManagedScope
-public class SceneImpl implements Scene, SceneEdit {
+@ManagedScope(MainModel.class)
+public class SceneImpl implements Scene, Scene.Edit {
     private final IdList<Entity> entities;
-    private final SortedMap<Integer, LayerEdit> layers;
+    private final SortedMap<Integer, Layer.Edit> layers;
     // XXX when to get t3h zero layer
-    @Nullable private LayerEdit zero;
+    @Nullable private Layer.Edit zero;
     @Nullable private Bound size;
     private final Channel<SceneChangeListener> chan;
 
@@ -62,7 +68,7 @@ public class SceneImpl implements Scene, SceneEdit {
             Channel<ViewportListener> viewChan) {
         this.chan = chan;
         this.entities = new IdList<Entity>();
-        this.layers = new TreeMap<Integer, LayerEdit>();
+        this.layers = new TreeMap<Integer, Layer.Edit>();
         this.view = new WholeSceneView(viewChan, this);
 
         this.zero = null;
@@ -83,7 +89,7 @@ public class SceneImpl implements Scene, SceneEdit {
     }
 
     @Override
-    public LayerEdit getLayer(int index) {
+    public Layer.Edit getLayer(int index) {
         if(!layers.containsKey(index)){
             throw new IndexOutOfBoundsException(
                     "no layer with index "+index+" in this space");
@@ -92,12 +98,12 @@ public class SceneImpl implements Scene, SceneEdit {
     }
 
     @Override
-    public Iterable<? extends LayerEdit> getLayers() {
+    public Iterable<? extends Layer.Edit> getLayers() {
         return layers.values();
     }
 
     @Override
-    public LayerEdit getZeroLayer() {
+    public Layer.Edit getZeroLayer() {
         return zero;
     }
 
@@ -112,7 +118,7 @@ public class SceneImpl implements Scene, SceneEdit {
     }
 
     @Override
-    public int addLayer(final LayerEdit lay) throws IllegalArgumentException {
+    public int addLayer(final Layer.Edit lay) throws IllegalArgumentException {
         if(layers.containsKey(lay.getIndex())) {
             throw new IllegalArgumentException(
                     "space already contains a layer with index "+lay.getIndex());
@@ -135,7 +141,7 @@ public class SceneImpl implements Scene, SceneEdit {
     @Override
     public <E extends Entity> E addEntity(Function<Integer, E> construct, final int layerIndex)
             throws IndexOutOfBoundsException {
-        final LayerEdit layer = getLayer(layerIndex);
+        final Layer.Edit layer = getLayer(layerIndex);
         final E entity = entities.add(construct);
         layer.add(entity);
 
@@ -151,8 +157,8 @@ public class SceneImpl implements Scene, SceneEdit {
     @Override
     public void moveEntity(final Entity e, int oldLayer, int newLayer) 
             throws NoSuchElementException, IndexOutOfBoundsException {
-        final LayerEdit l1 = getLayer(oldLayer);
-        final LayerEdit l2 = getLayer(newLayer);
+        final Layer.Edit l1 = getLayer(oldLayer);
+        final Layer.Edit l2 = getLayer(newLayer);
 
         l1.remove(e);
         l2.add(e);
@@ -168,7 +174,7 @@ public class SceneImpl implements Scene, SceneEdit {
     @Override
     public void removeEnity(final Entity e, int layerIndex) 
             throws NoSuchElementException, IndexOutOfBoundsException {
-        final LayerEdit layer = getLayer(layerIndex);
+        final Layer.Edit layer = getLayer(layerIndex);
         layer.remove(e);
         entities.remove(e);
 

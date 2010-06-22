@@ -15,13 +15,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.scene;
+package de.javauni.jarcade.model.impl.event;
 
-import de.javauni.jarcade.model.StateModelExport;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
+ * @param <L> listener type
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface SceneModelExport extends StateModelExport<ScenePhase>{
-    Scene getScene();
+class ChannelImpl<L> implements Channel<L> {
+    private final List<L> ls = new CopyOnWriteArrayList<L>();
+
+    public void addListener(L l) {
+        ls.add(l);
+    }
+
+    public void removeListener(L l) {
+        ls.remove(l);
+    }
+
+    public void broadcast(final Broadcastor<L> bc) {
+        for(L l : ls) {
+            bc.apply(l);
+        }
+    }
+
 }

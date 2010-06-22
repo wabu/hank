@@ -15,21 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.scene;
-
-import de.javauni.jarcade.model.StateModelAccess;
-
-import java.io.IOException;
+package de.javauni.jarcade.model;
 
 /**
+ * access interface to the main game state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface SceneModelAccess extends StateModelAccess<ScenePhase>{
-    /**
-     * initializes the world by loading it from a given ressources
-     * @param ressources ressources location
-     * @throws IllegalStateException when already initialized
-     * @throws IOException when level can't be loaded
-     */
-    void initialize(String ressources) throws IllegalStateException, IOException;
+public interface MainModel extends StateModel<MainModel.State>{
+    public enum State {
+        Void, Menu, Game, Level;
+    }
 }

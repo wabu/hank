@@ -29,23 +29,23 @@ import java.io.IOException;
 import de.javauni.jarcade.geom.immutable.BoundI;
 import de.javauni.jarcade.geom.immutable.RectI;
 
-import de.javauni.jarcade.model.StateListener;
+import de.javauni.jarcade.model.StateModel;
 
 import de.javauni.jarcade.model.entities.Entity;
-import de.javauni.jarcade.model.event.Broadcastor;
-import de.javauni.jarcade.model.event.Channel;
+import de.javauni.jarcade.model.impl.event.Broadcastor;
+import de.javauni.jarcade.model.impl.event.Channel;
 
 import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 
-import de.javauni.jarcade.model.scene.LayerImpl;
-import de.javauni.jarcade.model.scene.SceneModelImpl;
 import de.javauni.jarcade.model.scene.ScenePhase;
 
 import de.javauni.jarcade.model.scene.event.LayerChangeListener;
+import de.javauni.jarcade.model.scene.impl.LayerImpl;
+import de.javauni.jarcade.model.scene.impl.SceneModelImpl;
+import de.javauni.jarcade.model.scene.impl.operate.SceneUpdateLoop;
 
-import de.javauni.jarcade.model.scene.operate.SceneUpdateLoop;
 
 import de.javauni.jarcade.utils.guice.ManagedScope;
 
@@ -61,7 +61,7 @@ public class LevelModelImpl extends SceneModelImpl implements LevelAccess, Level
 
     @Inject
     public LevelModelImpl(
-            final Channel<StateListener<ScenePhase>> sceneChan,
+            final Channel<StateModel.ChangeListener<ScenePhase>> sceneChan,
             final Channel<CharacterControlListener> charChan,
             final LevelScene scene, final SceneUpdateLoop loop,
             final Provider<Channel<LayerChangeListener>> layerChan) {

@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package de.javauni.jarcade.model.event;
+package de.javauni.jarcade.model.impl.event;
 
 import com.google.inject.ImplementedBy;
 
@@ -26,7 +26,7 @@ import com.google.inject.ImplementedBy;
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 @ImplementedBy(ChannelImpl.class)
-public interface Channel<L extends Listener> {
+public interface Channel<L> {
     void addListener(L listener);
     void removeListener(L listener);
 

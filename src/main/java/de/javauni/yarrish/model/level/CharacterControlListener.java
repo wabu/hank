@@ -18,7 +18,7 @@
 package de.javauni.yarrish.model.level;
 
 import de.javauni.jarcade.model.control.CharacterControl;
-import de.javauni.jarcade.model.event.Listener;
+import de.javauni.jarcade.model.impl.event.Listener;
 
 /**
  *
