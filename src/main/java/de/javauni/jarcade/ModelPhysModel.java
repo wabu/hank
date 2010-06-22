@@ -9,9 +9,9 @@ import de.javauni.jarcade.model.phys.ControlableBody;
 import de.javauni.jarcade.model.phys.ControlableBodyOperator;
 import de.javauni.jarcade.model.phys.PhysicalOperator;
 import de.javauni.jarcade.model.scene.Layer;
-import de.javauni.jarcade.model.scene.ZeroLayer;
 
-import de.javauni.jarcade.model.scene.operate.OperatorFactory;
+import de.javauni.jarcade.model.scene.impl.operate.OperatorFactory;
+import de.javauni.jarcade.model.scene.impl.operate.ZeroLayer;
 
 public class ModelPhysModel extends AbstractModule {
 	@Override

@@ -33,5 +33,6 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @ScopeAnnotation
 public @interface ManagedScope {
+    Class<?> value();
 }
 
