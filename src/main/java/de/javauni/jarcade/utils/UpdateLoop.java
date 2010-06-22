@@ -19,8 +19,11 @@ package de.javauni.jarcade.utils;
 
 import java.util.concurrent.ThreadFactory;
 
+import com.google.inject.Inject;
+
+import com.google.inject.assistedinject.Assisted;
+
 /**
- *
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
 public abstract class UpdateLoop implements Runnable {
@@ -42,6 +45,7 @@ public abstract class UpdateLoop implements Runnable {
         this.intervall = intervall;
         this.thread = tf.newThread(this);
     }
+
 
     public void init() throws IllegalStateException {
         try {

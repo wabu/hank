@@ -21,10 +21,7 @@ package de.javauni.jarcade.model;
  * access interface to the main game state
  * @author Daniel Waeber <wabu@inf.fu-berlin.de>
  */
-public interface MainModel extends StateModel<MainModel.State>{
-    public enum State {
-        Void, Menu, Game, Level;
-    }
-    
+public interface MainModel extends StateModel<MainState>{
     void setNextState();
 }
+
