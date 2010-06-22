@@ -91,7 +91,7 @@ public class SceneView implements RenderedView<Scene, JavaGraphicsContext> {
             map.get(e).render(e, gfx, delta);
         }
 
-        g.dispose();
+        // XXX sould we really do the swap here or sould it be done for us
         gfx.swapBuffer();
     }
 }
