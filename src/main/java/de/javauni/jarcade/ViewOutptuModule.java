@@ -1,17 +1,28 @@
 package de.javauni.jarcade;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.TypeLiteral;
 
 import com.google.inject.name.Names;
 
-import de.javauni.jarcade.view.gui.Output;
-import de.javauni.jarcade.view.gui.OutputFrame;
+import de.javauni.jarcade.model.scene.Scene;
 
-public class ViewGuiModule extends AbstractModule {
+import de.javauni.jarcade.view.GraphicsOutput;
+import de.javauni.jarcade.view.RenderedView;
+
+import de.javauni.jarcade.view.impl.JavaGraphicsContext;
+import de.javauni.jarcade.view.impl.JavaGraphicsOutput;
+import de.javauni.jarcade.view.impl.SceneView;
+
+public class ViewOutptuModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-        bind(Output.class).to(OutputFrame.class);
+        bind(new TypeLiteral<GraphicsOutput<JavaGraphicsContext>>(){})
+            .to(JavaGraphicsOutput.class);
+        bind(new TypeLiteral<RenderedView<Scene, JavaGraphicsContext>>(){})
+            .to(SceneView.class);
+
         bind(Integer.class).annotatedWith(Names.named("win-x"))
             .toInstance(0);
         bind(Integer.class).annotatedWith(Names.named("win-y"))

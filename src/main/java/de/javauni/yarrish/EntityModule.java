@@ -8,6 +8,8 @@ import de.javauni.jarcade.model.phys.SimpleDynamicBody;
 import de.javauni.jarcade.model.phys.SimpleStaticBody;
 import de.javauni.jarcade.presenter.rendering.Renderer;
 
+import de.javauni.jarcade.view.impl.JavaGraphicsContext;
+
 
 import de.javauni.jarcade.view.render.GeneralEntityRenderer;
 
@@ -15,13 +17,12 @@ public class EntityModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-        bind(new TypeLiteral<Renderer<? super SimpleStaticBody>>(){})
+        bind(new TypeLiteral<Renderer<JavaGraphicsContext, ? super SimpleStaticBody>>(){})
             .to(new TypeLiteral<GeneralEntityRenderer>(){});
-        bind(new TypeLiteral<Renderer<? super SimpleDynamicBody>>(){})
+        bind(new TypeLiteral<Renderer<JavaGraphicsContext, ? super SimpleDynamicBody>>(){})
             .to(new TypeLiteral<GeneralEntityRenderer>(){});
-        bind(new TypeLiteral<Renderer<? super ControlableBody>>(){})
+        bind(new TypeLiteral<Renderer<JavaGraphicsContext, ? super ControlableBody>>(){})
             .to(new TypeLiteral<GeneralEntityRenderer>(){});
-        
 	}
-
 }
+

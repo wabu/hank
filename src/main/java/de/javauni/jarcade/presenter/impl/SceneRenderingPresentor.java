@@ -26,10 +26,14 @@ import de.javauni.jarcade.presenter.rendering.RendererMap;
 
 import de.javauni.jarcade.utils.UpdateLoop;
 
+import de.javauni.jarcade.utils.guice.ManagedScope;
+
 import de.javauni.jarcade.view.GraphicsContext;
+import de.javauni.jarcade.view.GraphicsOutput;
 import de.javauni.jarcade.view.RenderedView;
 
 // XXX refactor out common rendering persentor code
+@ManagedScope
 public class SceneRenderingPresentor<G extends GraphicsContext> 
         extends UpdateLoop
         implements Presentor<SceneModel>, 
@@ -46,6 +50,7 @@ public class SceneRenderingPresentor<G extends GraphicsContext>
 
     @Inject
     public SceneRenderingPresentor(
+            GraphicsOutput<G> go,
             RenderedView<Scene,G> view, 
             RendererMap<G> map,
             RendererFactory<G> fac,
@@ -54,6 +59,7 @@ public class SceneRenderingPresentor<G extends GraphicsContext>
             @Named("rendering-thread-factory") ThreadFactory tf
         ) {
         super(intervall, tf);
+        gc = go.getCleanGraphicsContext();
 
         this.view = view;
         this.map = map;
@@ -69,18 +75,26 @@ public class SceneRenderingPresentor<G extends GraphicsContext>
                 // TODO loadscreen??
                 break;
             case initialized:
+                log.debug("initializing rendering pipeline");
                 view.bindGraphics(gc);
                 this.init();
+                break;
             case intro:
             case warmup:
             case running:
             case outro:
+                log.debug("starting renderer");
                 this.start();
+                break;
             case paused:
+                log.debug("pausing renderer");
                 this.pause();
+                break;
             case closed:
+                log.debug("closing rendering pipline");
                 this.close();
                 view.unbindGraphics();
+                break;
         }
     };
 
@@ -95,9 +109,11 @@ public class SceneRenderingPresentor<G extends GraphicsContext>
 
     @Override
     public void onEntitySpawned(Entity e, Layer layer) {
-        log.debug("new entity {}",e);
         if (fac.isRenderable(e)) {
+            log.debug("adding renderer for {}",e);
             map.put(e, fac.getRenderer(e));
+        } else {
+            log.debug("no renderer for {}",e);
         }
     }
 
